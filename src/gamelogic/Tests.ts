@@ -9,7 +9,7 @@ import {InfectionSystem} from './InfectionSystem';
 /**
  * Testframework ist zu lange her. Alles vergessen xD
  * quick and dirty:
- *    tests ausführen mit tsc && node Test.js
+ *    tests ausführen mit tsc && node Tests.js
  */
 
 function testAction() {
