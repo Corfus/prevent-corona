@@ -9,6 +9,7 @@ export class PropagandaAction extends GameAction {
   
     run(state: GameState, countryEntity: CountryEntity): void {
       const country = state.getCountry(countryEntity);
+      country.money.value -= 10000;
       country.acceptance.value += 1;
     }
   }
