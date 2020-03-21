@@ -1,17 +1,14 @@
 import {System} from './System';
 import {GameState} from './GameState';
 import {GameActionEntity} from './GameAction';
-import {CountryEntity} from './CountryState';
 
 export class GameRunner {
   private systems: System[];
   private state: GameState;
-  public readonly playerCountry: CountryEntity;
 
-  constructor(initialState: GameState, playerCountry: CountryEntity) {
+  constructor(initialState: GameState) {
     this.state = initialState;
     this.systems = [];
-    this.playerCountry = playerCountry;
   }
 
   public AddSystem(system: System): void {
@@ -30,7 +27,7 @@ export class GameRunner {
   }
 
   public runAction(actionEntity: GameActionEntity): boolean {
-    return this.state.runAction(actionEntity, this.playerCountry);
+    return this.state.runAction(actionEntity, this.state.playerCountry);
   }
 
 

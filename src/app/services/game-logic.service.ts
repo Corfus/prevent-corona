@@ -15,11 +15,14 @@ export class GameLogicService {
   private timer$: Observable<number>;
   private timerSubscription: Subscription;
 
-  constructor() {
+  constructor(/*action$: Observable<GameActionEntity>*/) {
     this.gameState = GameCreator.createGameState();
     this.gameState$ = this.gameStateSubject.asObservable();
-    this.gameStateSubject.next({...this.gameState});
+    this.gameStateSubject.next(this.gameState);
     this.gameRunner = new GameRunner(this.gameState);
+    /*action$.subscribe((actionEntity) => {
+      this.gameRunner.runAction(actionEntity);
+    });*/
     this.startGame();
   }
 
