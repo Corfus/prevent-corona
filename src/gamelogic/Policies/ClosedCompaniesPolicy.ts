@@ -23,7 +23,7 @@ export class ClosedCompaniesPolicy extends GamePolicy {
     onEnact(state: GameState, countryEntity: CountryEntity): boolean {
       const country = state.getCountry(countryEntity);
       country.happiness.absoluteRateOfChange -= 1;
-      country.money.relativeRateOfChange -= 0.01;
+      country.money.absoluteRateOfChange -= 0.01;
       country.numberOfInfected.relativeRateOfChange -= 0.03;
       this.isEnacted = true;
       return true;
@@ -32,7 +32,7 @@ export class ClosedCompaniesPolicy extends GamePolicy {
     onRevoke(state: GameState, countryEntity: CountryEntity): boolean {
       const country = state.getCountry(countryEntity);
       country.happiness.absoluteRateOfChange += 1;
-      country.money.relativeRateOfChange += 0.01;
+      country.money.absoluteRateOfChange += 0.01;
       country.numberOfInfected.relativeRateOfChange += 0.03;
       this.isEnacted = false;
       return true;

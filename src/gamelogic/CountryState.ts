@@ -22,13 +22,12 @@ export class CountryState {
   public happiness: RateAttribute;
   public money: RateAttribute;
   public acceptance: RateAttribute;
-  public totalPopulation: RateAttribute;
-  public numberOfInfected: RateAttribute;
-  public economicOutput: RateAttribute;
-  public deathProbability: RateAttribute;
-  public deaths: number;
-  public vaccines: RateAttribute; // limit 100%?
-  public medicine: RateAttribute;
+  public totalPopulation: RateAttribute;    // 0 - ...        Start: 82.000.000
+  public numberOfInfected: RateAttribute;   // 0 - 82.000.000 Start: 0
+  public deathProbability: RateAttribute;   // 0 - TODO
+  public deaths: number;                    // 0 - 82.000.000
+  public vaccines: RateAttribute;           // 0 - 100
+  public medicine: RateAttribute;           // 0 - 100
   public hospitalCapacity: number;
 
   constructor() {
@@ -37,7 +36,6 @@ export class CountryState {
     this.acceptance = new RateAttribute();
     this.totalPopulation = new RateAttribute();
     this.numberOfInfected = new RateAttribute();
-    this.economicOutput = new RateAttribute();
     this.deathProbability = new RateAttribute();
     this.deaths = 0;
     this.hospitalCapacity = 0;
