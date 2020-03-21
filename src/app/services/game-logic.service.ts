@@ -27,7 +27,6 @@ export class GameLogicService {
     this.timer$ = interval(1000);
     this.timerSubscription = this.timer$.subscribe(() => {
       this.gameRunner.Tick();
-      console.log(this.gameState);
       this.gameStateSubject.next(this.gameState);
     });
   }
