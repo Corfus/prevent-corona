@@ -14,7 +14,8 @@ import {ActionBarComponent} from './components/common/action-bar/action-bar.comp
 import {ActionSpaceComponent} from './components/common/action-space/action-space.component';
 import {ImageButtonComponent} from './components/common/image-button/image-button.component';
 import {ActionCatalogComponent} from './components/common/action-catalog/action-catalog.component';
-import {StatusValueComponent} from './status-value/status-value.component'
+import {StatusValueComponent} from './status-value/status-value.component';
+import { TwitterBoxComponent } from './twitter-box/twitter-box.component'
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {StatusValueComponent} from './status-value/status-value.component'
     ImageButtonComponent,
     ActionCatalogComponent,
     StatusValueComponent,
+    TwitterBoxComponent,
   ],
   imports: [
     BrowserModule,

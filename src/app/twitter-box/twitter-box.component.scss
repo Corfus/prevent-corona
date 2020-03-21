@@ -1,0 +1,57 @@
+@import "../../scss/config.scss";
+
+.twitterBox{
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    bottom:0px;
+    vertical-align: bottom;
+}
+
+#bell{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 40px;
+}
+
+.mainText{
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 5%;
+    padding-top: 60px;
+    
+}
+
+.mainText label{
+    color: black;
+    font-size: 16px;
+}
+
+.border{
+    border-left: 2px solid $value-color;
+    padding-left: 10px;
+}
+
+.user{
+    position: absolute;
+    margin-left: 20px;
+    top: 5px;
+
+    span{
+        height: 30px;
+        width: 30px;
+        background-color: grey;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    label{
+        margin-left: 10px;
+        color: black;
+        font-size: 25px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+  }
