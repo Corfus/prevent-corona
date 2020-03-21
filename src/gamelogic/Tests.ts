@@ -35,12 +35,12 @@ function testRunner() {
   const Events: Map<GameEventEntity, GameEvent> = new Map();
   const germanyEntity: CountryEntity = 'Germany';
   const germany = new CountryState();
-  germany.numberOfInfected.rateOfChange = 1.2;
+  germany.numberOfInfected.relativeRateOfChange = 1.2;
   germany.numberOfInfected.value = 0; // ein Infizierter
 
   const chinaEntity: CountryEntity = 'China';
   const china = new CountryState();
-  china.numberOfInfected.rateOfChange = 1.1;
+  china.numberOfInfected.relativeRateOfChange = 1.1;
   china.numberOfInfected.value = 0; // ein Infizierter
   const Countries: Map<CountryEntity, CountryState> = new Map([[germanyEntity, germany], [chinaEntity, china]]);
   const gameState = new GameState(Countries, Policies, Actions, Events);

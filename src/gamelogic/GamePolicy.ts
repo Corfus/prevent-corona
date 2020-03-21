@@ -70,18 +70,18 @@ export class ClosedBorderPolicy extends GamePolicy {
 
   onEnact(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
-    country.happiness.rateOfChange -= 1;
-    country.money.rateOfChange -= 1;
-    country.numberOfInfected.rateOfChange -= 1;
+    country.happiness.absoluteRateOfChange -= 1;
+    country.money.relativeRateOfChange -= 0.01;
+    country.numberOfInfected.relativeRateOfChange -= 0.03;
     this.isEnacted = true;
     return true;
   }
 
   onRevoke(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
-    country.happiness.rateOfChange += 1;
-    country.money.rateOfChange += 1;
-    country.numberOfInfected.rateOfChange += 1;
+    country.happiness.absoluteRateOfChange += 1;
+    country.money.relativeRateOfChange += 0.01;
+    country.numberOfInfected.relativeRateOfChange += 0.03;
     this.isEnacted = false;
     return true;
   }
