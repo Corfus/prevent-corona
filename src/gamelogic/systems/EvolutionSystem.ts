@@ -20,8 +20,8 @@ export class EvolutionSystem extends System {
     this.rng = rng;
 
     //balancing Parameter
-    this.happinessDeathsFactor = 0.1;
-    this.happinessInfectedFactor = 0.01;
+    this.happinessDeathsFactor = -0.1;
+    this.happinessInfectedFactor = -0.01;
     this.acceptanceDeathsFactor = 0.01;
     this.acceptanceInfectedFactor = 0.001;
     this.deathHospitalFullFactor = 0.02;
@@ -39,8 +39,8 @@ export class EvolutionSystem extends System {
       countryData.money.value += countryData.money.absoluteRateOfChange;
 
       //Zufriedenheit
-      countryData.happiness.absoluteRateOfChange -= this.happinessDeathsFactor * countryData.deaths;
-      countryData.happiness.absoluteRateOfChange -= this.happinessInfectedFactor * countryData.numberOfInfected.value;
+      countryData.happiness.absoluteRateOfChange += this.happinessDeathsFactor * countryData.deaths; //TODO
+      countryData.happiness.absoluteRateOfChange += this.happinessInfectedFactor * countryData.numberOfInfected.value;
       countryData.happiness.value += countryData.happiness.absoluteRateOfChange;
 
       //Akzeptanz
