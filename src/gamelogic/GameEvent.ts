@@ -7,6 +7,21 @@ export type GameEventEntity = string;
  * um ein konkretes Ereignis zu definieren Unterklasse von GameEvent erstellen
  */
 
+export class EventMessage {
+  entity: GameEventEntity;
+  title: string;
+  text: string;
+
+  constructor(entity: GameEventEntity, title = 'untitiled', text = '') {
+    this.entity = entity;
+    this.title = title;
+    this.text = text;
+
+  }
+
+
+}
+
 export abstract class GameEvent {
   private title: string;
 

@@ -2,10 +2,20 @@ export type CountryEntity = string;
 
 // ist die Rate relativ oder absolut?
 // brauchen wir überall Rate oder gibt es direktere Möglichkeit?
-export interface RateAttribute {
+
+
+export class RateAttribute {
   value: number;
-  rateOfChange: number;
+  relativeRateOfChange: number;
+  absoluteRateOfChange: number;
+
+  constructor(value = 0, relativeRateOfChange = 1, absoluteRateOfChange = 0) {
+    this.value = value;
+    this.relativeRateOfChange = relativeRateOfChange;
+    this.absoluteRateOfChange = absoluteRateOfChange;
+  }
 }
+
 
 export class CountryState {
   public happiness: RateAttribute;
@@ -14,36 +24,22 @@ export class CountryState {
   public totalPopulation: RateAttribute;
   public numberOfInfected: RateAttribute;
   public economicOutput: RateAttribute;
+  public deathProbability: RateAttribute;
+  public deaths: number;
+  public vaccines: RateAttribute; // limit 100%?
+  public medicine: RateAttribute;
 
-  // TODO sinnvoller Konstruktor
   constructor() {
-    this.happiness = {
-      rateOfChange: 0,
-      value: 0
-    };
-
-    this.money = {
-      rateOfChange: 0,
-      value: 0
-    };
-
-    this.acceptance = {
-      rateOfChange: 0,
-      value: 0
-    };
-
-    this.totalPopulation = {
-      rateOfChange: 0,
-      value: 0
-    };
-    this.numberOfInfected = {
-      rateOfChange: 0,
-      value: 0
-    };
-    this.economicOutput = {
-      rateOfChange: 0,
-      value: 0
-    };
+    this.happiness = new RateAttribute();
+    this.money = new RateAttribute();
+    this.acceptance = new RateAttribute();
+    this.totalPopulation = new RateAttribute();
+    this.numberOfInfected = new RateAttribute();
+    this.economicOutput = new RateAttribute();
+    this.deathProbability = new RateAttribute();
+    this.deaths = 0;
+    this.vaccines = new RateAttribute();
+    this.medicine = new RateAttribute();
   }
 
 

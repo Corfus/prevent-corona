@@ -1,13 +1,17 @@
 import {CountryEntity, CountryState} from './CountryState';
 import {GamePolicy, GamePolicyEntity} from './GamePolicy';
 import {GameAction, GameActionEntity} from './GameAction';
-import {GameEvent, GameEventEntity} from './GameEvent';
+import {EventMessage, GameEvent, GameEventEntity} from './GameEvent';
 
+type tick = number;
 
 export class GameState {
   public tickCount: number;
   public gameOver: boolean;
+  public scores: Map<CountryEntity, number>;
   private countries: Map<CountryEntity, CountryState>;
+
+  private eventMessageHistory: Map<tick, EventMessage[]>;
 
   private readonly allPolicies: Map<GamePolicyEntity, GamePolicy>;
   private readonly allActions: Map<GameActionEntity, GameAction>;
@@ -25,9 +29,12 @@ export class GameState {
 
     this.tickCount = 0;
     this.gameOver = false;
+    this.eventMessageHistory = new Map();
     this.enactedPolicies = new Map();
+    this.scores = new Map();
     countries.forEach((v, k) => {
       this.enactedPolicies.set(k, new Set());
+      this.scores.set(k, 0);
     });
   }
 
@@ -128,5 +135,13 @@ export class GameState {
     }
     action.run(this, country);
     return true;
+  }
+
+  public addEventMessage(message: EventMessage) {
+    if (!this.eventMessageHistory.has(this.tickCount)) {
+      this.eventMessageHistory.set(this.tickCount, []);
+    }
+    const currentHistory = this.eventMessageHistory.get(this.tickCount) as EventMessage[];
+    currentHistory.push(message);
   }
 }

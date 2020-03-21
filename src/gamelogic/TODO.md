@@ -1,3 +1,5 @@
+EVENTS!
+
 # GameState
 * ist der State vollständig?
 * State soll nur Infos enthalten die für die Simulation essenziell sind. (nicht z.B. Ländernamen/Hauptstadt)

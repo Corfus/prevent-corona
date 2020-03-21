@@ -22,7 +22,7 @@ export class InfectionSystem extends System {
   private static infectCountry(state: GameState, countryEntity: CountryEntity): void {
     console.log(`infecting ${countryEntity}`);
     const country = state.getCountry(countryEntity);
-    country.numberOfInfected.value *= country.numberOfInfected.rateOfChange;
+    country.numberOfInfected.value *= country.numberOfInfected.relativeRateOfChange;
     country.numberOfInfected.value = Math.ceil(country.numberOfInfected.value); // aufrunden weil .4234 Infizierte nicht gehen
     /** TODO sollte man eigentlich für alle CountryAttributes machen
      * also "Evolution"-System und nicht Infection System
@@ -40,7 +40,7 @@ export class InfectionSystem extends System {
         // in diesem Land bricht der Virus aus
         const initialCountry = state.getCountry(initialCountryEntity);
         initialCountry.numberOfInfected.value = 1; // anfangs ein Infizierter
-        initialCountry.numberOfInfected.rateOfChange = 1.1; // TODO sinnvoller default wert? ist das eigentlich Rate oder Faktor?
+        initialCountry.numberOfInfected.relativeRateOfChange = 1.1; // TODO sinnvoller default wert? ist das eigentlich Rate oder Faktor?
         console.log(`infected ${initialCountryEntity}`);
         this.initialInfectionDone = true;
       }
