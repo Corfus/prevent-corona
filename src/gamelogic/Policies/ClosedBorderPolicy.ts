@@ -2,7 +2,7 @@ import {GameState} from '../GameState';
 import {CountryEntity} from '../CountryState';
 import {GamePolicy} from '../GamePolicy';
 
-//Balancing
+//Balancing 
 
 
 export class ClosedBorderPolicy extends GamePolicy {
