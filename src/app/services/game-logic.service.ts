@@ -37,10 +37,6 @@ export class GameLogicService {
     }
   }
 
-  getGameState(): Observable<GameState> {
-    return this.gameState$;
-  }
-
   dispatchAction(): void {
   }
 }

@@ -21,12 +21,11 @@ export class GameSiteComponent implements OnInit {
 
   ngOnInit(): void {
     this.gameLogic.startGame(this.actionSubject.asObservable());
-    this.gameState$ = this.gameLogic.getGameState();
+    this.gameState$ = this.gameLogic.gameState$;
     this.possibleActions$ = this.gameState$.pipe(map(gs => gs.getActionableActions(gs.playerCountry)));
   }
 
   onActionSelected(gameAction: GameActionEntity): void {
-    console.log(gameAction);
     this.actionSubject.next(gameAction);
   }
 }

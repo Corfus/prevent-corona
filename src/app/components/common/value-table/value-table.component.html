@@ -1,5 +1,8 @@
-<p>{{gameState.tickCount}}</p>
-<app-status-value name="Happiness" [value]="45" icon="happiness"></app-status-value>
-<app-status-value name="Death" [value]="getDeaths()" icon="death"></app-status-value>
-<app-status-value name="Deathrate" [value]="45" icon="deathrate"></app-status-value>
-<app-status-value name="Infections" [value]="45" icon="infections"></app-status-value>
+<ng-container *ngIf="extractData(gameState) as data">
+  <p>{{data.tick}}</p>
+  <app-status-value name="Happiness" [value]="data.happiness" icon="happiness"></app-status-value>
+  <app-status-value name="Death" [value]="data.deaths" icon="death"></app-status-value>
+  <app-status-value name="Deathrate" [value]="data.deathrate" icon="deathrate"></app-status-value>
+  <app-status-value name="Infections" [value]="data.infected" icon="infections"></app-status-value>
+</ng-container>
+
