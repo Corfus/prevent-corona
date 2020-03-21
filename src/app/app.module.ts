@@ -13,6 +13,7 @@ import { ActionDetailsPipe } from './pipes/action-details.pipe';
 import { ActionBarComponent } from './components/common/action-bar/action-bar.component';
 import { ActionSpaceComponent } from './components/common/action-space/action-space.component';
 import { ImageButtonComponent } from './components/common/image-button/image-button.component';
+import { ActionCatalogComponent } from './components/common/action-catalog/action-catalog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ImageButtonComponent } from './components/common/image-button/image-but
     ActionDetailsPipe,
     ActionBarComponent,
     ActionSpaceComponent,
-    ImageButtonComponent
+    ImageButtonComponent,
+    ActionCatalogComponent
   ],
   imports: [
     BrowserModule,

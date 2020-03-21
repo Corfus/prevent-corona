@@ -1,2 +1,3 @@
-<h2>Aktionen</h2>
-<app-action-bar *ngIf="selectedCategory < 0"></app-action-bar>
+<h2 (pointerdown)="unselectCategory()">Aktionen</h2>
+<app-action-bar *ngIf="selectedCategory < 0" (categorySelected)="setCategory($event)"></app-action-bar>
+<app-action-catalog *ngIf="selectedCategory >= 0" [actionList]="getActionList()"></app-action-catalog>

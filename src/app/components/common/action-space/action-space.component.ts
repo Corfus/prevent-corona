@@ -21,4 +21,15 @@ export class ActionSpaceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setCategory(category: EActionCategory): void {
+    this.selectedCategory = category;
+  }
+
+  unselectCategory(): void {
+    this.selectedCategory = EActionCategory.Unselected;
+  }
+
+  getActionList(): Array<any> {
+    return [];
+  }
 }

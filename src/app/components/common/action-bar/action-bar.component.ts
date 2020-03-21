@@ -14,4 +14,16 @@ export class ActionBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  propagandaClicked(): void {
+    this.categorySelected.emit(EActionCategory.Propaganda);
+  }
+
+  decisionsClicked(): void {
+    this.categorySelected.emit(EActionCategory.Decisions);
+  }
+
+  researchClicked(): void {
+    this.categorySelected.emit(EActionCategory.Research);
+  }
+
 }
