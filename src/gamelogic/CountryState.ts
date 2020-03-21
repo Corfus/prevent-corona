@@ -1,5 +1,6 @@
 export type CountryEntity = string;
 
+export const GlobalEntity: CountryEntity = 'GLOBAL';
 // ist die Rate relativ oder absolut?
 // brauchen wir überall Rate oder gibt es direktere Möglichkeit?
 

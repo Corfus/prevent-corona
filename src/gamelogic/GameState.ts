@@ -43,6 +43,14 @@ export class GameState {
     return Array.from(this.countries.keys());
   }
 
+  public getAllEvents(): Map<GameEventEntity, GameEvent> {
+    return this.allEvents;
+  }
+
+  public getEventMessageHistory(): Map<tick, EventMessage[]> {
+    return this.eventMessageHistory;
+  }
+
   public getCountry(country: CountryEntity): CountryState {
     if (!this.countries.has(country)) {
       throw new Error(`tried to get unknown country: ${country}`);

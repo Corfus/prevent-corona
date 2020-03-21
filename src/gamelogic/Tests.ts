@@ -1,10 +1,11 @@
 import {GamePolicy, GamePolicyEntity} from './GamePolicy';
 import {GameAction, GameActionEntity, PropagandaAction} from './GameAction';
-import {GameEvent, GameEventEntity} from './GameEvent';
+import {CoronaPartyEntity, CoronaPartyEvent, GameEvent, GameEventEntity} from './GameEvent';
 import {CountryEntity, CountryState} from './CountryState';
 import {GameState} from './GameState';
 import {GameRunner} from './GameRunner';
 import {InfectionSystem} from './InfectionSystem';
+import {EventSystem} from './EventSystem';
 
 /**
  * Testframework ist zu lange her. Alles vergessen xD
@@ -12,6 +13,8 @@ import {InfectionSystem} from './InfectionSystem';
  *    tsc --init um tsconfig zu generieren
  *    tests ausführen mit tsc && node Tests.js
  */
+
+// TODO: test mit automatischen asserts
 
 function testAction() {
   const Policies: Map<GamePolicyEntity, GamePolicy> = new Map();
@@ -35,12 +38,12 @@ function testRunner() {
   const Events: Map<GameEventEntity, GameEvent> = new Map();
   const germanyEntity: CountryEntity = 'Germany';
   const germany = new CountryState();
-  germany.numberOfInfected.rateOfChange = 1.2;
+  germany.numberOfInfected.relativeRateOfChange = 1.2;
   germany.numberOfInfected.value = 0; // ein Infizierter
 
   const chinaEntity: CountryEntity = 'China';
   const china = new CountryState();
-  china.numberOfInfected.rateOfChange = 1.1;
+  china.numberOfInfected.relativeRateOfChange = 1.1;
   china.numberOfInfected.value = 0; // ein Infizierter
   const Countries: Map<CountryEntity, CountryState> = new Map([[germanyEntity, germany], [chinaEntity, china]]);
   const gameState = new GameState(Countries, Policies, Actions, Events);
@@ -55,5 +58,30 @@ function testRunner() {
   console.log(gameState);
 }
 
+function testCoronaParty() {
+  const Policies: Map<GamePolicyEntity, GamePolicy> = new Map();
+  const propaganda: GameActionEntity = 'Propaganda';
+  const Actions: Map<GameActionEntity, GameAction> = new Map([[propaganda, new PropagandaAction()]]);
+  const Events: Map<GameEventEntity, GameEvent> = new Map([[CoronaPartyEntity, new CoronaPartyEvent()]]);
+  const chinaEntity: CountryEntity = 'China';
+  const china = new CountryState();
+  china.numberOfInfected.relativeRateOfChange = 1.1;
+  china.numberOfInfected.value = 110;
+  const Countries: Map<CountryEntity, CountryState> = new Map([[chinaEntity, china]]);
+  const gameState = new GameState(Countries, Policies, Actions, Events);
+  const gameRunner = new GameRunner(gameState);
+  // const infectionSystem = new InfectionSystem(.3);
+  // gameRunner.AddSystem(infectionSystem);
+  const eventSystem = new EventSystem();
+  gameRunner.AddSystem(eventSystem);
+  console.log(gameState.getCountry(chinaEntity));
+  for (let i = 0; i < 10; i++) {
+    gameRunner.Tick();
+  }
+  console.log(gameState.getCountry(chinaEntity));
+  console.log(gameState.getEventMessageHistory());
+}
+
 testAction();
 testRunner();
+testCoronaParty();
