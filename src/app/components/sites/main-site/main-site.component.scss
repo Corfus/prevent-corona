@@ -1,0 +1,13 @@
+@import "../../../../scss/config";
+
+.actionList {
+  width: 50%;
+  border: 2px solid $border-color;
+}
+
+.actionList a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

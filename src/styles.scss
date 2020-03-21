@@ -50,3 +50,26 @@ textarea {
 input[type="submit"], button {
   background-color: white;
 }
+
+.fullSpace {
+  height: 100%;
+  width: 100%;
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
