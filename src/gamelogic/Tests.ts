@@ -1,11 +1,14 @@
-import {ClosedBorderPolicy, GamePolicy, GamePolicyEntity} from './GamePolicy';
-import {GameAction, GameActionEntity, PropagandaAction} from './GameAction';
-import {CoronaPartyEntity, CoronaPartyEvent, GameEvent, GameEventEntity} from './GameEvent';
+import {GamePolicy, GamePolicyEntity} from './GamePolicy';
+import {ClosedBorderPolicy} from './Policies/ClosedBorder';
+import {GameAction, GameActionEntity} from './GameAction';
+import {PropagandaAction} from './Actions/Propaganda';
+import {GameEvent, GameEventEntity} from './GameEvent';
+import {CoronaPartyEntity, CoronaPartyEvent} from './Events/CoronaParty';
 import {CountryEntity, CountryState} from './CountryState';
 import {GameState} from './GameState';
 import {GameRunner} from './GameRunner';
-import {InfectionSystem} from './InfectionSystem';
-import {EventSystem} from './EventSystem';
+import {EventSystem} from './systems/EventSystem';
+import {InfectionSystem} from './systems/InfectionSystem';
 
 /**
  * Testframework ist zu lange her. Alles vergessen xD
