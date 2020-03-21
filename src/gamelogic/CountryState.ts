@@ -33,16 +33,16 @@ export class CountryState {
   public hospitalCapacity: number;
 
   constructor() {
-    this.happiness = new RateAttribute();
-    this.money = new RateAttribute();
-    this.acceptance = new RateAttribute();
-    this.totalPopulation = new RateAttribute();
+    this.happiness = new RateAttribute(50);
+    this.money = new RateAttribute(5000000000);
+    this.acceptance = new RateAttribute(0);
+    this.totalPopulation = new RateAttribute(82000000);
     this.numberOfInfected = new RateAttribute();
     this.numberOfRecovered = new RateAttribute();
-    this.deathProbability = new RateAttribute();
-    this.recoverProbability = new RateAttribute();
+    this.deathProbability = new RateAttribute(0.5);
+    this.recoverProbability = new RateAttribute(0.5);
     this.deaths = 0;
-    this.hospitalCapacity = 10000; // If you change this value - Take care about the BuildEmergencyHospitalPolicy & ExpandHospitalBedsPolicy
+    this.hospitalCapacity = 20000;
     this.vaccines = new RateAttribute();
     this.medicine = new RateAttribute();
   }
