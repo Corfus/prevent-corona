@@ -1,0 +1,27 @@
+stages:
+  - test
+  - deploy
+
+build:
+  stage: test
+  script:
+    - npm install && npm run build
+  cache:
+    paths:
+      - node_modules
+
+build_docker:
+  stage: deploy
+  script:
+    - npm install && npm run build --prod
+    - cd server && npm i && cd ..
+    - ./scripts/deploy.sh
+  cache:
+    paths:
+      - node_modules
+      - server/node_modules
+  environment:
+    name: production
+    url: https://pc.ysaf.eu
+  only:
+    - master
