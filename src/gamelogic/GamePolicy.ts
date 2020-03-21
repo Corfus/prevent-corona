@@ -60,33 +60,33 @@ export abstract class GamePolicy {
 
 
 export class ClosedBorderPolicy extends GamePolicy {
-  isEnactable(state: GameState, country: CountryEntity): boolean {
+  isEnactable(state: GameState, countryEntity: CountryEntity): boolean {
     return !this.isEnacted;
   }
 
-  isRevokable(state: GameState, country: CountryEntity): boolean {
+  isRevokable(state: GameState, countryEntity: CountryEntity): boolean {
     return this.isEnacted;
   }
 
-  onEnact(state: GameState, country: CountryEntity): boolean {
+  onEnact(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
-    country.happiness.rateOfchange -= 1;
-    country.money.rateOfchange -= 1;
-    country.numberOfInfected.rateOfchange -= 1;
+    country.happiness.rateOfChange -= 1;
+    country.money.rateOfChange -= 1;
+    country.numberOfInfected.rateOfChange -= 1;
     this.isEnacted = true;
     return true;
   }
 
-  onRevoke(state: GameState, country: CountryEntity): boolean {
+  onRevoke(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
-    country.happiness.rateOfchange += 1;
-    country.money.rateOfchange += 1;
-    country.numberOfInfected.rateOfchange += 1;
+    country.happiness.rateOfChange += 1;
+    country.money.rateOfChange += 1;
+    country.numberOfInfected.rateOfChange += 1;
     this.isEnacted = false;
     return true;
   }
 
-  applyEffects(state: GameState, country: CountryEntity): boolean {
+  applyEffects(state: GameState, countryEntity: CountryEntity): boolean {
     return true;
   }
 
