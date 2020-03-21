@@ -1,10 +1,13 @@
-import {ClosedBorderPolicy, GamePolicy, GamePolicyEntity} from './GamePolicy';
-import {GameAction, GameActionEntity, PropagandaAction} from './GameAction';
-import {CoronaPartyEntity, CoronaPartyEvent, GameEvent, GameEventEntity} from './GameEvent';
+import {GamePolicy, GamePolicyEntity} from './GamePolicy';
+import {ClosedBorderPolicy} from './Policies/ClosedBorderPolicy';
+import {GameAction, GameActionEntity} from './GameAction';
+import {PropagandaAction} from './Actions/PropagandaAction';
+import {GameEvent, GameEventEntity} from './GameEvent';
+import {CoronaPartyEntity, CoronaPartyEvent} from './Events/CoronaPartyEvent';
 import {CountryEntity, CountryState} from './CountryState';
 import {GameState} from './GameState';
 import {System} from './System';
-import {InfectionSystem} from './InfectionSystem';
+import {InfectionSystem} from './systems/InfectionSystem';
 import {EventSystem} from './EventSystem';
 
 export class GameCreator {
