@@ -10,8 +10,8 @@ export class ScientistsDieEvent extends LocalEvent {
 
   // Balancing
   private OccursAboveMedicineChange: number = .5;
-  private ProbabilityAboveMedicineChange: number = .1;
-  private ProbabilityUnderMedicineChange: number = .03;
+  private ProbabilityAbove: number = .1;
+  private ProbabilityUnder: number = .03;
   private HappinessChangeAbsolute: number = -10000;
   private MedicineChangeMultiplier: number = .7;
   private VaccinesChangeMultiplier: number = .7;
@@ -21,7 +21,7 @@ export class ScientistsDieEvent extends LocalEvent {
     const medicineChangeRate: number = country.medicine.absoluteRateOfChange;
     const vaccinesChangeRate: number = country.vaccines.absoluteRateOfChange;
     return (medicineChangeRate > this.OccursAboveMedicineChange) ?
-      this.ProbabilityAboveMedicineChange : this.ProbabilityUnderMedicineChange;
+                this.ProbabilityAbove : this.ProbabilityUnder;
   }
 
   occurLocally(state: GameState, countryEntity: CountryEntity): void {
