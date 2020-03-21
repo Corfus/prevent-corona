@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import "scss/config";
+
+body {
+  margin: 0;
+  user-select: none;
+  font-family: 'Roboto', sans-serif;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+a:link {
+  text-decoration: none;
+  color: #000000;
+}
+
+a:visited {
+  color: #000000;
+}
+
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[type="submit"],
+button,
+select,
+select:focus,
+textarea {
+  font-size: 16px;
+  border: 1px solid $border-color;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+input[type="submit"], button {
+  background-color: white;
+}
