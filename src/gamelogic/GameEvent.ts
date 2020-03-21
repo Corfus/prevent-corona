@@ -1,4 +1,5 @@
 import {GameState} from './GameState';
+import {CountryEntity} from './CountryState';
 
 export type GameEventEntity = string;
 
@@ -8,26 +9,16 @@ export type GameEventEntity = string;
  */
 
 export class EventMessage {
-  entity: GameEventEntity;
-  title: string;
-  text: string;
+  eventEntity: GameEventEntity;
+  locationEntity: CountryEntity;
 
-  constructor(entity: GameEventEntity, title = 'untitiled', text = '') {
-    this.entity = entity;
-    this.title = title;
-    this.text = text;
-
+  constructor(event: GameEventEntity, location: CountryEntity) {
+    this.eventEntity = event;
+    this.locationEntity = location;
   }
-
-
 }
 
 export abstract class GameEvent {
-  private title: string;
-
-  constructor(title: string) {
-    this.title = title;
-  }
 
   /**
    * die Wahrscheinlichkeit, dass das Ereignis eintritt gegeben den momentanen Zustand
@@ -42,3 +33,42 @@ export abstract class GameEvent {
 
 }
 
+export abstract class LocalEvent extends GameEvent {
+  getOccurrenceProbability(_: GameState): number {
+    return 0;
+  }
+
+  abstract occurLocally(state: GameState, countryEntity: CountryEntity): void;
+
+  abstract getLocalOccurenceProbability(state: GameState, countryEntity: CountryEntity): number;
+
+  getOccurenceProbability(state: GameState): number {
+    return 1;
+  }
+
+  occur(state: GameState): void {
+    state.getAllCountryEntities().forEach((entity) => {
+      const probability = this.getLocalOccurenceProbability(state, entity);
+      if (Math.random() < probability) {
+        this.occurLocally(state, entity);
+      }
+    });
+  }
+}
+
+export const CoronaPartyEntity: GameEventEntity = 'Coronaparty';
+
+export class CoronaPartyEvent extends LocalEvent {
+  getLocalOccurenceProbability(state: GameState, countryEntity: string): number {
+    const country = state.getCountry(countryEntity);
+    const numOfInfected: number = country.numberOfInfected.value;
+    return (numOfInfected > 100) ? .6 : .0; // TODO magic number probability too high
+  }
+
+  occurLocally(state: GameState, countryEntity: CountryEntity): void {
+    const country = state.getCountry(countryEntity);
+    country.numberOfInfected.value += 100; // TODO magic number
+    state.addEventMessage(new EventMessage(CoronaPartyEntity, countryEntity));
+  }
+
+}

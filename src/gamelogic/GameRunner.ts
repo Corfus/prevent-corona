@@ -15,6 +15,7 @@ export class GameRunner {
   }
 
   public Tick() {
+    this.state.tickCount++;
     this.systems.forEach((v) => {
       v.applyTick(this.state);
     });
