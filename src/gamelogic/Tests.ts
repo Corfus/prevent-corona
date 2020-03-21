@@ -1,10 +1,11 @@
-import {GamePolicy, GamePolicyEntity} from './GamePolicy';
+import {ClosedBorderPolicy, GamePolicy, GamePolicyEntity} from './GamePolicy';
 import {GameAction, GameActionEntity, PropagandaAction} from './GameAction';
-import {GameEvent, GameEventEntity} from './GameEvent';
+import {CoronaPartyEntity, CoronaPartyEvent, GameEvent, GameEventEntity} from './GameEvent';
 import {CountryEntity, CountryState} from './CountryState';
 import {GameState} from './GameState';
 import {GameRunner} from './GameRunner';
 import {InfectionSystem} from './InfectionSystem';
+import {EventSystem} from './EventSystem';
 
 /**
  * Testframework ist zu lange her. Alles vergessen xD
