@@ -2,14 +2,16 @@ import {GameState} from '../GameState';
 import {CountryEntity} from '../CountryState';
 import {GameAction} from '../GameAction';
 
-export class PropagandaAction extends GameAction {
+export class RevokeClosedSchoolAction extends GameAction {
     isActionable(state: GameState, country: CountryEntity): boolean {
-      return true;
+        if(state.getCountryEnactedPolicies(country).has('ClosedSchool'))
+        {
+            return true;
+        }
+        return false;
     }
   
     run(state: GameState, countryEntity: CountryEntity): void {
-      const country = state.getCountry(countryEntity);
-      country.money.value -= 10000;
-      country.acceptance.value += 1;
+      state.revokePolicy(countryEntity,'ClosedSchool');
     }
   }

@@ -4,6 +4,9 @@ import {GamePolicy} from '../GamePolicy';
 
 
 export class PayForVaccineDevPolicy extends GamePolicy {
+  private VaccineChangeRate : number = 0.05;
+  private MoneyChangeRate  : number = -0.01;
+  private InfectedChangeRate : number = -0.03;
     isEnactable(state: GameState, countryEntity: CountryEntity): boolean 
     {
         const country = state.getCountry(countryEntity);
@@ -23,15 +26,15 @@ export class PayForVaccineDevPolicy extends GamePolicy {
   
     onEnact(state: GameState, countryEntity: CountryEntity): boolean {
       const country = state.getCountry(countryEntity);
-      country.money.relativeRateOfChange -= 0.01;
-      country.vaccines.absoluteRateOfChange = 0.5;
+      country.money.relativeRateOfChange += this.MoneyChangeRate;
+      country.vaccines.absoluteRateOfChange = this.VaccineChangeRate;
       this.isEnacted = true;
       return true;
     }
   
     onRevoke(state: GameState, countryEntity: CountryEntity): boolean {
       const country = state.getCountry(countryEntity);
-      country.money.relativeRateOfChange += 0.01;
+      country.money.relativeRateOfChange -= this.MoneyChangeRate;
       country.vaccines.absoluteRateOfChange = 0;
       this.isEnacted = false;
       return true;
@@ -42,7 +45,7 @@ export class PayForVaccineDevPolicy extends GamePolicy {
         if(country.vaccines.value == 100)
         {
             this.onRevoke(state,countryEntity);
-            country.numberOfInfected.relativeRateOfChange -= 0.5;
+            country.numberOfInfected.relativeRateOfChange += this.InfectedChangeRate;
         }
       return true;
     }

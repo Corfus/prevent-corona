@@ -19,9 +19,9 @@ export class RateAttribute {
 
 
 export class CountryState {
-  public happiness: RateAttribute;
-  public money: RateAttribute;
-  public acceptance: RateAttribute;
+  public happiness: RateAttribute;          // 0 - 100        Start: 50
+  public money: RateAttribute;              // 0 - 50.000.000.000.000
+  public acceptance: RateAttribute;         // 0 - 100        Start: 0
   public totalPopulation: RateAttribute;    // 0 - ...        Start: 82.000.000
   public numberOfInfected: RateAttribute;   // 0 - 82.000.000 Start: 0
   public numberOfRecovered: RateAttribute;  // 0 - 82.000.000 Start: 0

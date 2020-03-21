@@ -28,6 +28,10 @@ export class GameLogicService {
     this.timerSubscription = this.timer$.subscribe(() => {
       this.gameRunner.Tick();
       this.gameStateSubject.next(this.gameState);
+      console.log(this.gameState);
+    });
+    action$.subscribe((actionEntity) => {
+      this.gameRunner.runAction(actionEntity);
     });
   }
 
