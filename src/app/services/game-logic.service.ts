@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {interval, Observable, Subscription, Subject} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {interval, Observable, Subject, Subscription} from 'rxjs';
 
 import {GameState} from '../../gamelogic/GameState';
 import {GameRunner} from '../../gamelogic/GameRunner';
@@ -28,7 +27,6 @@ export class GameLogicService {
     this.timer$ = interval(1000);
     this.timerSubscription = this.timer$.subscribe(() => {
       this.gameRunner.Tick();
-      console.log(this.gameState);
       this.gameStateSubject.next(this.gameState);
     });
   }
@@ -40,7 +38,7 @@ export class GameLogicService {
   }
 
   getGameState(): Observable<GameState> {
-    return this.gameState$.pipe(map((gameState) => gameState));
+    return this.gameState$;
   }
 
   dispatchAction(): void {

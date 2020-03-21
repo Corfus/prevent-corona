@@ -1,5 +1,6 @@
 import {System} from './System';
 import {GameState} from './GameState';
+import {GameActionEntity} from './GameAction';
 
 export class GameRunner {
   private systems: System[];
@@ -10,15 +11,24 @@ export class GameRunner {
     this.systems = [];
   }
 
-  public AddSystem(system: System) {
+  public AddSystem(system: System): void {
     this.systems.push(system);
   }
 
-  public Tick() {
+  public Tick(): void {
     this.state.tickCount++;
     this.systems.forEach((v) => {
       v.applyTick(this.state);
     });
   }
+
+  public getState(): GameState {
+    return this.state;
+  }
+
+  public runAction(actionEntity: GameActionEntity): boolean {
+    return this.state.runAction(actionEntity, this.state.playerCountry);
+  }
+
 
 }
