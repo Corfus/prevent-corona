@@ -1,7 +1,8 @@
-import {GameState} from './GameState';
+import {GameState, tick} from './GameState';
 import {CountryEntity} from './CountryState';
 
 export type GameEventEntity = string;
+
 
 /**
  * ein Ereignis welches eintreten kann
@@ -11,10 +12,12 @@ export type GameEventEntity = string;
 export class EventMessage {
   eventEntity: GameEventEntity;
   locationEntity: CountryEntity;
+  tickNumber: tick;
 
-  constructor(event: GameEventEntity, location: CountryEntity) {
+  constructor(event: GameEventEntity, location: CountryEntity, tickNumber: tick) {
     this.eventEntity = event;
     this.locationEntity = location;
+    this.tickNumber = tickNumber;
   }
 }
 
@@ -68,7 +71,7 @@ export class CoronaPartyEvent extends LocalEvent {
   occurLocally(state: GameState, countryEntity: CountryEntity): void {
     const country = state.getCountry(countryEntity);
     country.numberOfInfected.value += 100; // TODO magic number
-    state.addEventMessage(new EventMessage(CoronaPartyEntity, countryEntity));
+    state.addEventMessage(new EventMessage(CoronaPartyEntity, countryEntity, state.tickCount));
   }
 
 }
