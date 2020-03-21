@@ -16,6 +16,7 @@ import {ImageButtonComponent} from './components/common/image-button/image-butto
 import {ActionCatalogComponent} from './components/common/action-catalog/action-catalog.component';
 import {StatusValueComponent} from './components/common/status-value/status-value.component';
 import {ValueTableComponent} from './components/common/value-table/value-table.component';
+import { DatePipe } from './pipes/date.pipe';
 import { PolicyListComponent } from './components/common/policy-list/policy-list.component';
 import { TimeComponent } from './components/common/time/time.component';
 
@@ -37,6 +38,8 @@ import { TimeComponent } from './components/common/time/time.component';
     ValueTableComponent,
     PolicyListComponent,
     TimeComponent
+    ValueTableComponent,
+    DatePipe
   ],
   imports: [
     BrowserModule,
