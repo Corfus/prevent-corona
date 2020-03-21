@@ -9,8 +9,8 @@ export class StatusValueComponent implements OnInit {
 
   @Input() value: number;
   @Input() name: string;
-  @Input() iconSource: string;
-  
+  @Input() icon: string;
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,9 +1,37 @@
 @import "../../../../scss/config";
 
-.actionList {
-  width: 50%;
-  border: 2px solid $border-color;
+.flexCenter{
   background-color: $value-color;
+}
+
+.startWindow{
+  position: absolute;
+  left: 10%;
+  top: 20%;
+  width: auto;
+}
+
+#startImg{
+  position: absolute;
+  height: 70%;
+  bottom: 0px;
+  right: 0px;
+}
+
+#mainTitle{
+  margin: auto;
+  color: $text-color;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: 'Roboto';
+}
+
+.actionList {
+  margin-top: 35px;
+  width: auto;
+  border: none;
+  background-color: $text-color;
+  border-radius: 5px;
 
   a {
     display: flex;
@@ -13,6 +41,7 @@
     color: white;
 
     label {
+      color: $value-color;
       font-size: 20px;
       padding: 5px;
       cursor: pointer;

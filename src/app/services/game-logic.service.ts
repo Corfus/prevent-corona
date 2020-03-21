@@ -5,6 +5,8 @@ import {GameState} from '../../gamelogic/GameState';
 import {GameRunner} from '../../gamelogic/GameRunner';
 import {GameCreator} from '../../gamelogic/GameCreator';
 import {GameActionEntity} from '../../gamelogic/GameAction';
+import { EventSystem } from 'src/gamelogic/systems/EventSystem';
+import { EvolutionSystem } from 'src/gamelogic/systems/EvolutionSystem';
 
 @Injectable()
 export class GameLogicService {
@@ -21,6 +23,8 @@ export class GameLogicService {
     this.gameStateSubject.next(this.gameState);
     this.gameState$ = this.gameStateSubject.asObservable();
     this.gameRunner = new GameRunner(this.gameState);
+    this.gameRunner.AddSystem(new EventSystem());
+    this.gameRunner.AddSystem(new EvolutionSystem(0.03));
   }
 
   startGame(action$: Observable<GameActionEntity>): void {
@@ -28,6 +32,10 @@ export class GameLogicService {
     this.timerSubscription = this.timer$.subscribe(() => {
       this.gameRunner.Tick();
       this.gameStateSubject.next(this.gameState);
+      console.log(this.gameState);
+    });
+    action$.subscribe((actionEntity) => {
+      this.gameRunner.runAction(actionEntity);
     });
   }
 
@@ -35,10 +43,6 @@ export class GameLogicService {
     if (this.timerSubscription) {
       this.timerSubscription.unsubscribe();
     }
-  }
-
-  getGameState(): Observable<GameState> {
-    return this.gameState$;
   }
 
   dispatchAction(): void {
