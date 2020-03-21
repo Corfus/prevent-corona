@@ -1,8 +1,6 @@
 <div class="fullSpace flexRow">
   <div class="valueBackground">
-<!--    <div>TickCount: {{gameState.tickCount}}</div>-->
-<!--    <div>GameState: {{gameStateJSON}}</div>-->
-    <app-value-table></app-value-table>
+    <app-value-table [gameState]="gameState$ | async"></app-value-table>
   </div>
   <div class="flexColumn">
     <div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {GameState} from '../../../../gamelogic/GameState';
 
 @Component({
   selector: 'app-value-table',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./value-table.component.scss']
 })
 export class ValueTableComponent implements OnInit {
+  @Input() gameState: GameState;
 
   constructor() { }
 
