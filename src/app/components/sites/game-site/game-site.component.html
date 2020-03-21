@@ -7,7 +7,7 @@
       <app-country country="germany"></app-country>
     </div>
     <div class="actionBackground">
-      <app-action-space (actionSelected)="onActionSelected($event)"></app-action-space>
+      <app-action-space (actionSelected)="onActionSelected($event)" [actions]="possibleActions$ | async"></app-action-space>
     </div>
   </div>
 </div>

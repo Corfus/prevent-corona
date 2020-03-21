@@ -14,6 +14,7 @@ import {map} from 'rxjs/operators';
 export class GameSiteComponent implements OnInit {
   actionSubject: Subject<GameActionEntity> = new Subject<GameActionEntity>();
   gameState$: Observable<GameState>;
+  possibleActions$: Observable<Array<string>>;
 
   constructor(private gameLogic: GameLogicService) {
   }
@@ -21,10 +22,11 @@ export class GameSiteComponent implements OnInit {
   ngOnInit(): void {
     this.gameLogic.startGame(this.actionSubject.asObservable());
     this.gameState$ = this.gameLogic.getGameState();
-    // this.gameState$.pipe(map(gs => gs.getActionableActions()));
+    this.possibleActions$ = this.gameState$.pipe(map(gs => gs.getActionableActions(gs.playerCountry)));
   }
 
   onActionSelected(gameAction: GameActionEntity): void {
+    console.log(gameAction);
     this.actionSubject.next(gameAction);
   }
 }

@@ -14,4 +14,8 @@ export class ValueTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getDeaths(): number {
+    return this.gameState.getCountry(this.gameState.playerCountry).deaths;
+  }
+
 }
