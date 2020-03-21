@@ -39,10 +39,10 @@ export class CountryState {
     this.totalPopulation = new RateAttribute(82000000);
     this.numberOfInfected = new RateAttribute();
     this.numberOfRecovered = new RateAttribute();
-    this.deathProbability = new RateAttribute(0.5);
-    this.recoverProbability = new RateAttribute(0.5);
+    this.deathProbability = new RateAttribute(0.005);
+    this.recoverProbability = new RateAttribute(0.005);
     this.deaths = 0;
-    this.hospitalCapacity = 20000;
+    this.hospitalCapacity = 100000;
     this.vaccines = new RateAttribute();
     this.medicine = new RateAttribute();
   }
