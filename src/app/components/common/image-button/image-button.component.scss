@@ -1,6 +1,7 @@
 :host {
   flex: 1 1 auto;
   padding: 10px;
+  height: calc(100% - 20px);
 }
 
 .container {
@@ -10,6 +11,12 @@
   flex-direction: column;
 }
 
+img {
+  height: 80%;
+}
+
 h3 {
+  height: 10%;
   text-align: center;
+  margin: 0;
 }
