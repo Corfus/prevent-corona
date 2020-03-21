@@ -7,20 +7,27 @@ import {PayForMedicineDevPolicy } from './policies/PayForMedicineDevPolicy';
 import {PayForVaccineDevPolicy } from './policies/PayForVaccineDevPolicy';
 
 import {GameAction, GameActionEntity} from './GameAction';
-import {PropagandaAction} from './actions/PropagandaAction';
-import { HygieneAdviceAction } from './actions/HygieneAdviceAction';
+import { FakeNewsMessageAction, FakeNewsMessageEntity} from './actions/FakeNewsMessageAction';
+import { HygieneHandWashAdviceAction, HygieneHandWashAdviceEntity } from './actions/HygieneHandWashAdviceAction';
+import { MouthguardAdvideAction, MouthguardAdvideEntity } from './actions/MouthguardAdvideAction';
+import { KeepDistanceAdviceAction, KeepDistanceAdviceEntity } from './actions/KeepDistanceAdviceAction';
+import { LowDeathMessageAction, LowDeathMessageEntity } from './actions/LowDeathMessageAction';
+import { InformAboutPoliticanDeathAction, InformAboutPoliticanDeathEntity } from './actions/InformAboutPoliticanDeathAction';
 
 import {GameEvent, GameEventEntity} from './GameEvent';
 import {LocalEvent} from './GameEvent';
-import { CoronaPartyEvent} from './events/CoronaPartyEvent';
-import { IllegalBorderCrossingEvent } from './events/IllegalBorderCrossingEvent';
-import { ScientistsDieEvent } from './events/ScientistsDieEvent';
-import { StockMarketCrashEvent } from './events/StockMarketCrashEvent';
+import { CoronaPartyEvent, CoronaPartyEntity} from './events/CoronaPartyEvent';
+import { IllegalBorderCrossingEvent, IllegalBorderCrossingEntity } from './events/IllegalBorderCrossingEvent';
+import { ScientistsDieEvent, ScientistsDieEntity } from './events/ScientistsDieEvent';
+import { StockMarketCrashEvent, StockMarketCrashEntity } from './events/StockMarketCrashEvent';
+import { StockMarketCrashHardEvent, StockMarketCrashHardEntity } from './events/StockMarketCrashHardEvent';
+import { StockMarketRecoveryEvent,StockMarketRecoveryEntity } from './events/StockMarketRecoveryEvent';
+import { WirVsCoronaHackthonEvent, WirVsCoronaHackthonEntity } from './events/WirVsCoronaHackthonEvent';
+import { ChinaSackOfRiseHarmlessEvent, ChinaSackOfRiseEntity } from './events/ChinaSackOfRiseHarmlessEvent';
 
 import {CountryEntity, CountryState} from './CountryState';
 import {GameState} from './GameState';
 import {System} from './System';
-import {InfectionSystem} from './systems/InfectionSystem';
 import {EventSystem} from './systems/EventSystem';
 import { EnactClosedBorderAction } from './actions/EnactClosedBorderAction';
 import { EnactClosedCompaniesAction } from './actions/EnactClosedCompaniesAction';
@@ -34,8 +41,6 @@ import { RevokeClosedSchoolAction } from './actions/RevokeClosedSchoolAction';
 import { RevokeCurfewAction } from './actions/RevokeCurfewAction';
 import { RevokePayForMedicineDevAction } from './actions/RevokePayForMedicineDevAction';
 import { RevokePayForVaccineDevAction } from './actions/RevokePayForVaccineDevAction ';
-
-
 
 
 export class GameCreator {
@@ -61,10 +66,8 @@ export class GameCreator {
     Policies.set(payForMedicineDev, new PayForMedicineDevPolicy());
     Policies.set(payForVaccineDev,new PayForVaccineDevPolicy());
 
-    
+
     //Actions
-    const propaganda: GameActionEntity = 'Propaganda';
-    const hygieneAdvice : GameActionEntity = 'HygieneAdvice';
     const enactClosedBorder : GameActionEntity = 'EnactClosedBorder';
     const enactClosedCompanies : GameActionEntity = 'EnactClosedCompanies';
     const enactClosedSchools : GameActionEntity = 'EnactClosedSchools';
@@ -77,10 +80,15 @@ export class GameCreator {
     const revokeCurfewAction : GameActionEntity = 		'RevokeCurfew';
     const revokePayForMedicineDev : GameActionEntity = 	'RevokePayForMedicineDev';
     const revokePayForVaccineDev : GameActionEntity = 	'RevokePayForVaccineDev';
-    
+
     const Actions: Map<GameActionEntity, GameAction> = new Map();
-    Actions.set(propaganda, new PropagandaAction());
-    Actions.set(hygieneAdvice, new HygieneAdviceAction());
+    Actions.set(FakeNewsMessageEntity, new FakeNewsMessageAction());
+    Actions.set(HygieneHandWashAdviceEntity, new HygieneHandWashAdviceAction());
+    Actions.set(MouthguardAdvideEntity, new MouthguardAdvideAction());
+    Actions.set(KeepDistanceAdviceEntity, new KeepDistanceAdviceAction());
+    Actions.set(LowDeathMessageEntity, new LowDeathMessageAction());
+    Actions.set(InformAboutPoliticanDeathEntity, new InformAboutPoliticanDeathAction());
+    // Policies
     Actions.set(enactClosedBorder, new EnactClosedBorderAction());
     Actions.set(enactClosedCompanies, new EnactClosedCompaniesAction());
     Actions.set(enactClosedSchools, new EnactClosedSchoolAction());
@@ -95,19 +103,19 @@ export class GameCreator {
     Actions.set(revokePayForVaccineDev, new 	RevokePayForVaccineDevAction());
 
 
-    //Events
-    const coronaParty: GameEventEntity = 'CoronaParty';
-    const illegalBorderCrossing: GameEventEntity = 'IllegalBorderCrossing';
-    const scientistsDie: GameEventEntity = 'ScientistsDie';
-    const stockMarketCrash: GameEventEntity = 'StockMarketCrash';
-
     const Events: Map<GameEventEntity, GameEvent> = new Map();
-    Events.set(coronaParty, new CoronaPartyEvent());
-    Events.set(illegalBorderCrossing, new IllegalBorderCrossingEvent());
-    Events.set(scientistsDie, new ScientistsDieEvent());
-    Events.set(stockMarketCrash, new StockMarketCrashEvent());
+    // Gameplay relevant
+    Events.set(WirVsCoronaHackthonEntity, new WirVsCoronaHackthonEvent());
+    Events.set(CoronaPartyEntity, new CoronaPartyEvent());
+    Events.set(IllegalBorderCrossingEntity, new IllegalBorderCrossingEvent());
+    Events.set(ScientistsDieEntity, new ScientistsDieEvent());
+    Events.set(StockMarketCrashEntity, new StockMarketCrashEvent());
+    Events.set(StockMarketCrashHardEntity, new StockMarketCrashHardEvent());
+    Events.set(StockMarketRecoveryEntity, new StockMarketRecoveryEvent());
+    // Not gameplay relevant
+    Events.set(ChinaSackOfRiseEntity, new ChinaSackOfRiseHarmlessEvent());
 
-    
+
     //PlayerCountry
     const playerCountry = new CountryState();
     playerCountry.numberOfInfected.relativeRateOfChange = 1.2;

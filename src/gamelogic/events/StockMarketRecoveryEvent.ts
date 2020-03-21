@@ -4,9 +4,9 @@ import {LocalEvent} from '../GameEvent';
 import {EventMessage} from '../GameEvent';
 import {GameEventEntity} from '../GameEvent';
 
-export const StockMarketRecoveryEventEntity: GameEventEntity = 'StockMarketRecovery';
+export const StockMarketRecoveryEntity: GameEventEntity = 'StockMarketRecovery';
 
-export class StockMarketRecoveryEventEvent extends LocalEvent {
+export class StockMarketRecoveryEvent extends LocalEvent {
 
   // Balancing
   private OccursUnderInfectedNumber: number = 100;
@@ -24,6 +24,6 @@ export class StockMarketRecoveryEventEvent extends LocalEvent {
   occurLocally(state: GameState, countryEntity: CountryEntity): void {
     const country = state.getCountry(countryEntity);
     country.money.value += this.MoneyChangeAbsolute;
-    state.addEventMessage(StockMarketRecoveryEventEntity, countryEntity);
+    state.addEventMessage(StockMarketRecoveryEntity, countryEntity);
   }
 }
