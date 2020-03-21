@@ -3,11 +3,19 @@
 .actionList {
   width: 50%;
   border: 2px solid $border-color;
-}
+  background-color: $value-color;
 
-.actionList a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+
+    label {
+      font-size: 20px;
+      padding: 5px;
+      cursor: pointer;
+    }
+  }
 }

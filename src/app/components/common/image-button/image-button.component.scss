@@ -1,0 +1,15 @@
+:host {
+  flex: 1 1 auto;
+  padding: 10px;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+h3 {
+  text-align: center;
+}

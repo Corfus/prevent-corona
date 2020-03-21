@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {interval, Observable, Subscription} from 'rxjs';
+import {interval, Observable, Subject, Subscription} from 'rxjs';
 
 @Injectable()
 export class GameLogicService {

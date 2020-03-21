@@ -11,6 +11,8 @@ body {
   right: 0;
   top: 0;
   bottom: 0;
+  background-color: $background-color;
+  color: white;
 }
 
 a:link {
@@ -72,4 +74,12 @@ input[type="submit"], button {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+}
+
+.valueBackground {
+  background-color: $value-color;
+}
+
+.actionBackground {
+  background-color: $actions-color;
 }
