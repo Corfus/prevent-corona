@@ -1,4 +1,4 @@
 <ng-container *ngIf="extractData(gameState) as data">
   <app-population-bar [infected]="data.infected" [deaths]="data.deaths" [healed]="4" [population]="45"></app-population-bar>
-  <p>{{data.tick}}</p>
+  <p>{{data.tick | date}}</p>
 </ng-container>
