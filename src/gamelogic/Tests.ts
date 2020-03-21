@@ -55,5 +55,46 @@ function testRunner() {
   console.log(gameState);
 }
 
+function testCoronaParty() {
+  const Policies: Map<GamePolicyEntity, GamePolicy> = new Map();
+  const propaganda: GameActionEntity = 'Propaganda';
+  const Actions: Map<GameActionEntity, GameAction> = new Map([[propaganda, new PropagandaAction()]]);
+  const Events: Map<GameEventEntity, GameEvent> = new Map([[CoronaPartyEntity, new CoronaPartyEvent()]]);
+  const chinaEntity: CountryEntity = 'China';
+  const china = new CountryState();
+  china.numberOfInfected.relativeRateOfChange = 1.1;
+  china.numberOfInfected.value = 110;
+  const Countries: Map<CountryEntity, CountryState> = new Map([[chinaEntity, china]]);
+  const gameState = new GameState(Countries, Policies, Actions, Events);
+  const gameRunner = new GameRunner(gameState);
+  // const infectionSystem = new InfectionSystem(.3);
+  // gameRunner.AddSystem(infectionSystem);
+  const eventSystem = new EventSystem();
+  gameRunner.AddSystem(eventSystem);
+  console.log(gameState.getCountry(chinaEntity));
+  for (let i = 0; i < 10; i++) {
+    gameRunner.Tick();
+  }
+  console.log(gameState.getCountry(chinaEntity));
+  console.log(gameState.getEventMessageHistory());
+}
+
+function testPolicy() {
+  const closedBorders: GamePolicyEntity = 'closedBorders';
+  const Policies: Map<GamePolicyEntity, GamePolicy> = new Map([[closedBorders, new ClosedBorderPolicy()]]);
+  const propaganda: GameActionEntity = 'Propaganda';
+  const Actions: Map<GameActionEntity, GameAction> = new Map([[propaganda, new PropagandaAction()]]);
+  const Events: Map<GameEventEntity, GameEvent> = new Map();
+  const germany: CountryEntity = 'Germany';
+  const Countries: Map<CountryEntity, CountryState> = new Map([[germany, new CountryState()]]);
+  const gameState = new GameState(Countries, Policies, Actions, Events);
+  console.log(gameState.getCountry(germany));
+  console.log('created gameState');
+  console.log(gameState.enactPolicy(germany, closedBorders));
+  console.log(gameState.getCountry(germany));
+}
+
 testAction();
 testRunner();
+testCoronaParty();
+testPolicy();
