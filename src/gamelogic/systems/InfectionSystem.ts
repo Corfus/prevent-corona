@@ -1,6 +1,6 @@
-import {System} from './System';
-import {GameState} from './GameState';
-import {CountryEntity} from './CountryState';
+import {System} from '../System';
+import {GameState} from '../GameState';
+import {CountryEntity} from '../CountryState';
 
 export class InfectionSystem extends System {
 
