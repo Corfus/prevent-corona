@@ -1,9 +1,28 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {interval, Observable, Subject, Subscription} from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class GameLogicService {
+  readonly gameState$: Observable<any>;
 
-  constructor() { }
+  private timer$: Observable<number>;
+  private timerSubscription: Subscription;
+
+  constructor() {
+  }
+
+  startGame(): void {
+    this.finishGame();
+    this.timer$ = interval(1000);
+  }
+
+  finishGame(): void {
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
+  }
+
+  dispatchAction(): void {
+
+  }
 }
