@@ -1,0 +1,9 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
