@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 const server = http.createServer(app);
 
 
-app.use(express.static('../dist'));
+app.use(express.static('../client'));
 
 app.get('*', (_, res) => {
   res.sendFile(path.join(__filename, '../client','/index.html'));
