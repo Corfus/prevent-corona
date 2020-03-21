@@ -5,7 +5,15 @@ import {GamePolicy} from '../GamePolicy';
 
 export class ClosedBorderPolicy extends GamePolicy {
     isEnactable(state: GameState, countryEntity: CountryEntity): boolean {
-      return !this.isEnacted;
+        const country = state.getCountry(countryEntity);
+        if (country.acceptance.value > 10)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
   
     isRevokable(state: GameState, countryEntity: CountryEntity): boolean {
