@@ -5,6 +5,8 @@ import {GameState} from '../../gamelogic/GameState';
 import {GameRunner} from '../../gamelogic/GameRunner';
 import {GameCreator} from '../../gamelogic/GameCreator';
 import {GameActionEntity} from '../../gamelogic/GameAction';
+import { EventSystem } from 'src/gamelogic/systems/EventSystem';
+import { EvolutionSystem } from 'src/gamelogic/systems/EvolutionSystem';
 
 @Injectable()
 export class GameLogicService {
@@ -21,6 +23,8 @@ export class GameLogicService {
     this.gameStateSubject.next(this.gameState);
     this.gameState$ = this.gameStateSubject.asObservable();
     this.gameRunner = new GameRunner(this.gameState);
+    this.gameRunner.AddSystem(new EventSystem());
+    this.gameRunner.AddSystem(new EvolutionSystem(0.03));
   }
 
   startGame(action$: Observable<GameActionEntity>): void {
