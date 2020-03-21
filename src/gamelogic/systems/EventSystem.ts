@@ -1,5 +1,5 @@
-import {System} from './System';
-import {GameState} from './GameState';
+import {System} from '../System';
+import {GameState} from '../GameState';
 
 export class EventSystem extends System {
 
