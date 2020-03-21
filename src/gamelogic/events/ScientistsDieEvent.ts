@@ -29,6 +29,6 @@ export class ScientistsDieEvent extends LocalEvent {
     country.happiness.value += this.HappinessChangeAbsolute;
     country.medicine.absoluteRateOfChange *= this.MedicineChangeMultiplier;
     country.vaccines.absoluteRateOfChange *= this.VaccinesChangeMultiplier;
-    state.addEventMessage(new EventMessage(ScientistsDieEntity, countryEntity));
+    state.addEventMessage(ScientistsDieEntity, countryEntity);
   }
 }

@@ -24,7 +24,7 @@ export class IllegalBorderCrossingEvent extends LocalEvent {
   occurLocally(state: GameState, countryEntity: CountryEntity): void {
     const country = state.getCountry(countryEntity);
     country.numberOfInfected.value += this.NumberOfInfectedChangeAbsolute;
-    state.addEventMessage(new EventMessage(IllegalBorderCrossingEntity, countryEntity));
+    state.addEventMessage(IllegalBorderCrossingEntity, countryEntity);
   }
 
 }

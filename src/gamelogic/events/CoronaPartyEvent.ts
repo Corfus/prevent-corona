@@ -24,6 +24,6 @@ export class CoronaPartyEvent extends LocalEvent {
   occurLocally(state: GameState, countryEntity: CountryEntity): void {
     const country = state.getCountry(countryEntity);
     country.numberOfInfected.value += this.NumberOfInfectedChangeAbsolute;
-    state.addEventMessage(new EventMessage(CoronaPartyEntity, countryEntity));
+    state.addEventMessage(CoronaPartyEntity, countryEntity);
   }
 }

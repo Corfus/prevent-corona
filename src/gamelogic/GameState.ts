@@ -148,7 +148,8 @@ export class GameState {
     return true;
   }
 
-  public addEventMessage(message: EventMessage) {
+  public addEventMessage(event: GameEventEntity, location: CountryEntity,) {
+    const message = new EventMessage(event, location, this.tickCount);
     this.eventMessageHistory.push(message);
   }
 }

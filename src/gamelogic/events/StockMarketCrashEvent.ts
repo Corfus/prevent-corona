@@ -24,6 +24,6 @@ export class StockMarketCrashEvent extends LocalEvent {
   occurLocally(state: GameState, countryEntity: CountryEntity): void {
     const country = state.getCountry(countryEntity);
     country.money.value += this.MoneyChangeAbsolute;
-    state.addEventMessage(new EventMessage(StockMarketCrashEntity, countryEntity));
+    state.addEventMessage(StockMarketCrashEntity, countryEntity);
   }
 }

@@ -1,9 +1,9 @@
 import {GamePolicy, GamePolicyEntity} from './GamePolicy';
 import {ClosedBorderPolicy} from './Policies/ClosedBorderPolicy';
 import {GameAction, GameActionEntity} from './GameAction';
-import {PropagandaAction} from './Actions/PropagandaAction';
+import {PropagandaAction} from './actions/PropagandaAction';
 import {GameEvent, GameEventEntity} from './GameEvent';
-import {CoronaPartyEntity, CoronaPartyEvent} from './Events/CoronaPartyEvent';
+import {CoronaPartyEntity, CoronaPartyEvent} from './events/CoronaPartyEvent';
 import {CountryEntity, CountryState} from './CountryState';
 import {GameState} from './GameState';
 import {System} from './System';
