@@ -52,7 +52,7 @@ export class EvolutionSystem extends System {
       //Begrenztes logistisches Wachstum: https://de.wikipedia.org/wiki/Logistische_Funktion
       var k = countryData.numberOfInfected.relativeRateOfChange;
       var infectedRateOfChange = k * countryData.numberOfInfected.value * (countryData.totalPopulation.value - countryData.numberOfInfected.value);
-      countryData.numberOfInfected.value += infectedRateOfChange * countryData.totalPopulation.value;
+      countryData.numberOfInfected.value += Math.ceil(infectedRateOfChange * countryData.totalPopulation.value);
 
       //geheilte
       var newRecovered = countryData.recoverProbability.value * countryData.numberOfInfected.value;
