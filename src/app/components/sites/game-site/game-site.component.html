@@ -1,14 +1,13 @@
 <div class="fullSpace flexRow">
   <div class="valueBackground">
-<!--    <div>TickCount: {{gameState.tickCount}}</div>-->
-<!--    <div>GameState: {{gameStateJSON}}</div>-->
+    <app-value-table [gameState]="gameState$ | async"></app-value-table>
   </div>
   <div class="flexColumn">
     <div>
       <app-country country="germany"></app-country>
     </div>
     <div class="actionBackground">
-      <app-action-space></app-action-space>
+      <app-action-space (actionSelected)="onActionSelected($event)" [actions]="possibleActions$ | async"></app-action-space>
     </div>
   </div>
 </div>

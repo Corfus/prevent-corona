@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {GameActionEntity} from '../../../../gamelogic/GameAction';
 
 export enum EActionCategory {
   Unselected = -1,
@@ -13,6 +14,8 @@ export enum EActionCategory {
   styleUrls: ['./action-space.component.scss']
 })
 export class ActionSpaceComponent implements OnInit {
+  @Input() actions: Array<string> = [];
+  @Output() actionSelected: EventEmitter<GameActionEntity> = new EventEmitter<GameActionEntity>();
 
   selectedCategory: EActionCategory = EActionCategory.Unselected;
 
@@ -30,6 +33,10 @@ export class ActionSpaceComponent implements OnInit {
   }
 
   getActionList(): Array<any> {
-    return [];
+    return this.actions;
+  }
+
+  onActionSelected(gameAction: GameActionEntity): void {
+    this.actionSelected.emit(gameAction);
   }
 }
