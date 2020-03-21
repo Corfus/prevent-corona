@@ -8,7 +8,7 @@ import {CountryEntity, CountryState} from './CountryState';
 import {GameState} from './GameState';
 import {System} from './System';
 import {InfectionSystem} from './systems/InfectionSystem';
-import {EventSystem} from './EventSystem';
+import {EventSystem} from './systems/EventSystem';
 
 export class GameCreator {
   constructor() {
