@@ -2,15 +2,15 @@ import {GameState} from '../GameState';
 import {CountryEntity} from '../CountryState';
 import {GamePolicy} from '../GamePolicy';
 
-//Balancing
-export const HappinessChangeRate : number = 10;
-export const MoneyChangeRate  : number = 0.01;
-export const InfectedChangeRate : number = 0.03;
 
-export class ClosedBorderPolicy extends GamePolicy {
-    isEnactable(state: GameState, countryEntity: CountryEntity): boolean {
+export class PayForMedicineDevPolicy extends GamePolicy {
+  private MedicineChangeRate : number = 0.05;
+  private MoneyChangeRate  : number = -0.01;
+  private DeathChangeRate : number = -0.03;
+    isEnactable(state: GameState, countryEntity: CountryEntity): boolean 
+    {
         const country = state.getCountry(countryEntity);
-        if (country.acceptance.value > 10)
+        if (country.medicine.value != 100)
         {
             return true;
         }
@@ -26,23 +26,27 @@ export class ClosedBorderPolicy extends GamePolicy {
   
     onEnact(state: GameState, countryEntity: CountryEntity): boolean {
       const country = state.getCountry(countryEntity);
-      country.happiness.absoluteRateOfChange -= HappinessChangeRate;
-      country.money.absoluteRateOfChange -= MoneyChangeRate;
-      country.numberOfInfected.relativeRateOfChange -= InfectedChangeRate;
+      country.money.relativeRateOfChange += this.MoneyChangeRate;
+      country.medicine.absoluteRateOfChange = this.MedicineChangeRate;
       this.isEnacted = true;
       return true;
     }
   
     onRevoke(state: GameState, countryEntity: CountryEntity): boolean {
       const country = state.getCountry(countryEntity);
-      country.happiness.absoluteRateOfChange += HappinessChangeRate;
-      country.money.absoluteRateOfChange += MoneyChangeRate;
-      country.numberOfInfected.relativeRateOfChange += InfectedChangeRate;
+      country.money.relativeRateOfChange -= this.MoneyChangeRate;
+      country.medicine.absoluteRateOfChange = 0;
       this.isEnacted = false;
       return true;
     }
   
     applyEffects(state: GameState, countryEntity: CountryEntity): boolean {
+        const country = state.getCountry(countryEntity);
+        if(country.medicine.value == 100)
+        {
+            this.onRevoke(state,countryEntity);
+            country.deathProbability.value += this.DeathChangeRate;
+        }
       return true;
     }
   

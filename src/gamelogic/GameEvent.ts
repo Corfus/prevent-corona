@@ -37,6 +37,13 @@ export abstract class GameEvent {
 }
 
 export abstract class LocalEvent extends GameEvent {
+  private occuredIn: any;
+
+  constructor() {
+    super();
+    this.occuredIn = [];
+  }
+
   getOccurrenceProbability(_: GameState): number {
     return 0;
   }
@@ -52,8 +59,9 @@ export abstract class LocalEvent extends GameEvent {
   occur(state: GameState): void {
     state.getAllCountryEntities().forEach((entity) => {
       const probability = this.getLocalOccurenceProbability(state, entity);
-      if (Math.random() < probability) {
+      if ((Math.random() < probability) && (this.occuredIn.indexOf(entity) != -1)) {
         this.occurLocally(state, entity);
+        this.occuredIn.push(entity);
       }
     });
   }
