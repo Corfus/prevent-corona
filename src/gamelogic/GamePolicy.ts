@@ -51,8 +51,43 @@ export abstract class GamePolicy {
   /**
    * wende den Effekt der Policy auf ein Land an und mutiere!! den Gamestate
    * applyEffects wird jeden! Tick aufgerufen, solange die Policy aktiv ist
+   * TODO: Ist das nötig oder doppelt sich der Effekt mit onEnact/onRevoke
    * @param state Zustand des Spiels
    * @param country Land
    */
   public abstract applyEffects(state: GameState, country: CountryEntity): void;
+}
+
+
+export class ClosedBorderPolicy extends GamePolicy {
+  isEnactable(state: GameState, country: CountryEntity): boolean {
+    return !this.isEnacted;
+  }
+
+  isRevokable(state: GameState, country: CountryEntity): boolean {
+    return this.isEnacted;
+  }
+
+  onEnact(state: GameState, country: CountryEntity): boolean {
+    const country = state.getCountry(countryEntity);
+    country.happiness.rateOfchange -= 1;
+    country.money.rateOfchange -= 1;
+    country.numberOfInfected.rateOfchange -= 1;
+    this.isEnacted = true;
+    return true;
+  }
+
+  onRevoke(state: GameState, country: CountryEntity): boolean {
+    const country = state.getCountry(countryEntity);
+    country.happiness.rateOfchange += 1;
+    country.money.rateOfchange += 1;
+    country.numberOfInfected.rateOfchange += 1;
+    this.isEnacted = false;
+    return true;
+  }
+
+  applyEffects(state: GameState, country: CountryEntity): boolean {
+    return true;
+  }
+
 }
