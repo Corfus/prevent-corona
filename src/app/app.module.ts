@@ -18,6 +18,7 @@ import {StatusValueComponent} from './components/common/status-value/status-valu
 import {ValueTableComponent} from './components/common/value-table/value-table.component';
 import { PolicyListComponent } from './components/common/policy-list/policy-list.component';
 import { TimeComponent } from './components/common/time/time.component';
+import { PopulationBarComponent } from './components/common/population-bar/population-bar.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TimeComponent } from './components/common/time/time.component';
     StatusValueComponent,
     ValueTableComponent,
     PolicyListComponent,
-    TimeComponent
+    TimeComponent,
+    PopulationBarComponent
   ],
   imports: [
     BrowserModule,
