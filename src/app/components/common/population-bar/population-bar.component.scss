@@ -1,0 +1,44 @@
+$border-radius: 5px;
+
+:host {
+  display: block;
+}
+
+.bar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.bar .start {
+  border-top-left-radius: $border-radius;
+  border-bottom-left-radius: $border-radius;
+}
+
+.bar .end {
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+}
+
+.infected {
+  background-color: #521210;
+}
+
+.death {
+  background-color: #dc8957;
+}
+
+.healed {
+  background-color: #c84e43;
+}
+
+.health {
+  background-color: white;
+}
+
+.capacityList div {
+  border-radius: 5px;
+  //background-color: white;
+}

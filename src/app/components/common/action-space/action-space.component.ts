@@ -8,6 +8,12 @@ export enum EActionCategory {
   Research
 }
 
+const categoryToName = {
+  [EActionCategory.Propaganda]: 'Mitteilungen',
+  [EActionCategory.Decisions]: 'Entscheidungen',
+  [EActionCategory.Research]: 'Forschung',
+};
+
 @Component({
   selector: 'app-action-space',
   templateUrl: './action-space.component.html',
@@ -38,5 +44,9 @@ export class ActionSpaceComponent implements OnInit {
 
   onActionSelected(gameAction: GameActionEntity): void {
     this.actionSelected.emit(gameAction);
+  }
+
+  getCategoryName(category: EActionCategory): string {
+    return categoryToName[category];
   }
 }
