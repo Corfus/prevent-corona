@@ -22,7 +22,7 @@ export class ClosedSchoolPolicy extends GamePolicy {
   
     onEnact(state: GameState, countryEntity: CountryEntity): boolean {
       const country = state.getCountry(countryEntity);
-      country.money.relativeRateOfChange -= 0.005;
+      country.money.absoluteRateOfChange -= 0.005;
       country.numberOfInfected.relativeRateOfChange -= 0.03;
       this.isEnacted = true;
       return true;
@@ -30,7 +30,7 @@ export class ClosedSchoolPolicy extends GamePolicy {
   
     onRevoke(state: GameState, countryEntity: CountryEntity): boolean {
       const country = state.getCountry(countryEntity);
-      country.money.relativeRateOfChange += 0.005;
+      country.money.absoluteRateOfChange += 0.005;
       country.numberOfInfected.relativeRateOfChange += 0.03;
       this.isEnacted = false;
       return true;

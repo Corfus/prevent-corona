@@ -42,7 +42,7 @@ export class PayForMedicineDevPolicy extends GamePolicy {
         if(country.medicine.value == 100)
         {
             this.onRevoke(state,countryEntity);
-            country.deathProbability.relativeRateOfChange -= 0.5;
+            country.deathProbability.value -= 0.3;
         }
       return true;
     }

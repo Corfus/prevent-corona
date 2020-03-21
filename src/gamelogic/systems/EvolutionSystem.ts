@@ -7,6 +7,7 @@ export class EvolutionSystem extends System {
   private happinessInfectedFactor: number;
   private acceptanceDeathsFactor: number;
   private acceptanceInfectedFactor: number;
+  private deathHospitalFullFactor: number;
 
   private rng: any; // TODO typing
 
@@ -23,6 +24,7 @@ export class EvolutionSystem extends System {
     this.happinessInfectedFactor = 0.01;
     this.acceptanceDeathsFactor = 0.01;
     this.acceptanceInfectedFactor = 0.001;
+    this.deathHospitalFullFactor = 0.02;
   }
 
 
@@ -46,7 +48,24 @@ export class EvolutionSystem extends System {
       absoluteRateOfChange += countryData.deaths * this.acceptanceDeathsFactor;
       countryData.acceptance.value += absoluteRateOfChange;
 
-      
+      //infizierte wird in das infectionSystem ausgelagert
+
+      //Impfstoff
+      countryData.vaccines.value += countryData.vaccines.absoluteRateOfChange;
+
+      //Tote
+      var newDeaths = 0;
+
+      //Krankenhauskapazität
+      if(countryData.numberOfInfected.value > countryData.hospitalCapacity)
+      {
+        newDeaths += (countryData.numberOfInfected.value - countryData.hospitalCapacity) * this.deathHospitalFullFactor;
+      }
+
+      newDeaths +=  countryData.deathProbability.value * countryData.numberOfInfected.value;
+      countryData.deaths += newDeaths;
+      countryData.numberOfInfected.value -= newDeaths;
+
     });
   }
 

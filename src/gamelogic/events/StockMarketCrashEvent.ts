@@ -18,5 +18,4 @@ export class StockMarketCrashEvent extends LocalEvent {
     country.money.value -= 10000; // TODO magic number
     state.addEventMessage(new EventMessage(StockMarketCrashEntity, countryEntity));
   }
-
 }
