@@ -29,6 +29,7 @@ export class CountryState {
   public deaths: number;
   public vaccines: RateAttribute; // limit 100%?
   public medicine: RateAttribute;
+  public hospitalCapacity: number;
 
   constructor() {
     this.happiness = new RateAttribute();
@@ -39,6 +40,7 @@ export class CountryState {
     this.economicOutput = new RateAttribute();
     this.deathProbability = new RateAttribute();
     this.deaths = 0;
+    this.hospitalCapacity = 0;
     this.vaccines = new RateAttribute();
     this.medicine = new RateAttribute();
   }
