@@ -6,7 +6,7 @@
 </div>
 <div class="flexSpaceBetween">
   <app-status-value name="Infizierte" [value]="infected" icon="infections"></app-status-value>
-  <app-status-value name="Zufriedenheit" [value]="deaths" icon="death"></app-status-value>
+  <app-status-value name="Tote" [value]="deaths" icon="death"></app-status-value>
   <app-status-value name="Geheilt" [value]="healed" icon="healed"></app-status-value>
   <app-status-value name="Gesunde" [value]="population - infected - deaths -healed" icon="person"></app-status-value>
 </div>
@@ -17,6 +17,5 @@
   <div>
     <app-status-value name="Zufriedenheit" [value]="infected" icon="happiness"></app-status-value>
   </div>
-
   <div></div>
 </div>
