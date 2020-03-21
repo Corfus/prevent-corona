@@ -4,6 +4,7 @@ import {interval, Observable, Subject, Subscription} from 'rxjs';
 import {GameState} from '../../gamelogic/GameState';
 import {GameRunner} from '../../gamelogic/GameRunner';
 import {GameCreator} from '../../gamelogic/GameCreator';
+import {GameActionEntity} from '../../gamelogic/GameAction';
 
 @Injectable()
 export class GameLogicService {
@@ -17,8 +18,8 @@ export class GameLogicService {
 
   constructor(/*action$: Observable<GameActionEntity>*/) {
     this.gameState = GameCreator.createGameState();
-    this.gameState$ = this.gameStateSubject.asObservable();
     this.gameStateSubject.next(this.gameState);
+    this.gameState$ = this.gameStateSubject.asObservable();
     this.gameRunner = new GameRunner(this.gameState);
     /*action$.subscribe((actionEntity) => {
       this.gameRunner.runAction(actionEntity);
@@ -26,7 +27,7 @@ export class GameLogicService {
     this.startGame();
   }
 
-  startGame(): void {
+  startGame(action$: Observable<GameActionEntity>): void {
     this.timer$ = interval(1000);
     this.timerSubscription = this.timer$.subscribe(() => {
       this.gameRunner.Tick();
