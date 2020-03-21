@@ -27,7 +27,7 @@ export class GameRunner {
   }
 
   public runAction(actionEntity: GameActionEntity): boolean {
-    return this.state.runAction(actionEntity, this.state.playerCountry);
+    return this.state.runAction(this.state.playerCountry, actionEntity);
   }
 
 
