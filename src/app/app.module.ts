@@ -6,13 +6,15 @@ import {AppComponent} from './app.component';
 import {DynamicComponent} from './components/common/dynamic/dynamic.component';
 import { MainSiteComponent } from './components/sites/main-site/main-site.component';
 import { GameSiteComponent } from './components/sites/game-site/game-site.component';
+import { StatusValueComponent } from './status-value/status-value.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DynamicComponent,
     MainSiteComponent,
-    GameSiteComponent
+    GameSiteComponent,
+    StatusValueComponent
   ],
   imports: [
     BrowserModule,
