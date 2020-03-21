@@ -1,4 +1,4 @@
-import {GamePolicy, GamePolicyEntity} from './GamePolicy';
+import {GamePolicy, GamePolicyEntity, ClosedBorderPolicy} from './GamePolicy';
 import {GameAction, GameActionEntity, PropagandaAction} from './GameAction';
 import {GameEvent, GameEventEntity} from './GameEvent';
 import {CountryEntity, CountryState} from './CountryState';
@@ -36,12 +36,12 @@ function testRunner() {
   const germanyEntity: CountryEntity = 'Germany';
   const germany = new CountryState();
   germany.numberOfInfected.relativeRateOfChange = 1.2;
-  germany.numberOfInfected.value = 0; // ein Infizierter
+  germany.numberOfInfected.value = 0;
 
   const chinaEntity: CountryEntity = 'China';
   const china = new CountryState();
   china.numberOfInfected.relativeRateOfChange = 1.1;
-  china.numberOfInfected.value = 0; // ein Infizierter
+  china.numberOfInfected.value = 0;
   const Countries: Map<CountryEntity, CountryState> = new Map([[germanyEntity, germany], [chinaEntity, china]]);
   const gameState = new GameState(Countries, Policies, Actions, Events);
   const gameRunner = new GameRunner(gameState);
@@ -55,5 +55,21 @@ function testRunner() {
   console.log(gameState);
 }
 
+function testPolicy() {
+  const closedBorders: GamePolicyEntity = 'closedBorders';
+  const Policies: Map<GamePolicyEntity, GamePolicy> = new Map([[closedBorders, new ClosedBorderPolicy()]]);
+  const propaganda: GameActionEntity = 'Propaganda';
+  const Actions: Map<GameActionEntity, GameAction> = new Map([[propaganda, new PropagandaAction()]]);
+  const Events: Map<GameEventEntity, GameEvent> = new Map();
+  const germany: CountryEntity = 'Germany';
+  const Countries: Map<CountryEntity, CountryState> = new Map([[germany, new CountryState()]]);
+  const gameState = new GameState(Countries, Policies, Actions, Events);
+  console.log(gameState.getCountry(germany));
+  console.log('created gameState');
+  console.log(gameState.enactPolicy(germany, closedBorders));
+  console.log(gameState.getCountry(germany));
+}
+
 testAction();
 testRunner();
+testPolicy();
