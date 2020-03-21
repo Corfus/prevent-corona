@@ -37,7 +37,7 @@ import { TimeComponent } from './components/common/time/time.component';
     StatusValueComponent,
     ValueTableComponent,
     PolicyListComponent,
-    TimeComponent
+    TimeComponent,
     ValueTableComponent,
     DatePipe
   ],
