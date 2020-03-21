@@ -4,6 +4,11 @@ import {GamePolicy} from '../GamePolicy';
 
 
 export class CurfewPolicy extends GamePolicy {
+
+  private HappinessChangeRate : number = -10;
+  private MoneyChangeRate  : number = -0.01;
+  private InfectedChangeRate : number = -0.03;
+
     isEnactable(state: GameState, countryEntity: CountryEntity): boolean 
     {
       const country = state.getCountry(countryEntity);
@@ -23,18 +28,18 @@ export class CurfewPolicy extends GamePolicy {
   
     onEnact(state: GameState, countryEntity: CountryEntity): boolean {
       const country = state.getCountry(countryEntity);
-      country.happiness.absoluteRateOfChange -= 1;
-      country.money.relativeRateOfChange -= 0.01;
-      country.numberOfInfected.relativeRateOfChange -= 0.03;
+      country.happiness.absoluteRateOfChange += this.HappinessChangeRate;
+      country.money.relativeRateOfChange += this.MoneyChangeRate;
+      country.numberOfInfected.relativeRateOfChange += this.InfectedChangeRate;
       this.isEnacted = true;
       return true;
     }
   
     onRevoke(state: GameState, countryEntity: CountryEntity): boolean {
       const country = state.getCountry(countryEntity);
-      country.happiness.absoluteRateOfChange += 1;
-      country.money.relativeRateOfChange += 0.01;
-      country.numberOfInfected.relativeRateOfChange += 0.03;
+      country.happiness.absoluteRateOfChange -= this.HappinessChangeRate;
+      country.money.relativeRateOfChange -= this.MoneyChangeRate;
+      country.numberOfInfected.relativeRateOfChange -= this.InfectedChangeRate;
       this.isEnacted = false;
       return true;
     }
