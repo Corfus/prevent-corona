@@ -42,7 +42,7 @@ export class CountryState {
     this.deathProbability = new RateAttribute();
     this.recoverProbability = new RateAttribute();
     this.deaths = 0;
-    this.hospitalCapacity = 0;
+    this.hospitalCapacity = 10000; // If you change this value - Take care about the BuildEmergencyHospitalPolicy & ExpandHospitalBedsPolicy
     this.vaccines = new RateAttribute();
     this.medicine = new RateAttribute();
   }

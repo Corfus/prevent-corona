@@ -5,6 +5,8 @@ import {ClosedSchoolPolicy } from './policies/ClosedSchoolPolicy';
 import {CurfewPolicy } from './policies/CurfewPolicy';
 import {PayForMedicineDevPolicy } from './policies/PayForMedicineDevPolicy';
 import {PayForVaccineDevPolicy } from './policies/PayForVaccineDevPolicy';
+import { BuildEmergencyHospitalPolicy } from './policies/BuildEmergencyHospitalPolicy';
+import { ExpandHospitalBedsPolicy } from './policies/ExpandHospitalBedsPolicy';
 
 import {GameAction, GameActionEntity} from './GameAction';
 import { FakeNewsMessageAction, FakeNewsMessageEntity} from './actions/FakeNewsMessageAction';
@@ -41,6 +43,11 @@ import { RevokeClosedSchoolAction } from './actions/RevokeClosedSchoolAction';
 import { RevokeCurfewAction } from './actions/RevokeCurfewAction';
 import { RevokePayForMedicineDevAction } from './actions/RevokePayForMedicineDevAction';
 import { RevokePayForVaccineDevAction } from './actions/RevokePayForVaccineDevAction ';
+import { RevokeEmergencyHospitalActionAction } from './actions/RevokeEmergencyHospitalAction';
+import { RevokeExpandHospitalAction } from './actions/RevokeExpandHospitalAction';
+import { EnactEmergencyHospitalAction } from './actions/EnactEmergencyHospitalAction';
+import { EnactExpandHospitalAction } from './actions/EnactExpandHospitalAction';
+
 
 
 export class GameCreator {
@@ -57,6 +64,8 @@ export class GameCreator {
     const curfew: GamePolicyEntity = 'Curfew';
     const payForMedicineDev: GamePolicyEntity = 'PayForMedicineDev';
     const payForVaccineDev: GamePolicyEntity = 'PayForVaccineDev';
+    const emergencyHospital: GamePolicyEntity = 'EmergencyHospital';
+    const expandHospital: GamePolicyEntity = 'ExpandHospital';
 
     const Policies: Map<GamePolicyEntity, GamePolicy> = new Map();
     Policies.set(closedBorder, new ClosedBorderPolicy());
@@ -65,7 +74,8 @@ export class GameCreator {
     Policies.set(curfew, new CurfewPolicy());
     Policies.set(payForMedicineDev, new PayForMedicineDevPolicy());
     Policies.set(payForVaccineDev,new PayForVaccineDevPolicy());
-
+    Policies.set(emergencyHospital,new BuildEmergencyHospitalPolicy());
+    Policies.set(expandHospital,new ExpandHospitalBedsPolicy());
 
     //Actions
     const enactClosedBorder : GameActionEntity = 'EnactClosedBorder';
@@ -74,12 +84,16 @@ export class GameCreator {
     const enactCurfewAction : GameActionEntity = 'EnactCurfew';
     const enactPayForMedicineDev : GameActionEntity = 'EnactPayForMedicineDev';
     const enactPayForVaccineDev : GameActionEntity = 'EnactPayForVaccineDev';
+    const enactEmergencyHospital : GameActionEntity = 'EnactEmergencyHospital';
+    const enactExpandHospital : GameActionEntity = 'EnactExpandHospital';
     const revokeClosedBorder : GameActionEntity = 		'RevokeClosedBorder';
     const revokeClosedCompanies : GameActionEntity = 	'RevokeClosedCompanies';
     const revokeClosedSchools : GameActionEntity = 		'RevokeClosedSchools';
     const revokeCurfewAction : GameActionEntity = 		'RevokeCurfew';
     const revokePayForMedicineDev : GameActionEntity = 	'RevokePayForMedicineDev';
     const revokePayForVaccineDev : GameActionEntity = 	'RevokePayForVaccineDev';
+    const revokeEmergencyHospital : GameActionEntity = 	'RevokeEmergencyHospital';
+    const revokeExpandHospital : GameActionEntity = 	'RevokeExpandHospital';
 
     const Actions: Map<GameActionEntity, GameAction> = new Map();
     Actions.set(FakeNewsMessageEntity, new FakeNewsMessageAction());
@@ -95,12 +109,16 @@ export class GameCreator {
     Actions.set(enactCurfewAction, new EnactCurfewAction());
     Actions.set(enactPayForMedicineDev, new EnactPayForMedicineDevAction());
     Actions.set(enactPayForVaccineDev, new EnactPayForVaccineDevAction());
+    Actions.set(enactEmergencyHospital, new EnactEmergencyHospitalAction());
+    Actions.set(enactExpandHospital, new EnactExpandHospitalAction());
     Actions.set(revokeClosedBorder, new 		RevokeClosedBorderAction());
     Actions.set(revokeClosedCompanies, new 		RevokeClosedCompaniesAction());
     Actions.set(revokeClosedSchools, new 		RevokeClosedSchoolAction());
     Actions.set(revokeCurfewAction, new 		RevokeCurfewAction());
     Actions.set(revokePayForMedicineDev, new 	RevokePayForMedicineDevAction());
     Actions.set(revokePayForVaccineDev, new 	RevokePayForVaccineDevAction());
+    Actions.set(revokeEmergencyHospital, new 	RevokeEmergencyHospitalActionAction());
+    Actions.set(revokeExpandHospital, new 	RevokeExpandHospitalAction());
 
 
     const Events: Map<GameEventEntity, GameEvent> = new Map();
