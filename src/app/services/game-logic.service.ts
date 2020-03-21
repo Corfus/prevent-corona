@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {interval, Observable, Subscription, of, Subject} from 'rxjs';
+import {interval, Observable, Subscription, Subject} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {GameState} from '../../gamelogic/GameState';

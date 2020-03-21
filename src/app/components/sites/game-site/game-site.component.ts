@@ -33,4 +33,8 @@ export class GameSiteComponent implements OnInit {
       this.gameLogic.getGameState()
           .subscribe(gameStateJSON => this.gameStateJSON = JSON.stringify(gameStateJSON));
     }
+
+    onActionSelected(gameAction: GameActionEntity): void {
+      this.actionSubject.next(gameAction);
+    }
 }

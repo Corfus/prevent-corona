@@ -14,6 +14,7 @@ import {ActionBarComponent} from './components/common/action-bar/action-bar.comp
 import {ActionSpaceComponent} from './components/common/action-space/action-space.component';
 import {ImageButtonComponent} from './components/common/image-button/image-button.component';
 import {ActionCatalogComponent} from './components/common/action-catalog/action-catalog.component';
+import { ValueTableComponent } from './components/common/value-table/value-table.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {ActionCatalogComponent} from './components/common/action-catalog/action-
     ActionBarComponent,
     ActionSpaceComponent,
     ImageButtonComponent,
-    ActionCatalogComponent
+    ActionCatalogComponent,
+    ValueTableComponent
   ],
   imports: [
     BrowserModule,
