@@ -137,6 +137,9 @@ export class GameCreator {
     //PlayerCountry
     const playerCountry = new CountryState();
     playerCountry.numberOfInfected.relativeRateOfChange = 1.2;
+    playerCountry.totalPopulation.value = 83000000;
+    playerCountry.hospitalCapacity = 100000;
+    playerCountry.happiness.value = 100;
     playerCountry.numberOfInfected.value = 1;
 
 
