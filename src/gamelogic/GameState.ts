@@ -7,6 +7,7 @@ export type tick = number;
 
 export class GameState {
   public tickCount: number;
+  public ticksPerDay: number;
   public gameOver: boolean;
   public scores: Map<CountryEntity, number>;
   private countries: Map<CountryEntity, CountryState>;
@@ -30,6 +31,7 @@ export class GameState {
     this.countries = countries;
 
     this.tickCount = 0;
+    this.ticksPerDay = 24;
     this.gameOver = false;
     this.playerCountry = playerCountry;
     this.eventMessageHistory = [];
@@ -44,6 +46,10 @@ export class GameState {
 
   public getAllCountryEntities(): CountryEntity[] {
     return Array.from(this.countries.keys());
+  }
+
+  public getAllPolicies() : Map<GamePolicyEntity, GamePolicy> {
+    return this.allPolicies;
   }
 
   public getAllEvents(): Map<GameEventEntity, GameEvent> {

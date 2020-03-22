@@ -23,7 +23,7 @@ import {ScientistsDieEntity, ScientistsDieEvent} from './events/ScientistsDieEve
 import {StockMarketCrashEntity, StockMarketCrashEvent} from './events/StockMarketCrashEvent';
 import {StockMarketCrashHardEntity, StockMarketCrashHardEvent} from './events/StockMarketCrashHardEvent';
 import {StockMarketRecoveryEntity, StockMarketRecoveryEvent} from './events/StockMarketRecoveryEvent';
-import {WirVsCoronaHackthonEntity, WirVsCoronaHackthonEvent} from './events/WirVsCoronaHackthonEvent';
+import {WirVsVirusHackthonEntity, WirVsVirusHackthonEvent} from './events/WirVsVirusHackthonEvent';
 import {ChinaSackOfRiseEntity, ChinaSackOfRiseHarmlessEvent} from './events/ChinaSackOfRiseHarmlessEvent';
 
 import {CountryEntity, CountryState} from './CountryState';
@@ -49,6 +49,7 @@ export class GameCreator {
   public static createGameState(): GameState {
     const playerEntity: CountryEntity = 'Germany';
 
+
     // Policies
     const policies: PolicyList = {
       ClosedBorder: new ClosedBorderPolicy(),
@@ -57,7 +58,7 @@ export class GameCreator {
       Curfew: new CurfewPolicy(),
       PayForMedicineDev: new PayForMedicineDevPolicy(),
       PayForVaccineDev: new PayForVaccineDevPolicy(),
-      EmergencyHospital: new BuildEmergencyHospitalPolicy(),
+      EmergencyHospital: new BuildEmergencyHospitalPolicy('ExpandHospital'),
       ExpandHospital: new ExpandHospitalBedsPolicy()
     };
 
@@ -83,7 +84,7 @@ export class GameCreator {
     // Events
     const events: EventList = {
       //  game relevant
-      [WirVsCoronaHackthonEntity]: new WirVsCoronaHackthonEvent(),
+      [WirVsVirusHackthonEntity]: new WirVsVirusHackthonEvent(),
       [CoronaPartyEntity]: new CoronaPartyEvent(),
       [IllegalBorderCrossingEntity]: new IllegalBorderCrossingEvent(),
       [ScientistsDieEntity]: new ScientistsDieEvent(),
@@ -98,19 +99,23 @@ export class GameCreator {
     // PlayerCountry
     const playerCountry = new CountryState();
     playerCountry.numberOfInfected.relativeRateOfChange = 1.2;
-    playerCountry.totalPopulation.value = 83000000;
-    playerCountry.hospitalCapacity = 100000;
-    playerCountry.happiness.value = 100;
-    playerCountry.numberOfInfected.value = 1;
-    playerCountry.numberOfInfected.relativeRateOfChange = 0.000000001;
-    playerCountry.money.value = 5000000000;
-    playerCountry.deathProbability.value = 0.0005;
-    playerCountry.recoverProbability.value = 0.005;
+    playerCountry.totalPopulation.value = 83000000;                     // 0 - ...        Start: 83.000.000 https://de.statista.com/themen/20/einwohnerzahl/
+    playerCountry.hospitalCapacityStartValue = 100000;
+    playerCountry.hospitalCapacity = playerCountry.hospitalCapacityStartValue;
+    playerCountry.happiness.value = 100;                                // 0 - 100        Start: 100
+    playerCountry.happiness.absoluteRateOfChange = -0.2;                // 
+    playerCountry.numberOfInfected.value = 100;                           // 0 - 83.000.000 Start: 1
+    playerCountry.numberOfInfected.relativeRateOfChange = 0.00000002;  // bitte behutsam ändern
+    playerCountry.money.value = 5000000000;                             // 0 - 5.000.000.000
+    playerCountry.deathProbability.value = 0.03;                      // 0 - TODO
+    playerCountry.recoverProbability.value = 0.005;                     // 0 - TODO
+    playerCountry.acceptance.value = 0;                                 // 0 - 100        Start: 0
+    playerCountry.acceptance.absoluteRateOfChange = 0.5;                // 
 
     const chinaEntity: CountryEntity = 'China';
     const china = new CountryState();
-    china.numberOfInfected.relativeRateOfChange = 1.1;
-    china.numberOfInfected.value = 0;
+    china.numberOfInfected.relativeRateOfChange = 0.00000002
+    china.numberOfInfected.value = 1;
     const Countries: Map<CountryEntity, CountryState> = new Map([[playerEntity, playerCountry], [chinaEntity, china]]);
 
     return new GameState(Countries, Policies, Actions, Events, playerEntity);

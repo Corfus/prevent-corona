@@ -7,6 +7,8 @@ import {Component, Input} from '@angular/core';
 })
 export class StatusValueComponent {
   @Input() value: number;
+  @Input() postfix: string;
   @Input() name: string;
   @Input() icon: string;
+  @Input() inverted = false;
 }

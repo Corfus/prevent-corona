@@ -1,11 +1,11 @@
-<div class="flexColumn">
+<div class="flexColumn" [class.inverted]="inverted">
     <div class="propertyIcon">
-        <img [src]="icon | imagePath">
+        <img [src]="icon | imagePath: inverted ? 'green' : ''">
     </div>
     <div class="propertyName">
         <label>{{name}}</label>
     </div>
     <div class="propertyValue">
-        <label>{{value}}</label>
+        <label>{{value | readable}}{{postfix}}</label>
     </div>
 </div>

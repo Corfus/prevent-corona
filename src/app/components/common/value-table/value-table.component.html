@@ -1,12 +1,10 @@
 <ng-container *ngIf="extractData(gameState) as data">
-  <app-population-bar [infected]="data.infected" [deaths]="data.deaths" [healed]="data.healed" [population]="data.population"></app-population-bar>
-  <div class="flexSpaceBetween capacityList">
-    <div>
-      <app-status-value name="Staatskapital" [value]="4" icon="State_Capital"></app-status-value>
-    </div>
-    <div>
-      <app-status-value name="Zufriedenheit" [value]="12" icon="happiness"></app-status-value>
-    </div>
-    <div></div>
+  <app-population-bar [infected]="data.infected" [deaths]="data.deaths" [healed]="data.healed"
+                      [population]="data.population"></app-population-bar>
+  <app-responsibilites [acceptance]="data.acceptance" [stateCapital]="data.state_capital" [happiness]="data.happiness"></app-responsibilites>
+  <app-research-state [medicine]="data.medicine" [vaccines]="data.vaccines"></app-research-state>
+  <div class="flexRow twitter">
+    <app-image [name]="'twitter'"></app-image>
+    <app-twitter-box userName="Deutschland" [eventId]="data.eventId"></app-twitter-box>
   </div>
 </ng-container>

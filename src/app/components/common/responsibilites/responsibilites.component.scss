@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+.capacityList {
+  display: flex;
+  justify-content: stretch;
+}
+
+.capacityList div {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+
+}
+
+app-status-value {
+  flex: 1 1 auto;
+  border-radius: 5px;
+  background-color: white;
+  margin: 4px;
+}
+
+app-status-value:first-of-type {
+  margin-left: 0;
+}
+
+app-status-value:last-of-type {
+  margin-right: 0;
+}

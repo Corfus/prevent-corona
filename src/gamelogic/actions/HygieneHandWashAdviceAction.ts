@@ -8,8 +8,8 @@ export const HygieneHandWashAdviceEntity: GameEventEntity = 'HygieneHandWashAdvi
 export class HygieneHandWashAdviceAction extends GameAction {
 
   // Balancing
-  private MoneyChangeAbsolute: number = -10000;
-  private NumberOfInfectedChangeRelative: number = -.01;
+  private MoneyChangeAbsolute: number = -1000000000;
+  private NumberOfInfectedChangeRelative: number = -0.000000016;
 
     isActionable(state: GameState, country: CountryEntity): boolean {
       return true;

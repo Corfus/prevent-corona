@@ -10,6 +10,10 @@ label {
   color: $text-color;
 }
 
+.inverted label {
+  color: $value-color;
+}
+
 .propertyValue label {
   margin-left: 10px;
   margin-right: 10px;

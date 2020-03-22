@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 import {MainSiteComponent} from './components/sites/main-site/main-site.component';
 import {GameSiteComponent} from './components/sites/game-site/game-site.component';
+import {EndSiteComponent} from './components/sites/end-site/end-site.component';
 import {DevViewComponent} from './dev-view/dev-view.component';
 
 const routes: Routes = [{
@@ -11,6 +12,9 @@ const routes: Routes = [{
 }, {
   path: 'game',
   component: GameSiteComponent,
+},{
+  path: 'end',
+  component: EndSiteComponent,
 }, {
   path: 'dev',
   component: DevViewComponent,

@@ -1,9 +1,11 @@
-app-population-bar {
+app-population-bar, app-responsibilites, app-research-state, app-twitter-box {
   margin: 1%;
   width: 98%;
 }
 
-.capacityList div {
-  border-radius: 5px;
-  //background-color: white;
+.flexRow.twitter {
+  margin: 1%;
+  width: 99%;
+  justify-content: space-around;
+  align-items: flex-end;
 }
