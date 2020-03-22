@@ -5,6 +5,6 @@
   <app-research-state [medicine]="data.medicine" [vaccines]="data.vaccines"></app-research-state>
   <div class="flexRow twitter">
     <app-image [name]="'twitter'"></app-image>
-    <app-twitter-box userName="Deutschland" [eventId]="eventId$ | async"></app-twitter-box>
+    <app-twitter-box userName="Deutschland" [eventId]="data.eventId"></app-twitter-box>
   </div>
 </ng-container>

@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component, Input} from '@angular/core';
 import {GameState} from '../../../../gamelogic/GameState';
+import {map} from 'rxjs/operators';
 
 interface IGameValueCollection {
   tick: number;
@@ -12,7 +13,8 @@ interface IGameValueCollection {
   acceptance: string;
   happiness: string;
   vaccines: number;
-  medicine: number
+  medicine: number;
+  eventId: string;
 }
 
 @Component({
@@ -28,6 +30,9 @@ export class ValueTableComponent {
       return;
     }
     const countryState = gs.getCountry(gs.playerCountry);
+
+    const messages = gs.getEventMessageHistory();
+    const eventId = (messages[messages.length - 1] || {}).eventEntity;
     return {
       tick: gs.tickCount,
       deaths: Math.round(countryState.deaths),
@@ -39,7 +44,8 @@ export class ValueTableComponent {
       state_capital: `${countryState.money.value} €`,
       acceptance: `${(countryState.acceptance.value).toFixed(1)} %`,
       vaccines: Number(countryState.vaccines.value.toFixed(1)),
-      medicine: Number(countryState.medicine.value.toFixed(1))
+      medicine: Number(countryState.medicine.value.toFixed(1)),
+      eventId
     };
   }
 }
