@@ -3,9 +3,9 @@ import {CountryEntity} from '../framework/CountryState';
 import {GamePolicy} from '../framework/GamePolicy';
 
 export class ClosedBorderPolicy extends GamePolicy {
-  private HappinessChangeRate = -10;
-  private MoneyChangeRate = -0.01;
-  private InfectedChangeRate = -0.03;
+  private HappinessChangeRate: number = -1;
+  private MoneyChangeRate: number = 50000;
+  private InfectedChangeRate: number = 25E-11;
 
 
   isEnactable(state: GameState, countryEntity: CountryEntity): boolean {

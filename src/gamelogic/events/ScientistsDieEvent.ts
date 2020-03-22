@@ -7,12 +7,12 @@ export const ScientistsDieEntity: GameEventEntity = 'ScientistsDie';
 export class ScientistsDieEvent extends LocalEvent {
 
   // Balancing
-  private OccursAboveMedicineChange = .5;
-  private ProbabilityAbove = .1;
-  private ProbabilityUnder = .03;
-  private HappinessChangeAbsolute = -1;
-  private MedicineChangeMultiplier = .7;
-  private VaccinesChangeMultiplier = .7;
+  private OccursAboveMedicineChange: number = .5;
+  private ProbabilityAbove: number = .1;
+  private ProbabilityUnder: number = .03;
+  private HappinessChangeAbsolute: number = -5;
+  private MedicineChangeMultiplier: number = .7;
+  private VaccinesChangeMultiplier: number = .7;
 
   getLocalOccurrenceProbability(state: GameState, countryEntity: string): number {
     const country = state.getCountry(countryEntity);

@@ -4,9 +4,9 @@ import {GamePolicy} from '../framework/GamePolicy';
 
 
 export class ClosedCompaniesPolicy extends GamePolicy {
-  private HappinessChangeRate = -10;
-  private MoneyChangeRate = -0.01;
-  private InfectedChangeRate = -0.03;
+  private HappinessChangeRate: number = -10;
+  private MoneyChangeRate: number = -0.01;
+  private InfectedChangeRate: number = -10E-11;
 
   isEnactable(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);

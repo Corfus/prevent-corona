@@ -7,10 +7,10 @@ export const IllegalBorderCrossingEntity: GameEventEntity = 'IllegalBorderCrossi
 export class IllegalBorderCrossingEvent extends LocalEvent {
 
   // Balancing
-  private OccursAboveInfectedNumber = 100;
-  private ProbabilityAbove = .1;
-  private ProbabilityUnder = .03;
-  private NumberOfInfectedChangeAbsolute = 100;
+  private OccursAboveInfectedNumber: number = 100;
+  private ProbabilityAbove: number = .1;
+  private ProbabilityUnder: number = .03;
+  private NumberOfInfectedChangeAbsolute: number = 0.05;
 
   getLocalOccurrenceProbability(state: GameState, countryEntity: string): number {
     const country = state.getCountry(countryEntity);
@@ -21,7 +21,7 @@ export class IllegalBorderCrossingEvent extends LocalEvent {
 
   occurLocally(state: GameState, countryEntity: CountryEntity): void {
     const country = state.getCountry(countryEntity);
-    country.numberOfInfected.value += this.NumberOfInfectedChangeAbsolute;
+    country.numberOfInfected.value += country.numberOfInfected.value*this.NumberOfInfectedChangeAbsolute+1000;
     state.addEventMessage(IllegalBorderCrossingEntity, countryEntity);
   }
 

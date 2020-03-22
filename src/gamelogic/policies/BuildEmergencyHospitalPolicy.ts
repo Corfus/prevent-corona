@@ -5,9 +5,9 @@ import {GamePolicy} from '../framework/GamePolicy';
 
 export class BuildEmergencyHospitalPolicy extends GamePolicy {
 
-  private HospitalCapacityChange = 10000;
-  private BuildCosts = -1000000;
-  private MoneyChangeRate = -0.02;
+  private HospitalCapacityChange : number = 10000;
+  private BuildCosts: number = -100000000;
+  private MoneyChangeRate  : number = -10000;
 
   private readonly expandHospitalBedsPolicyEntity: string;
 

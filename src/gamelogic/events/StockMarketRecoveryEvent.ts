@@ -7,10 +7,10 @@ export const StockMarketRecoveryEntity: GameEventEntity = 'StockMarketRecovery';
 export class StockMarketRecoveryEvent extends LocalEvent {
 
   // Balancing
-  private OccursUnderInfectedNumber = 100;
-  private ProbabilityUnder = .05;
-  private ProbabilityAbove = 0;
-  private MoneyChangeAbsolute = 50000;
+  private OccursUnderInfectedNumber: number = 100;
+  private ProbabilityUnder: number = .05;
+  private ProbabilityAbove: number = 0;
+  private MoneyChangeAbsolute: number = 10000000;
 
   getLocalOccurrenceProbability(state: GameState, countryEntity: string): number {
     const country = state.getCountry(countryEntity);
