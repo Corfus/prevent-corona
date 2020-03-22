@@ -24,7 +24,7 @@ import { ScientistsDieEvent, ScientistsDieEntity } from './events/ScientistsDieE
 import { StockMarketCrashEvent, StockMarketCrashEntity } from './events/StockMarketCrashEvent';
 import { StockMarketCrashHardEvent, StockMarketCrashHardEntity } from './events/StockMarketCrashHardEvent';
 import { StockMarketRecoveryEvent,StockMarketRecoveryEntity } from './events/StockMarketRecoveryEvent';
-import { WirVsCoronaHackthonEvent, WirVsCoronaHackthonEntity } from './events/WirVsCoronaHackthonEvent';
+import { WirVsVirusHackthonEvent, WirVsVirusHackthonEntity } from './events/WirVsVirusHackthonEvent';
 import { ChinaSackOfRiseHarmlessEvent, ChinaSackOfRiseEntity } from './events/ChinaSackOfRiseHarmlessEvent';
 
 import {CountryEntity, CountryState} from './CountryState';
@@ -123,7 +123,7 @@ export class GameCreator {
 
     const Events: Map<GameEventEntity, GameEvent> = new Map();
     // Gameplay relevant
-    Events.set(WirVsCoronaHackthonEntity, new WirVsCoronaHackthonEvent());
+    Events.set(WirVsVirusHackthonEntity, new WirVsVirusHackthonEvent());
     Events.set(CoronaPartyEntity, new CoronaPartyEvent());
     Events.set(IllegalBorderCrossingEntity, new IllegalBorderCrossingEvent());
     Events.set(ScientistsDieEntity, new ScientistsDieEvent());

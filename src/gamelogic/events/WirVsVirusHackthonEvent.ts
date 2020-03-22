@@ -1,12 +1,11 @@
 import {GameState} from '../GameState';
 import {CountryEntity} from '../CountryState';
 import {LocalEvent} from '../GameEvent';
-import {EventMessage} from '../GameEvent';
 import {GameEventEntity} from '../GameEvent';
 
-export const WirVsCoronaHackthonEntity: GameEventEntity = 'WirVsCoronaHackthon';
+export const WirVsVirusHackthonEntity: GameEventEntity = 'WirVsVirusHackthon';
 
-export class WirVsCoronaHackthonEvent extends LocalEvent {
+export class WirVsVirusHackthonEvent extends LocalEvent {
 
   // Balancing
   private OccursAboveInfectedNumber: number = 10000;
@@ -24,6 +23,6 @@ export class WirVsCoronaHackthonEvent extends LocalEvent {
   occurLocally(state: GameState, countryEntity: CountryEntity): void {
     const country = state.getCountry(countryEntity);
     country.happiness.value += this.HappinessChangeAbsolute;
-    state.addEventMessage(WirVsCoronaHackthonEntity, countryEntity);
+    state.addEventMessage(WirVsVirusHackthonEntity, countryEntity);
   }
 }
