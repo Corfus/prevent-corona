@@ -4,7 +4,7 @@ import {GamePolicy} from '../GamePolicy';
 
 
 export class PayForMedicineDevPolicy extends GamePolicy {
-  private MedicineChangeRate: number = 0.05;
+  private MedicineChangeRate: number = 0.85;
   private MoneyChangeRate: number = -0.01;
   private DeathChangeRate: number = -0.03;
 

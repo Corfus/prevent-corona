@@ -4,9 +4,9 @@ import {GamePolicy} from '../GamePolicy';
 
 
 export class PayForVaccineDevPolicy extends GamePolicy {
-  private VaccineChangeRate: number = 0.05;
+  private VaccineChangeRate: number = 0.7;
   private MoneyChangeRate: number = -100000;
-  private InfectedChangeRate: number = -100E-11;
+  private InfectedChangeRate: number = -180E-11;
 
   isEnactable(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
