@@ -1,16 +1,16 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {GameActionEntity} from '../../../../gamelogic/GameAction';
 
 @Component({
   selector: 'app-action-catalog',
   templateUrl: './action-catalog.component.html',
   styleUrls: ['./action-catalog.component.scss']
 })
-export class ActionCatalogComponent implements OnInit {
+export class ActionCatalogComponent {
   @Input() actionList: Array<any> = [];
+  @Output() actionSelected: EventEmitter<GameActionEntity> = new EventEmitter<GameActionEntity>();
 
-  constructor() { }
-
-  ngOnInit(): void {
+  onPointerDown(action: GameActionEntity): void {
+    this.actionSelected.emit(action);
   }
-
 }

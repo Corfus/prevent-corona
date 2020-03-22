@@ -3,3 +3,24 @@
   flex-direction: column;
   margin: 1%;
 }
+
+h2 {
+  margin: 0;
+}
+
+.headline {
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+  img {
+    height: 30px;
+  }
+}
+
+app-action-bar, app-action-catalog {
+  height: 80%;
+}
+
+.spaceLeft {
+  margin-left: 10px;
+}
