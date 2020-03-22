@@ -15,4 +15,11 @@ export class CountryComponent {
     }
     return [];
   }
+
+  getNeeds(): any {
+    // if (this.gameState) {
+    //   this.gameState.playerCountry(this.gameState.playerCountry).
+    //
+    // }
+  }
 }

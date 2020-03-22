@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {GameLogicService} from '../../../services/game-logic.service';
 import {GameState} from '../../../../gamelogic/GameState';
 import {Observable, Subject} from 'rxjs';
@@ -11,7 +11,7 @@ import {filter, map} from 'rxjs/operators';
   styleUrls: ['./game-site.component.scss'],
   providers: [GameLogicService]
 })
-export class GameSiteComponent implements OnInit {
+export class GameSiteComponent implements OnDestroy, OnInit {
   actionSubject: Subject<GameActionEntity> = new Subject<GameActionEntity>();
   gameState$: Observable<GameState>;
   possibleActions$: Observable<Array<string>>;
@@ -24,6 +24,10 @@ export class GameSiteComponent implements OnInit {
     this.gameLogic.startGame(this.actionSubject.asObservable());
     this.gameState$ = this.gameLogic.gameState$;
     this.possibleActions$ = this.gameState$.pipe(map(gs => gs.getActionableActions(gs.playerCountry)));
+  }
+
+  ngOnDestroy(): void {
+    this.gameLogic.finishGame();
   }
 
   onActionSelected(gameAction: GameActionEntity): void {
