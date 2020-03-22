@@ -1,0 +1,44 @@
+@import "../../../../scss/config";
+
+.flexColumn div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+label {
+  color: $text-color;
+}
+
+.propertyValue label {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: block;
+  width: auto;
+}
+
+.propertyName label {
+  margin-left: 10px;
+  margin-right: 10px;
+  display: block;
+  width: auto;
+}
+
+.propertyIcon img {
+  height: auto;
+  width: $font-size;
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+.propertyValue {
+  display: inline-block;
+}
+
+.propertyName {
+  display: inline-block;
+}
+
+.propertyIcon {
+  display: inline-block;
+}

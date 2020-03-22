@@ -1,7 +1,8 @@
-import {GameState} from './GameState';
+import {GameState, tick} from './GameState';
 import {CountryEntity} from './CountryState';
 
 export type GameEventEntity = string;
+
 
 /**
  * ein Ereignis welches eintreten kann
@@ -11,10 +12,12 @@ export type GameEventEntity = string;
 export class EventMessage {
   eventEntity: GameEventEntity;
   locationEntity: CountryEntity;
+  tickNumber: tick;
 
-  constructor(event: GameEventEntity, location: CountryEntity) {
+  constructor(event: GameEventEntity, location: CountryEntity, tickNumber: tick) {
     this.eventEntity = event;
     this.locationEntity = location;
+    this.tickNumber = tickNumber;
   }
 }
 
@@ -34,6 +37,13 @@ export abstract class GameEvent {
 }
 
 export abstract class LocalEvent extends GameEvent {
+  private occuredIn: any;
+
+  constructor() {
+    super();
+    this.occuredIn = [];
+  }
+
   getOccurrenceProbability(_: GameState): number {
     return 0;
   }
@@ -49,26 +59,12 @@ export abstract class LocalEvent extends GameEvent {
   occur(state: GameState): void {
     state.getAllCountryEntities().forEach((entity) => {
       const probability = this.getLocalOccurenceProbability(state, entity);
-      if (Math.random() < probability) {
+      if ((Math.random() < probability) && (this.occuredIn.indexOf(entity) != -1)) {
         this.occurLocally(state, entity);
+        this.occuredIn.push(entity);
       }
     });
   }
 }
 
-export const CoronaPartyEntity: GameEventEntity = 'Coronaparty';
 
-export class CoronaPartyEvent extends LocalEvent {
-  getLocalOccurenceProbability(state: GameState, countryEntity: string): number {
-    const country = state.getCountry(countryEntity);
-    const numOfInfected: number = country.numberOfInfected.value;
-    return (numOfInfected > 100) ? .6 : .0; // TODO magic number probability too high
-  }
-
-  occurLocally(state: GameState, countryEntity: CountryEntity): void {
-    const country = state.getCountry(countryEntity);
-    country.numberOfInfected.value += 100; // TODO magic number
-    state.addEventMessage(new EventMessage(CoronaPartyEntity, countryEntity));
-  }
-
-}

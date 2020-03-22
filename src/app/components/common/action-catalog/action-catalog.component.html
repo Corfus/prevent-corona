@@ -1,1 +1,1 @@
-<p>action-catalog works!</p>
+<p *ngFor="let action of actionList" (pointerdown)="onPointerDown(action)">{{action}}</p>

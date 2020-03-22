@@ -1,0 +1,13 @@
+@import "../../../../scss/config";
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: $value-color;
+}
+
+label {
+  white-space: nowrap;
+}

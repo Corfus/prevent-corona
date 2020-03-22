@@ -1,1 +1,3 @@
-<img [src]="country | imagePath">
+<app-time [ticks]="gameState?.tickCount"></app-time>
+<img [src]="gameState?.playerCountry | imagePath" [alt]="gameState?.playerCountry">
+<app-policy-list [policies]="getEnactedPolicies()"></app-policy-list>
