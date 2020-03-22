@@ -1,7 +1,7 @@
 <div class="fullSpace flexRow">
   <div class="valueBackground">
-  <app-twitter-box id="twitterBox" userName="Deutschland" eventId="tweet2"></app-twitter-box>
     <app-value-table [gameState]="gameState$ | async"></app-value-table>
+    <app-twitter-box id="twitterBox" userName="Deutschland" [eventId]="eventId$ | async"></app-twitter-box>
   </div>
   <div class="flexColumn">
     <div>

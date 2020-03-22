@@ -3,7 +3,7 @@ import {GameLogicService} from '../../../services/game-logic.service';
 import {GameState} from '../../../../gamelogic/GameState';
 import {Observable, Subject} from 'rxjs';
 import {GameActionEntity} from '../../../../gamelogic/GameAction';
-import {map} from 'rxjs/operators';
+import {filter, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-game-site',
@@ -16,6 +16,7 @@ export class GameSiteComponent implements OnInit {
   gameState$: Observable<GameState>;
   enactedPolices$: Observable<Array<string>>;
   possibleActions$: Observable<Array<string>>;
+  eventId$: Observable<string>;
 
   constructor(private gameLogic: GameLogicService) {
   }
@@ -24,6 +25,12 @@ export class GameSiteComponent implements OnInit {
     this.gameLogic.startGame(this.actionSubject.asObservable());
     this.gameState$ = this.gameLogic.gameState$;
     this.possibleActions$ = this.gameState$.pipe(map(gs => gs.getActionableActions(gs.playerCountry)));
+    this.eventId$ = this.gameState$.pipe(
+      map(gs => {
+        const messages = gs.getEventMessageHistory();
+        return (messages[messages.length - 1] || {}).eventEntity;
+      })
+    );
   }
 
   onActionSelected(gameAction: GameActionEntity): void {
