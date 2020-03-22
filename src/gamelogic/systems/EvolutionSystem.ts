@@ -1,14 +1,18 @@
 import {System} from '../System';
 import {GameState} from '../GameState';
 import {CountryEntity, CountryState} from '../CountryState';
+import { tick } from '@angular/core/testing';
 
 export class EvolutionSystem extends System {
   private happinessDeathsFactor: number;
   private happinessInfectedFactor: number;
+  private happinessCuredFactor: number;
   private acceptanceDeathsFactor: number;
   private acceptanceInfectedFactor: number;
   private deathHospitalFullAddend: number;
   private daysToRecoverOrDie: number;
+
+  private 
   private infectedAt: any;
 
   private rng: any; // TODO typing
@@ -22,12 +26,14 @@ export class EvolutionSystem extends System {
     this.rng = rng;
 
     //balancing Parameter
-    this.happinessDeathsFactor = -0.1;
-    this.happinessInfectedFactor = -0.01;
-    this.acceptanceDeathsFactor = 0.01;
-    this.acceptanceInfectedFactor = 0.001;
+
+    this.happinessDeathsFactor = -0.0001;
+    this.happinessInfectedFactor = -0.00001;
+    this.happinessCuredFactor = 0.00003;
+    this.acceptanceDeathsFactor = 0.00003;
+    this.acceptanceInfectedFactor = 0.00001;
     this.deathHospitalFullAddend = 0.02;
-    this.daysToRecoverOrDie = 7;
+    this.daysToRecoverOrDie = 3;
     this.infectedAt = [];
   }
 
@@ -42,16 +48,6 @@ export class EvolutionSystem extends System {
       //Staatskapital
       countryData.money.value += countryData.money.absoluteRateOfChange;
 
-      //Zufriedenheit
-      countryData.happiness.absoluteRateOfChange += this.happinessDeathsFactor * countryData.deaths; //TODO
-      countryData.happiness.absoluteRateOfChange += this.happinessInfectedFactor * countryData.numberOfInfected.value;
-      countryData.happiness.value += countryData.happiness.absoluteRateOfChange;
-
-      //Akzeptanz
-      var acceptanceRateOfChange = countryData.numberOfInfected.value * this.acceptanceInfectedFactor;
-      acceptanceRateOfChange += countryData.deaths * this.acceptanceDeathsFactor;
-      countryData.acceptance.value += acceptanceRateOfChange;
-
       //infizierte 
       //Begrenztes logistisches Wachstum: https://de.wikipedia.org/wiki/Logistische_Funktion
       var k = countryData.numberOfInfected.relativeRateOfChange / state.ticksPerDay;
@@ -62,27 +58,47 @@ export class EvolutionSystem extends System {
       if(this.infectedAt[countryEntity] == undefined)
       {
         this.infectedAt[countryEntity] = [1];
-      }
-      this.infectedAt[countryEntity].push(countryData.numberOfInfected.value - lastInfected);
+      }      
+      var infectedThisTick = countryData.numberOfInfected.value - lastInfected
+      this.infectedAt[countryEntity].push(infectedThisTick);
       //countryData.numberOfInfected.relativeRateOfChange *= 1;
       
 
       //recovered + deaths
       var lastIndex = (state.tickCount - this.daysToRecoverOrDie * state.ticksPerDay);
+      var diedThisTick = 0;
+      var curedThisTick = 0;
       if(lastIndex >= 0)
       {
         var infectedToHandle = this.infectedAt[countryEntity][state.tickCount - this.daysToRecoverOrDie * state.ticksPerDay];
         var hospitalOverfull = countryData.numberOfInfected.value > countryData.hospitalCapacity;
         var medicineResearched = countryData.medicine.value >= 100;
         var deathProbability = (medicineResearched?0:countryData.deathProbability.value) + (hospitalOverfull?this.deathHospitalFullAddend:0);
+        diedThisTick =  infectedToHandle * deathProbability;
+        curedThisTick = infectedToHandle * (1 - deathProbability);
 
-        countryData.deaths += infectedToHandle * deathProbability;
-        countryData.numberOfRecovered.value += infectedToHandle * (1 - deathProbability);
+        countryData.deaths += diedThisTick;
+        countryData.numberOfRecovered.value += curedThisTick;
         countryData.currentlyInfected = countryData.numberOfInfected.value - countryData.deaths - countryData.numberOfRecovered.value;
       }
       else{
         countryData.currentlyInfected = countryData.numberOfInfected.value;
       }
+
+
+      //Zufriedenheit
+      //var happinessRateOfChange = this.happinessDeathsFactor * diedThisTick;
+      //happinessRateOfChange += this.happinessInfectedFactor * infectedThisTick;
+      //happinessRateOfChange += this.happinessCuredFactor * curedThisTick;
+      //happinessRateOfChange += countryData.happiness.absoluteRateOfChange;
+      //countryData.happiness.value += happinessRateOfChange;
+      countryData.happiness.value += countryData.happiness.absoluteRateOfChange;
+
+      //Akzeptanz
+      //var acceptanceRateOfChange = infectedThisTick * this.acceptanceInfectedFactor;
+      //acceptanceRateOfChange += diedThisTick * this.acceptanceDeathsFactor;
+      //countryData.acceptance.value += acceptanceRateOfChange;
+      countryData.acceptance.value += countryData.acceptance.absoluteRateOfChange;
 
 
       //Impfstoff
