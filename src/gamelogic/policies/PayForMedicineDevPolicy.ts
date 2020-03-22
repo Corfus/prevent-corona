@@ -10,7 +10,7 @@ export class PayForMedicineDevPolicy extends GamePolicy {
 
   isEnactable(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
-    return country.medicine.value < 100;
+    return country.medicine.value < 100 && country.acceptance.value > 10;;
   }
 
   isRevokable(state: GameState, countryEntity: CountryEntity): boolean {
