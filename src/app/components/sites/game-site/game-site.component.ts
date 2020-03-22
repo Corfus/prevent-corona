@@ -15,7 +15,6 @@ export class GameSiteComponent implements OnDestroy, OnInit {
   actionSubject: Subject<GameActionEntity> = new Subject<GameActionEntity>();
   gameState$: Observable<GameState>;
   possibleActions$: Observable<Array<string>>;
-  eventId$: Observable<string>;
 
   constructor(private gameLogic: GameLogicService) {
   }
