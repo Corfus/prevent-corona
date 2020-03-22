@@ -3,7 +3,7 @@ import {GameActionEntity, generateEnactPolicyName, generateRevokePolicyName} fro
 
 
 const ACTION_ID_TO_TEXT: {[key: string]: string} = {
-  FakeNewsMessage: 'Fake-News verbreiten',
+  FakeNewsMessage: 'Warnung vor Fake-News!',
   HygieneHandWashAdvice: 'Hände waschen',
   MouthguardAdvide: 'Mundschutz tragen',
   KeepDistanceAdvice: 'Abstand halten ankündigen',
