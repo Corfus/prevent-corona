@@ -69,7 +69,7 @@ export class EvolutionSystem extends System {
       //Krankenhauskapazität
       if(countryData.numberOfInfected.value > countryData.hospitalCapacity)
       {
-        newDeaths += (countryData.numberOfInfected.value - countryData.hospitalCapacity) * this.deathHospitalFullFactor;
+        newDeaths += (countryData.numberOfInfected.value - countryData.hospitalCapacity) * this.deathHospitalFullAddend;
       }
       
 

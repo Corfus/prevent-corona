@@ -45,6 +45,8 @@ export class CountryState {
     this.recoverProbability = new RateAttribute();
     this.vaccines = new RateAttribute();
     this.medicine = new RateAttribute();
+    this.deaths = 0;
+    this.currentlyInfected = 0;
   }
 }
 
