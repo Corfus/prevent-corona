@@ -10,7 +10,7 @@ export class PayForMedicineDevPolicy extends GamePolicy {
 
   isEnactable(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
-    return country.medicine.value !== 100;
+    return country.medicine.value < 100;
   }
 
   isRevokable(state: GameState, countryEntity: CountryEntity): boolean {
@@ -35,8 +35,8 @@ export class PayForMedicineDevPolicy extends GamePolicy {
 
   applyEffects(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
-    if (country.medicine.value == 100) {
-      this.onRevoke(state, countryEntity);
+    if (country.medicine.value >= 100) {
+      state.revokePolicy(countryEntity,'PayForMedicineDev');
       country.deathProbability.value += this.DeathChangeRate;
     }
     return true;

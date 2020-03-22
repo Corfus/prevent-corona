@@ -46,6 +46,10 @@ export class GameState {
     return Array.from(this.countries.keys());
   }
 
+  public getAllPolicies() : Map<GamePolicyEntity, GamePolicy> {
+    return this.allPolicies;
+  }
+
   public getAllEvents(): Map<GameEventEntity, GameEvent> {
     return this.allEvents;
   }
