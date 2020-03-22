@@ -27,7 +27,7 @@ export class EvolutionSystem extends System {
     this.acceptanceDeathsFactor = 0.01;
     this.acceptanceInfectedFactor = 0.001;
     this.deathHospitalFullAddend = 0.02;
-    this.daysToRecoverOrDie = 1;
+    this.daysToRecoverOrDie = 7;
     this.infectedAt = [];
   }
 
@@ -85,6 +85,9 @@ export class EvolutionSystem extends System {
         countryData.deaths += infectedToHandle * deathProbability;
         countryData.numberOfRecovered.value += infectedToHandle * (1 - deathProbability);
         countryData.currentlyInfected = countryData.numberOfInfected.value - countryData.deaths - countryData.numberOfRecovered.value;
+      }
+      else{
+        countryData.currentlyInfected = countryData.numberOfInfected.value;
       }
 
       var newRecovered = countryData.recoverProbability.value * countryData.numberOfInfected.value;
