@@ -59,7 +59,7 @@ export abstract class LocalEvent extends GameEvent {
   occur(state: GameState): void {
     state.getAllCountryEntities().forEach((entity) => {
       const probability = this.getLocalOccurenceProbability(state, entity);
-      if ((Math.random() < probability) && (this.occuredIn.indexOf(entity) != -1)) {
+      if ((Math.random() < probability) && (this.occuredIn.indexOf(entity) == -1)) {
         this.occurLocally(state, entity);
         this.occuredIn.push(entity);
       }
