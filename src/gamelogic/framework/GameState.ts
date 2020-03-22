@@ -13,7 +13,7 @@ export class GameState {
   private countries: Map<CountryEntity, CountryState>;
   public playerCountry: CountryEntity;
 
-  private eventMessageHistory: EventMessage[];
+  private readonly eventMessageHistory: EventMessage[];
 
   private readonly allPolicies: Map<GamePolicyEntity, GamePolicy>;
   private readonly allActions: Map<GameActionEntity, GameAction>;
