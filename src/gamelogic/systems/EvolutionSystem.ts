@@ -1,13 +1,15 @@
 import {System} from '../System';
 import {GameState} from '../GameState';
-import {CountryEntity} from '../CountryState';
+import {CountryEntity, CountryState} from '../CountryState';
 
 export class EvolutionSystem extends System {
   private happinessDeathsFactor: number;
   private happinessInfectedFactor: number;
   private acceptanceDeathsFactor: number;
   private acceptanceInfectedFactor: number;
-  private deathHospitalFullFactor: number;
+  private deathHospitalFullAddend: number;
+  private daysToRecoverOrDie: number;
+  private infectedAt: any;
 
   private rng: any; // TODO typing
 
@@ -24,7 +26,9 @@ export class EvolutionSystem extends System {
     this.happinessInfectedFactor = -0.01;
     this.acceptanceDeathsFactor = 0.01;
     this.acceptanceInfectedFactor = 0.001;
-    this.deathHospitalFullFactor = 0.02;
+    this.deathHospitalFullAddend = 0.02;
+    this.daysToRecoverOrDie = 1;
+    this.infectedAt = [];
   }
 
 
@@ -50,14 +54,39 @@ export class EvolutionSystem extends System {
 
       //infizierte 
       //Begrenztes logistisches Wachstum: https://de.wikipedia.org/wiki/Logistische_Funktion
-      var k = countryData.numberOfInfected.relativeRateOfChange;
-      var infected = countryData.numberOfInfected.value;
+      var k = countryData.numberOfInfected.relativeRateOfChange / state.ticksPerDay;
+      var lastInfected = countryData.numberOfInfected.value;
       var total = countryData.totalPopulation.value;
       //countryData.numberOfInfected.value = (total) / (1+Math.exp(-k*total*state.tickCount)*(total/100-1));
-      countryData.numberOfInfected.value = (total * infected) / (infected + (total - infected) * Math.exp(-k*total) );
+      countryData.numberOfInfected.value = (total * lastInfected) / (lastInfected + (total - lastInfected) * Math.exp(-k*total) );
+      if(this.infectedAt[countryEntity] == undefined)
+      {
+        this.infectedAt[countryEntity] = [];
+      }
+      this.infectedAt[countryEntity].push(countryData.numberOfInfected.value - lastInfected);
       //countryData.numberOfInfected.relativeRateOfChange *= 1;
 
-      //geheilte
+      //Krankenhauskapazität
+      if(countryData.numberOfInfected.value > countryData.hospitalCapacity)
+      {
+        newDeaths += (countryData.numberOfInfected.value - countryData.hospitalCapacity) * this.deathHospitalFullFactor;
+      }
+      
+
+      //recovered + deaths
+      var lastIndex = (state.tickCount - this.daysToRecoverOrDie * state.ticksPerDay);
+      if(lastIndex >= 0)
+      {
+        var infectedToHandle = this.infectedAt[countryEntity][state.tickCount - this.daysToRecoverOrDie * state.ticksPerDay];
+        var hospitalOverfull = countryData.numberOfInfected.value > countryData.hospitalCapacity;
+        var medicineResearched = countryData.medicine.value > 100;
+        var deathProbability = (medicineResearched?0:countryData.deathProbability.value) + (hospitalOverfull?this.deathHospitalFullAddend:0);
+
+        countryData.deaths += infectedToHandle * deathProbability;
+        countryData.numberOfRecovered.value += infectedToHandle * (1 - deathProbability);
+        countryData.currentlyInfected = countryData.numberOfInfected.value - countryData.deaths - countryData.numberOfRecovered.value;
+      }
+
       var newRecovered = countryData.recoverProbability.value * countryData.numberOfInfected.value;
       //countryData.numberOfRecovered.value += newRecovered;
       //countryData.numberOfInfected.value -= newRecovered;
@@ -65,16 +94,14 @@ export class EvolutionSystem extends System {
       //Impfstoff
       countryData.vaccines.value += countryData.vaccines.absoluteRateOfChange;
 
+      //Medizin
+      countryData.medicine.value += countryData.medicine.absoluteRateOfChange;
+
       //Tote
       var newDeaths = 0;
 
-      //Krankenhauskapazität
-      if(countryData.numberOfInfected.value > countryData.hospitalCapacity)
-      {
-        newDeaths += (countryData.numberOfInfected.value - countryData.hospitalCapacity) * this.deathHospitalFullFactor;
-      }
-
-      newDeaths +=  countryData.deathProbability.value * countryData.numberOfInfected.value;
+      
+      //newDeaths +=  countryData.deathProbability.value * countryData.numberOfInfected.value;
       //countryData.deaths += newDeaths;
       //countryData.numberOfInfected.value -= newDeaths;
 
