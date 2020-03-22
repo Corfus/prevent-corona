@@ -1,7 +1,5 @@
 <div class="fullSpace flexRow">
   <div class="valueBackground">
-<!--    <div>TickCount: {{gameState.tickCount}}</div>-->
-<!--    <div>GameState: {{gameStateJSON}}</div>-->
   <app-twitter-box id="twitterBox" userName="Deutschland" text="Dies ist ein zufälliger Test-Tweet, der während eines Spiels erscheinen könnte"></app-twitter-box>
     <app-value-table [gameState]="gameState$ | async"></app-value-table>
   </div>
