@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class DatePipe implements PipeTransform {
 
-  transform(value: number, ...args: unknown[]): string {
-    return 'Tag ' + Math.floor(value / 24) + ' - ' + value % 24 + ':00 Uhr';
+  transform(tick: number, ...args: unknown[]): string {
+    const hour = tick % 24;
+    return  `Tag ${Math.floor(tick / 24) + 1} - ${hour < 10 ? 0 : ''}${hour}:00 Uhr`;
   }
 
 }

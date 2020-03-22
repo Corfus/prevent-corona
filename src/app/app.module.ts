@@ -20,6 +20,7 @@ import { DatePipe } from './pipes/date.pipe';
 import { PolicyListComponent } from './components/common/policy-list/policy-list.component';
 import { TimeComponent } from './components/common/time/time.component';
 import { PopulationBarComponent } from './components/common/population-bar/population-bar.component';
+import { PolicyToIconPipe } from './pipes/policy-to-icon.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PopulationBarComponent } from './components/common/population-bar/popul
     ValueTableComponent,
     DatePipe,
     TimeComponent,
-    PopulationBarComponent
+    PopulationBarComponent,
+    PolicyToIconPipe
   ],
   imports: [
     BrowserModule,

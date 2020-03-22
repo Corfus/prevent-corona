@@ -14,6 +14,7 @@ import {map} from 'rxjs/operators';
 export class GameSiteComponent implements OnInit {
   actionSubject: Subject<GameActionEntity> = new Subject<GameActionEntity>();
   gameState$: Observable<GameState>;
+  enactedPolices$: Observable<Array<string>>;
   possibleActions$: Observable<Array<string>>;
 
   constructor(private gameLogic: GameLogicService) {
