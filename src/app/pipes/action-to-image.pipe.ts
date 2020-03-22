@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {GameActionEntity, generateEnactPolicyName, generateRevokePolicyName} from '../../gamelogic/GameAction';
 
 
 const ACTION_ID_TO_IMAGE: {[key: string]: string} = {
@@ -13,7 +14,23 @@ const ACTION_ID_TO_IMAGE: {[key: string]: string} = {
   EnactClosedSchools: 'School',
   EnactCurfew: 'Time',
   EnactPayForMedicineDev: 'Medicine',
-  EnactPayForVaccineDev: 'Medicine'
+  EnactPayForVaccineDev: 'Medicine',
+  [generateEnactPolicyName('EmergencyHospital')]: 'Hospital_bed_capacity',
+  [generateRevokePolicyName('EmergencyHospital')]: 'Hospital_bed_capacity',
+  [generateEnactPolicyName('ClosedBorder')]: 'Grenzschließung',
+  [generateRevokePolicyName('ClosedBorder')]: 'Grenzschließung',
+  [generateEnactPolicyName('ClosedCompanies')]: 'Home_Office',
+  [generateRevokePolicyName('ClosedCompanies')]: 'Home_Office',
+  [generateEnactPolicyName('ClosedSchool')]: 'School',
+  [generateRevokePolicyName('ClosedSchool')]: 'School',
+  [generateEnactPolicyName('Curfew')]: 'Time',
+  [generateRevokePolicyName('Curfew')]: 'Time',
+  [generateEnactPolicyName('ExpandHospital')]: 'Hospital_bed_capacity',
+  [generateRevokePolicyName('ExpandHospital')]: 'Hospital_bed_capacity',
+  [generateEnactPolicyName('PayForMedicineDev')]: 'Medicine',
+  [generateRevokePolicyName('PayForMedicineDev')]: 'Medicine',
+  [generateEnactPolicyName('PayForVaccineDev')]: 'Medicine',
+  [generateRevokePolicyName('PayForVaccineDev')]: 'Medicine',
 };
 
 

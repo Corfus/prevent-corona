@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {GameActionEntity} from '../../../../gamelogic/GameAction';
+import {GameActionEntity, generateEnactPolicyName, generateRevokePolicyName} from '../../../../gamelogic/GameAction';
 
 export enum EActionCategory {
   Unselected = -1,
@@ -21,12 +21,22 @@ const ACTION_ID_TO_CATEGORY: {[key: string]: EActionCategory} = {
   KeepDistanceAdvice: EActionCategory.Decisions,
   LowDeathMessage: EActionCategory.Propaganda,
   InformAboutPoliticanDeath: EActionCategory.Propaganda,
-  EnactClosedBorder: EActionCategory.Decisions,
-  EnactClosedCompanies: EActionCategory.Decisions,
-  EnactClosedSchools: EActionCategory.Decisions,
-  EnactCurfew: EActionCategory.Decisions,
-  EnactPayForMedicineDev: EActionCategory.Research,
-  EnactPayForVaccineDev: EActionCategory.Research,
+  [generateEnactPolicyName('EmergencyHospital')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('EmergencyHospital')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ClosedBorder')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ClosedBorder')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ClosedCompanies')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ClosedCompanies')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ClosedSchool')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ClosedSchool')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('Curfew')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('Curfew')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ExpandHospital')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ExpandHospital')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('PayForMedicineDev')]: EActionCategory.Research,
+  [generateRevokePolicyName('PayForMedicineDev')]: EActionCategory.Research,
+  [generateEnactPolicyName('PayForVaccineDev')]: EActionCategory.Research,
+  [generateRevokePolicyName('PayForVaccineDev')]: EActionCategory.Research,
 };
 
 
@@ -50,6 +60,7 @@ export class ActionSpaceComponent {
   }
 
   getActionList(): Array<any> {
+  console.log(this.actions);
     return this.actions.filter(action => ACTION_ID_TO_CATEGORY[action] === this.selectedCategory);
   }
 
