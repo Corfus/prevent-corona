@@ -71,5 +71,5 @@ export function generateEnactPolicyName(policyEntity: GamePolicyEntity): GameAct
 }
 
 export function generateRevokePolicyName(policyEntity: GamePolicyEntity): GameActionEntity {
-  return `enact${policyEntity}`;
+  return `revoke${policyEntity}`;
 }

@@ -17,22 +17,6 @@ const ACTION_ID_TO_TEXT: {[key: string]: string} = {
   tweet12: 'Aktienmarkt bricht STARK ein – Börse aktuell: Der DAX bricht stark ein!',
   tweet13: 'Aktienmarkt erholt sich – Erfreuliche News: Der Aktienmarkt erholt sich wieder!',
   tweet14: 'China Reissack fällt um: Eilmeldung! In China ist der Reissack umgefallen.',
-  [generateEnactPolicyName('BuildEmergencyHospitalPolicy')]: [generateEnactPolicyName('BuildEmergencyHospitalPolicy')],
-  [generateRevokePolicyName('BuildEmergencyHospitalPolicy')]: [generateRevokePolicyName('BuildEmergencyHospitalPolicy')],
-  [generateEnactPolicyName('ClosedBorderPolicy')]: [generateEnactPolicyName('ClosedBorderPolicy')],
-  [generateRevokePolicyName('ClosedBorderPolicy')]: [generateRevokePolicyName('ClosedBorderPolicy')],
-  [generateEnactPolicyName('ClosedCompaniesPolicy')]: [generateEnactPolicyName('ClosedCompaniesPolicy')],
-  [generateRevokePolicyName('ClosedCompaniesPolicy')]: [generateRevokePolicyName('ClosedCompaniesPolicy')],
-  [generateEnactPolicyName('ClosedSchoolPolicy')]: [generateEnactPolicyName('ClosedSchoolPolicy')],
-  [generateRevokePolicyName('ClosedSchoolPolicy')]: [generateRevokePolicyName('ClosedSchoolPolicy')],
-  [generateEnactPolicyName('CurfewPolicy')]: [generateEnactPolicyName('CurfewPolicy')],
-  [generateRevokePolicyName('CurfewPolicy')]: [generateRevokePolicyName('CurfewPolicy')],
-  [generateEnactPolicyName('ExpandHospitlaBedsPolicy')]: [generateEnactPolicyName('ExpandHospitlaBedsPolicy')],
-  [generateRevokePolicyName('ExpandHospitlaBedsPolicy')]: [generateRevokePolicyName('ExpandHospitlaBedsPolicy')],
-  [generateEnactPolicyName('PayForMedicineDevPolicy')]: [generateEnactPolicyName('PayForMedicineDevPolicy')],
-  [generateRevokePolicyName('PayForMedicineDevPolicy')]: [generateRevokePolicyName('PayForMedicineDevPolicy')],
-  [generateEnactPolicyName('PayForVaccineDevPolicy')]: [generateEnactPolicyName('PayForVaccineDevPolicy')],
-  [generateRevokePolicyName('PayForVaccineDevPolicy')]: [generateRevokePolicyName('PayForVaccineDevPolicy')],
 };
 
 @Pipe({
