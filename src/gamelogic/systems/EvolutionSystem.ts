@@ -61,7 +61,7 @@ export class EvolutionSystem extends System {
       countryData.numberOfInfected.value = (total * lastInfected) / (lastInfected + (total - lastInfected) * Math.exp(-k*total) );
       if(this.infectedAt[countryEntity] == undefined)
       {
-        this.infectedAt[countryEntity] = [];
+        this.infectedAt[countryEntity] = [1];
       }
       this.infectedAt[countryEntity].push(countryData.numberOfInfected.value - lastInfected);
       //countryData.numberOfInfected.relativeRateOfChange *= 1;
