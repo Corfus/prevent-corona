@@ -65,12 +65,6 @@ export class EvolutionSystem extends System {
       }
       this.infectedAt[countryEntity].push(countryData.numberOfInfected.value - lastInfected);
       //countryData.numberOfInfected.relativeRateOfChange *= 1;
-
-      //Krankenhauskapazität
-      if(countryData.numberOfInfected.value > countryData.hospitalCapacity)
-      {
-        newDeaths += (countryData.numberOfInfected.value - countryData.hospitalCapacity) * this.deathHospitalFullAddend;
-      }
       
 
       //recovered + deaths
@@ -79,7 +73,7 @@ export class EvolutionSystem extends System {
       {
         var infectedToHandle = this.infectedAt[countryEntity][state.tickCount - this.daysToRecoverOrDie * state.ticksPerDay];
         var hospitalOverfull = countryData.numberOfInfected.value > countryData.hospitalCapacity;
-        var medicineResearched = countryData.medicine.value > 100;
+        var medicineResearched = countryData.medicine.value >= 100;
         var deathProbability = (medicineResearched?0:countryData.deathProbability.value) + (hospitalOverfull?this.deathHospitalFullAddend:0);
 
         countryData.deaths += infectedToHandle * deathProbability;
@@ -90,9 +84,6 @@ export class EvolutionSystem extends System {
         countryData.currentlyInfected = countryData.numberOfInfected.value;
       }
 
-      var newRecovered = countryData.recoverProbability.value * countryData.numberOfInfected.value;
-      //countryData.numberOfRecovered.value += newRecovered;
-      //countryData.numberOfInfected.value -= newRecovered;
 
       //Impfstoff
       countryData.vaccines.value += countryData.vaccines.absoluteRateOfChange;
@@ -100,16 +91,14 @@ export class EvolutionSystem extends System {
       //Medizin
       countryData.medicine.value += countryData.medicine.absoluteRateOfChange;
 
-      //Tote
-      var newDeaths = 0;
-
-      
-      //newDeaths +=  countryData.deathProbability.value * countryData.numberOfInfected.value;
-      //countryData.deaths += newDeaths;
-      //countryData.numberOfInfected.value -= newDeaths;
-
-
-
+      //Endgame
+      if(countryEntity == state.playerCountry)
+      {
+        if(countryData.currentlyInfected <= 0 || countryData.happiness.value <= 0 || countryData.money.value <= 0)
+        {
+          state.gameOver = true;
+        }
+      }
     });
   }
 
