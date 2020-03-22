@@ -10,6 +10,8 @@ export class TwitterBoxComponent {
     this._eventId = id;
     this.retweets = Math.floor(Math.random() * 100000);
     this.likes = Math.floor(Math.random() * 6000000);
+    console.log(this.eventId);
+    this.showBell = true;
     setTimeout(() => this.showBell = false, 3500);
   }
 
