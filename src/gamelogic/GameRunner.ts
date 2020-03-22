@@ -16,10 +16,13 @@ export class GameRunner {
   }
 
   public Tick(): void {
-    this.state.tickCount++;
-    this.systems.forEach((v) => {
-      v.applyTick(this.state);
-    });
+    if(!this.state.gameOver)
+    {
+      this.state.tickCount++;
+      this.systems.forEach((v) => {
+        v.applyTick(this.state);
+      });
+    }
   }
 
   public getState(): GameState {
