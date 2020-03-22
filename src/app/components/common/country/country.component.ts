@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {GameState} from '../../../../gamelogic/GameState';
 
 @Component({
   selector: 'app-country',
@@ -6,7 +7,10 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./country.component.scss']
 })
 export class CountryComponent {
-  @Input() country: string;
-  @Input() ticks = 0;
-  @Input() policies: Array<string> = [];
+  @Input() gameState: GameState;
+
+  getEnactedPolicies(): Array<string> {
+    console.log(Array.from(this.gameState.getCountryEnactedPolicies(this.gameState.playerCountry)));
+    return Array.from(this.gameState.getCountryEnactedPolicies(this.gameState.playerCountry));
+  }
 }

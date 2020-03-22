@@ -6,7 +6,9 @@ interface IGameValueCollection {
   happiness: number;
   deaths: number;
   infected: number;
+  healed: number;
   deathrate: number;
+  population: number;
 }
 
 @Component({
@@ -27,7 +29,9 @@ export class ValueTableComponent {
       happiness: Math.round(countryState.happiness.value * 10) / 10,
       deaths: Math.round(countryState.deaths),
       infected: Math.round(countryState.numberOfInfected.value),
-      deathrate: Math.round(countryState.deathProbability.value)
+      deathrate: Math.round(countryState.deathProbability.value),
+      healed: Math.round(countryState.numberOfRecovered.value),
+      population: Math.round(countryState.totalPopulation.value)
     };
   }
 }

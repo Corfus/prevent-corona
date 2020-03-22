@@ -7,8 +7,4 @@ import {Component, Input} from '@angular/core';
 })
 export class TimeComponent {
   @Input() ticks = 0;
-
-  ticksToTime(): string {
-    return `Tag: ${Math.floor(this.ticks / 24) + 1}`;
-  }
 }
