@@ -24,12 +24,6 @@ export class GameSiteComponent implements OnInit {
     this.gameLogic.startGame(this.actionSubject.asObservable());
     this.gameState$ = this.gameLogic.gameState$;
     this.possibleActions$ = this.gameState$.pipe(map(gs => gs.getActionableActions(gs.playerCountry)));
-    this.eventId$ = this.gameState$.pipe(
-      map(gs => {
-        const messages = gs.getEventMessageHistory();
-        return (messages[messages.length - 1] || {}).eventEntity;
-      })
-    );
   }
 
   onActionSelected(gameAction: GameActionEntity): void {
