@@ -20,11 +20,11 @@ export class TwitterBoxComponent implements OnInit {
   {
     this.retweets = Math.floor(Math.random() * 100000);
     this.likes = Math.floor(Math.random() * 6000000);
-    let pipe = new ActionDetailsPipe();
-    this.eventText = pipe.transform("eventId");
   }
 
   ngOnInit(): void {
+    let pipe = new ActionDetailsPipe();
+    this.eventText = pipe.transform(this.eventId);
   }
 
 
