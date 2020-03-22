@@ -3,7 +3,7 @@ import {CountryEntity} from '../CountryState';
 import {GamePolicy} from '../GamePolicy';
 
 export class ClosedBorderPolicy extends GamePolicy {
-  private HappinessChangeRate: number = -10;
+  private HappinessChangeRate: number = -1;
   private MoneyChangeRate: number = 50000;
   private InfectedChangeRate: number = 25E-11;
 

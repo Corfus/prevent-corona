@@ -103,7 +103,7 @@ export class GameCreator {
     playerCountry.hospitalCapacityStartValue = 100000;
     playerCountry.hospitalCapacity = playerCountry.hospitalCapacityStartValue;
     playerCountry.happiness.value = 100;                                // 0 - 100        Start: 100
-    playerCountry.happiness.absoluteRateOfChange = -0.5;                // 
+    playerCountry.happiness.absoluteRateOfChange = -0.35;                // 
     playerCountry.numberOfInfected.value = 100;                           // 0 - 83.000.000 Start: 1
     playerCountry.numberOfInfected.relativeRateOfChange = 0.00000002;  // bitte behutsam ändern
     playerCountry.money.value = 5000000000;                             // 0 - 5.000.000.000
