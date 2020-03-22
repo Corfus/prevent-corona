@@ -26,12 +26,12 @@ export class ValueTableComponent {
     const countryState = gs.getCountry(gs.playerCountry);
     return {
       tick: gs.tickCount,
-      happiness: countryState.happiness.value,
-      deaths: countryState.deaths,
-      infected: countryState.numberOfInfected.value,
-      healed: countryState.numberOfRecovered.value,
-      deathrate: countryState.deathProbability.value,
-      population: countryState.totalPopulation.value,
+      happiness: Math.round(countryState.happiness.value * 10) / 10,
+      deaths: Math.round(countryState.deaths),
+      infected: Math.round(countryState.numberOfInfected.value),
+      deathrate: Math.round(countryState.deathProbability.value),
+      healed: Math.round(countryState.numberOfRecovered.value),
+      population: Math.round(countryState.totalPopulation.value)
     };
   }
 }

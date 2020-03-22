@@ -2,9 +2,6 @@ import {GameState} from '../GameState';
 import {CountryEntity} from '../CountryState';
 import {GamePolicy} from '../GamePolicy';
 
-// Balancing
-
-
 export class ClosedBorderPolicy extends GamePolicy {
   private HappinessChangeRate: number = -10;
   private MoneyChangeRate: number = -0.01;
