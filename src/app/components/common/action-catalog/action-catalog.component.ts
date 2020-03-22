@@ -25,7 +25,11 @@ export class ActionCatalogComponent implements OnInit  {
     let i = 0;
     let out = []
     while (i < len) {
-        out.push(actionList.slice(i, i += splitSize));
+        let currentGroup = actionList.slice(i, i += splitSize);
+        if(currentGroup.length % 2 != 0){
+          currentGroup.push('')
+        }
+        out.push(currentGroup);
     }
     return out;
   }
