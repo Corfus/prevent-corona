@@ -15,7 +15,7 @@ build_docker:
   script:
     - npm install && npm run build --prod
     - cd server && npm i && cd ..
-    - ./scripts/deploy-prod.sh
+    - ./scripts/deploy.sh
   cache:
     paths:
       - node_modules
