@@ -36,7 +36,7 @@ export class ValueTableComponent {
     return {
       tick: gs.tickCount,
       deaths: Math.round(countryState.deaths),
-      infected: Math.round(countryState.numberOfInfected.value),
+      infected: Math.round(countryState.currentlyInfected),
       deathrate: Math.round(countryState.deathProbability.value),
       healed: Math.round(countryState.numberOfRecovered.value),
       population: Math.round(countryState.totalPopulation.value),

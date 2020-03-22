@@ -8,9 +8,9 @@ export const FakeNewsMessageEntity: GameEventEntity = 'FakeNewsMessage';
 export class FakeNewsMessageAction extends GameAction {
 
   // Balancing
-  private MoneyChangeAbsolute: number = -10000;
-  private HappinessChangeAbsolute: number = 1;
-  private AcceptanceChangeAbsolute: number = -1;
+  private MoneyChangeAbsolute: number = -100000000;
+  private HappinessChangeAbsolute: number = 5;
+  private AcceptanceChangeAbsolute: number = -5;
 
   isActionable(state: GameState, country: CountryEntity): boolean {
     return true;

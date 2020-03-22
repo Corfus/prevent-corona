@@ -8,9 +8,9 @@ export const InformAboutPoliticanDeathEntity: GameEventEntity = 'InformAboutPoli
 export class InformAboutPoliticanDeathAction extends GameAction {
 
   // Balancing
-  private MoneyChangeAbsolute: number = -10000;
-  private HappinessChangeAbsolute: number = -1;
-  private AcceptanceChangeAbsolute: number = 1;
+  private MoneyChangeAbsolute: number = -500000000;
+  private HappinessChangeAbsolute: number = -10;
+  private AcceptanceChangeAbsolute: number = 10;
 
   isActionable(state: GameState, country: CountryEntity): boolean {
     return true;

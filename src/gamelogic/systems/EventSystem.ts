@@ -24,6 +24,19 @@ export class EventSystem extends System {
   }
 
   public applyTick(state: GameState): void {
+    const countries = state.getAllCountryEntities();
+    countries.forEach((countryEntity) => 
+    {
+      state.getCountryEnactedPolicies(countryEntity).forEach((gameEnactedPolicy) => 
+      {
+        state.getAllPolicies().forEach((gamePolicy, policyname) => {   
+          if(policyname == gameEnactedPolicy)
+          {
+            gamePolicy.applyEffects(state,countryEntity);
+          }   
+        });
+      });
+    });
     if(state.tickCount < this.nextTick)
     {
       return;

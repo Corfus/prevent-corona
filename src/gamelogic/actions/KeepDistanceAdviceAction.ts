@@ -8,9 +8,9 @@ export const KeepDistanceAdviceEntity: GameEventEntity = 'KeepDistanceAdvice';
 export class KeepDistanceAdviceAction extends GameAction {
 
   // Balancing
-  private MoneyChangeAbsolute: number = -10000;
-  private HappinessChangeRateAbsolut: number = -.1;
-  private NumberOfInfectedChangeRelative: number = -.015;
+  private MoneyChangeAbsolute: number = -100000000;
+  private HappinessChangeRateAbsolut: number = -0.2;
+  private NumberOfInfectedChangeRelative: number = -0.0000000005;
 
     isActionable(state: GameState, country: CountryEntity): boolean {
       return true;

@@ -28,23 +28,25 @@ export class CountryState {
   public deathProbability: RateAttribute;   // 0 - TODO
   public recoverProbability: RateAttribute; // 0 - TODO
   public deaths: number;                    // 0 - 83.000.000
+  public currentlyInfected: number;         // 0 - 83.000.000
   public vaccines: RateAttribute;           // 0 - 100
   public medicine: RateAttribute;           // 0 - 100
   public hospitalCapacity: number;
+  public hospitalCapacityStartValue: number;
 
   constructor() {
-    this.happiness = new RateAttribute(50);
-    this.money = new RateAttribute(5000000000);
-    this.acceptance = new RateAttribute(0);
-    this.totalPopulation = new RateAttribute(83000000);
+    this.happiness = new RateAttribute();
+    this.money = new RateAttribute();
+    this.acceptance = new RateAttribute();
+    this.totalPopulation = new RateAttribute();
     this.numberOfInfected = new RateAttribute();
     this.numberOfRecovered = new RateAttribute();
-    this.deathProbability = new RateAttribute(0.005);
-    this.recoverProbability = new RateAttribute(0.005);
-    this.deaths = 0;
-    this.hospitalCapacity = 100000;
+    this.deathProbability = new RateAttribute();
+    this.recoverProbability = new RateAttribute();
     this.vaccines = new RateAttribute();
     this.medicine = new RateAttribute();
+    this.deaths = 0;
+    this.currentlyInfected = 0;
   }
 }
 
