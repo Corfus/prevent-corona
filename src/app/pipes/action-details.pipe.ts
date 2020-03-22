@@ -16,7 +16,7 @@ const ACTION_ID_TO_TEXT: { [key: string]: string } = {
   StockMarketCrash: 'Aktienmarkt bricht ein – Neuigkeiten aus dem Aktienmarkt: Dieser ist heute eingebrochen.',
   StockMarketCrashHard: 'Aktienmarkt bricht STARK ein – Börse aktuell: Der DAX bricht stark ein!',
   StockMarketRecovery: 'Aktienmarkt erholt sich – Erfreuliche News: Der Aktienmarkt erholt sich wieder!',
-  ChinaSackOfRise: 'China Reissack fällt um: Eilmeldung! In China ist der Reissack umgefallen.',
+  ChinaSackOfRise: 'China: Neuartiger Virus entdeckt.',
 };
 
 @Pipe({
