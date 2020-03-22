@@ -1,1 +1,4 @@
-<p *ngFor="let action of actionList" (pointerdown)="onPointerDown(action)">{{action}}</p>
+<div class="catalog-action-container" *ngFor="let action of actionList" >
+  <app-image-button (pointerdown)="onPointerDown(action)" image="{{action | actionToImage}}"></app-image-button>
+  <div class="catalog-action-text">{{action}}</div>
+</div>

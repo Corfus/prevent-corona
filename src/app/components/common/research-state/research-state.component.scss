@@ -1,0 +1,29 @@
+@import "../../../../scss/config";
+
+:host {
+  display: block;
+}
+
+.container {
+  border-radius: 5px;
+  padding: 4px;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  color: $value-color;
+}
+
+.container div {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 auto;
+  align-items: center;
+  height: 40px;
+  justify-content: center;
+}
+
+app-image {
+  margin-right: 4px;
+}

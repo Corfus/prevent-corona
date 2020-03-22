@@ -24,6 +24,10 @@ import { PopulationBarComponent } from './components/common/population-bar/popul
 import { PolicyToIconPipe } from './pipes/policy-to-icon.pipe';
 import { EndSiteComponent } from './components/sites/end-site/end-site.component';
 import { EndSiteValueComponent } from './components/common/end-site-value/end-site-value.component';
+import { ResponsibilitesComponent } from './components/common/responsibilites/responsibilites.component';
+import { ResearchStateComponent } from './components/common/research-state/research-state.component';
+import { ImageComponent } from './components/common/image/image.component';
+import { ActionToImagePipe } from './pipes/action-to-image.pipe';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,10 @@ import { EndSiteValueComponent } from './components/common/end-site-value/end-si
     TimeComponent,
     PopulationBarComponent,
     PolicyToIconPipe,
+    ResponsibilitesComponent,
+    ResearchStateComponent,
+    ImageComponent,
+    ActionToImagePipe,
     EndSiteComponent,
     EndSiteValueComponent
   ],
