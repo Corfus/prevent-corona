@@ -4,12 +4,14 @@ import {GamePolicy} from '../GamePolicy';
 
 
 export class BuildEmergencyHospitalPolicy extends GamePolicy {
+
   private HospitalCapacityChange : number = 10000;
   private MoneyChangeRate  : number = -0.07;
+
     isEnactable(state: GameState, countryEntity: CountryEntity): boolean
     {
       const country = state.getCountry(countryEntity);
-      if (country.hospitalCapacity == 10000) // Use the hospital capacity start value here
+      if (country.hospitalCapacity == country.hospitalCapacityStartValue)
       {
           return true;
       }
