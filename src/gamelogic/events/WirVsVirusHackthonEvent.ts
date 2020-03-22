@@ -11,7 +11,7 @@ export class WirVsVirusHackthonEvent extends LocalEvent {
   private OccursAboveInfectedNumber: number = 10000;
   private ProbabilityAbove: number = .3;
   private ProbabilityUnder: number = 0;
-  private HappinessChangeAbsolute: number = 3;
+  private HappinessChangeAbsolute: number = 10;
 
   getLocalOccurenceProbability(state: GameState, countryEntity: string): number {
     const country = state.getCountry(countryEntity);

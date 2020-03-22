@@ -12,7 +12,7 @@ export class CoronaPartyEvent extends LocalEvent {
   private OccursAboveInfectedNumber: number = 100;
   private ProbabilityAbove: number = .1;
   private ProbabilityUnder: number = .03;
-  private NumberOfInfectedChangeAbsolute: number = 100;
+  private NumberOfInfectedChangeAbsolute: number = 0.05;
 
   getLocalOccurenceProbability(state: GameState, countryEntity: string): number {
     const country = state.getCountry(countryEntity);
@@ -23,7 +23,7 @@ export class CoronaPartyEvent extends LocalEvent {
 
   occurLocally(state: GameState, countryEntity: CountryEntity): void {
     const country = state.getCountry(countryEntity);
-    country.numberOfInfected.value += this.NumberOfInfectedChangeAbsolute;
+    country.numberOfInfected.value += country.numberOfInfected.value*this.NumberOfInfectedChangeAbsolute+1000;
     state.addEventMessage(CoronaPartyEntity, countryEntity);
   }
 }

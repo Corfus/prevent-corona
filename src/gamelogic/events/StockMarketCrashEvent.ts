@@ -12,7 +12,7 @@ export class StockMarketCrashEvent extends LocalEvent {
   private OccursAboveInfectedNumber: number = 100;
   private ProbabilityAbove: number = .1;
   private ProbabilityUnder: number = .03;
-  private MoneyChangeAbsolute: number = -10000;
+  private MoneyChangeAbsolute: number = -10000000;
 
   getLocalOccurenceProbability(state: GameState, countryEntity: string): number {
     const country = state.getCountry(countryEntity);

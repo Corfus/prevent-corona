@@ -12,7 +12,7 @@ export class ScientistsDieEvent extends LocalEvent {
   private OccursAboveMedicineChange: number = .5;
   private ProbabilityAbove: number = .1;
   private ProbabilityUnder: number = .03;
-  private HappinessChangeAbsolute: number = -1;
+  private HappinessChangeAbsolute: number = -5;
   private MedicineChangeMultiplier: number = .7;
   private VaccinesChangeMultiplier: number = .7;
 
