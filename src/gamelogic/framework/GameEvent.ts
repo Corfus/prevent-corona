@@ -26,7 +26,7 @@ export abstract class GameEvent {
   /**
    * die Wahrscheinlichkeit, dass das Ereignis eintritt gegeben den momentanen Zustand
    */
-  public abstract getOccurenceProbability(state: GameState): number;
+  public abstract getOccurrenceProbability(state: GameState): number;
 
   /**
    * das Ereignis tritt ein und mutiert! den Zustand des Spiels
@@ -37,31 +37,27 @@ export abstract class GameEvent {
 }
 
 export abstract class LocalEvent extends GameEvent {
-  private occuredIn: any;
+  private occurredIn: any;
 
   constructor() {
     super();
-    this.occuredIn = [];
-  }
-
-  getOccurrenceProbability(_: GameState): number {
-    return 0;
+    this.occurredIn = [];
   }
 
   abstract occurLocally(state: GameState, countryEntity: CountryEntity): void;
 
-  abstract getLocalOccurenceProbability(state: GameState, countryEntity: CountryEntity): number;
+  abstract getLocalOccurrenceProbability(state: GameState, countryEntity: CountryEntity): number;
 
-  getOccurenceProbability(state: GameState): number {
+  getOccurrenceProbability(state: GameState): number {
     return 1;
   }
 
   occur(state: GameState): void {
     state.getAllCountryEntities().forEach((entity) => {
-      const probability = this.getLocalOccurenceProbability(state, entity);
-      if ((Math.random() < probability) && (this.occuredIn.indexOf(entity) == -1)) {
+      const probability = this.getLocalOccurrenceProbability(state, entity);
+      if ((Math.random() < probability) && (this.occurredIn.indexOf(entity) === -1)) {
         this.occurLocally(state, entity);
-        this.occuredIn.push(entity);
+        this.occurredIn.push(entity);
       }
     });
   }

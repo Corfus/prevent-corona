@@ -1,7 +1,6 @@
 <div class="valueBackground">
   <app-value-table [gameState]="gameState$ | async"></app-value-table>
 </div>
-<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 <app-line-chart [newVal]="country$ | async" title="Bevölkerung"></app-line-chart>
 
 <div class="actionBackground">

@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import {GamePolicyEntity} from '../../gamelogic/GamePolicy';
+import {Pipe, PipeTransform} from '@angular/core';
+import {GamePolicyEntity} from '../../gamelogic/framework/GamePolicy';
 
 const POLICY_TO_ICON = {
   ['ClosedBorder']: 'Grenzschließung',

@@ -1,8 +1,8 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import {GameActionEntity, generateEnactPolicyName, generateRevokePolicyName} from '../../gamelogic/GameAction';
+import {Pipe, PipeTransform} from '@angular/core';
+import {generateEnactPolicyName, generateRevokePolicyName} from '../../gamelogic/framework/GameAction';
 
 
-const ACTION_ID_TO_TEXT: {[key: string]: string} = {
+const ACTION_ID_TO_TEXT: { [key: string]: string } = {
   FakeNewsMessage: 'Fake-News verbreiten',
   HygieneHandWashAdvice: 'Hände waschen',
   MouthguardAdvide: 'Mundschutz tragen',

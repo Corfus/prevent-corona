@@ -1,24 +1,22 @@
-import {GameState} from '../GameState';
-import {CountryEntity} from '../CountryState';
-import {LocalEvent} from '../GameEvent';
-import {EventMessage} from '../GameEvent';
-import {GameEventEntity} from '../GameEvent';
+import {GameState} from '../framework/GameState';
+import {CountryEntity} from '../framework/CountryState';
+import {GameEventEntity, LocalEvent} from '../framework/GameEvent';
 
 export const StockMarketRecoveryEntity: GameEventEntity = 'StockMarketRecovery';
 
 export class StockMarketRecoveryEvent extends LocalEvent {
 
   // Balancing
-  private OccursUnderInfectedNumber: number = 100;
-  private ProbabilityUnder: number = .05;
-  private ProbabilityAbove: number = 0;
-  private MoneyChangeAbsolute: number = 50000;
+  private OccursUnderInfectedNumber = 100;
+  private ProbabilityUnder = .05;
+  private ProbabilityAbove = 0;
+  private MoneyChangeAbsolute = 50000;
 
-  getLocalOccurenceProbability(state: GameState, countryEntity: string): number {
+  getLocalOccurrenceProbability(state: GameState, countryEntity: string): number {
     const country = state.getCountry(countryEntity);
     const numOfInfected: number = country.numberOfInfected.value;
     return (numOfInfected < this.OccursUnderInfectedNumber) ?
-                this.ProbabilityAbove : this.ProbabilityUnder;
+      this.ProbabilityAbove : this.ProbabilityUnder;
   }
 
   occurLocally(state: GameState, countryEntity: CountryEntity): void {

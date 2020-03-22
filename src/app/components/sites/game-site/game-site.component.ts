@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {GameLogicService} from '../../../services/game-logic.service';
-import {GameState} from '../../../../gamelogic/GameState';
+import {GameState} from '../../../../gamelogic/framework/GameState';
 import {Observable, Subject} from 'rxjs';
-import {GameActionEntity} from '../../../../gamelogic/GameAction';
-import {filter, map} from 'rxjs/operators';
+import {GameActionEntity} from '../../../../gamelogic/framework/GameAction';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-game-site',

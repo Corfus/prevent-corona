@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {GameState} from '../../../../gamelogic/GameState';
+import {GameState} from '../../../../gamelogic/framework/GameState';
 
 @Component({
   selector: 'app-country',

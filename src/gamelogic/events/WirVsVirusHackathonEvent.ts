@@ -2,15 +2,15 @@ import {GameState} from '../framework/GameState';
 import {CountryEntity} from '../framework/CountryState';
 import {GameEventEntity, LocalEvent} from '../framework/GameEvent';
 
-export const CoronaPartyEntity: GameEventEntity = 'Coronaparty';
+export const WirVsVirusHackathonEntity: GameEventEntity = 'WirVsVirusHackathon';
 
-export class CoronaPartyEvent extends LocalEvent {
+export class WirVsVirusHackathonEvent extends LocalEvent {
 
   // Balancing
-  private OccursAboveInfectedNumber = 100;
-  private ProbabilityAbove = .1;
-  private ProbabilityUnder = .03;
-  private NumberOfInfectedChangeAbsolute = 100;
+  private OccursAboveInfectedNumber = 10000;
+  private ProbabilityAbove = .3;
+  private ProbabilityUnder = 0;
+  private HappinessChangeAbsolute = 3;
 
   getLocalOccurrenceProbability(state: GameState, countryEntity: string): number {
     const country = state.getCountry(countryEntity);
@@ -21,7 +21,7 @@ export class CoronaPartyEvent extends LocalEvent {
 
   occurLocally(state: GameState, countryEntity: CountryEntity): void {
     const country = state.getCountry(countryEntity);
-    country.numberOfInfected.value += this.NumberOfInfectedChangeAbsolute;
-    state.addEventMessage(CoronaPartyEntity, countryEntity);
+    country.happiness.value += this.HappinessChangeAbsolute;
+    state.addEventMessage(WirVsVirusHackathonEntity, countryEntity);
   }
 }

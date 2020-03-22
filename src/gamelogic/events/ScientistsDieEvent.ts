@@ -1,27 +1,25 @@
-import { GameState } from '../GameState';
-import { CountryEntity } from '../CountryState';
-import { LocalEvent } from '../GameEvent';
-import { EventMessage } from '../GameEvent';
-import { GameEventEntity } from '../GameEvent';
+import {GameState} from '../framework/GameState';
+import {CountryEntity} from '../framework/CountryState';
+import {GameEventEntity, LocalEvent} from '../framework/GameEvent';
 
 export const ScientistsDieEntity: GameEventEntity = 'ScientistsDie';
 
 export class ScientistsDieEvent extends LocalEvent {
 
   // Balancing
-  private OccursAboveMedicineChange: number = .5;
-  private ProbabilityAbove: number = .1;
-  private ProbabilityUnder: number = .03;
-  private HappinessChangeAbsolute: number = -1;
-  private MedicineChangeMultiplier: number = .7;
-  private VaccinesChangeMultiplier: number = .7;
+  private OccursAboveMedicineChange = .5;
+  private ProbabilityAbove = .1;
+  private ProbabilityUnder = .03;
+  private HappinessChangeAbsolute = -1;
+  private MedicineChangeMultiplier = .7;
+  private VaccinesChangeMultiplier = .7;
 
-  getLocalOccurenceProbability(state: GameState, countryEntity: string): number {
+  getLocalOccurrenceProbability(state: GameState, countryEntity: string): number {
     const country = state.getCountry(countryEntity);
     const medicineChangeRate: number = country.medicine.absoluteRateOfChange;
     const vaccinesChangeRate: number = country.vaccines.absoluteRateOfChange;
     return (medicineChangeRate > this.OccursAboveMedicineChange) ?
-                this.ProbabilityAbove : this.ProbabilityUnder;
+      this.ProbabilityAbove : this.ProbabilityUnder;
   }
 
   occurLocally(state: GameState, countryEntity: CountryEntity): void {

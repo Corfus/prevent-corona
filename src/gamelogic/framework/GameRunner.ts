@@ -16,8 +16,7 @@ export class GameRunner {
   }
 
   public Tick(): void {
-    if(!this.state.gameOver)
-    {
+    if (!this.state.gameOver) {
       this.state.tickCount++;
       this.systems.forEach((v) => {
         v.applyTick(this.state);

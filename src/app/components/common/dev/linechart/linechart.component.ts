@@ -1,7 +1,7 @@
-import {Component, Input,} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ChartDataSets} from 'chart.js';
 import {Color, Label} from 'ng2-charts';
-import {CountryState} from '../../../../../gamelogic/CountryState';
+import {CountryState} from '../../../../../gamelogic/framework/CountryState';
 
 @Component({
   selector: 'app-line-chart',

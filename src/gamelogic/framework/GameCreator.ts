@@ -1,30 +1,30 @@
 import {GamePolicy, GamePolicyEntity} from './GamePolicy';
-import {ClosedBorderPolicy} from './policies/ClosedBorderPolicy';
-import {ClosedCompaniesPolicy} from './policies/ClosedCompaniesPolicy';
-import {ClosedSchoolPolicy} from './policies/ClosedSchoolPolicy';
-import {CurfewPolicy} from './policies/CurfewPolicy';
-import {PayForMedicineDevPolicy} from './policies/PayForMedicineDevPolicy';
-import {PayForVaccineDevPolicy} from './policies/PayForVaccineDevPolicy';
-import {BuildEmergencyHospitalPolicy} from './policies/BuildEmergencyHospitalPolicy';
-import {ExpandHospitalBedsPolicy} from './policies/ExpandHospitalBedsPolicy';
+import {ClosedBorderPolicy} from '../policies/ClosedBorderPolicy';
+import {ClosedCompaniesPolicy} from '../policies/ClosedCompaniesPolicy';
+import {ClosedSchoolPolicy} from '../policies/ClosedSchoolPolicy';
+import {CurfewPolicy} from '../policies/CurfewPolicy';
+import {PayForMedicineDevPolicy} from '../policies/PayForMedicineDevPolicy';
+import {PayForVaccineDevPolicy} from '../policies/PayForVaccineDevPolicy';
+import {BuildEmergencyHospitalPolicy} from '../policies/BuildEmergencyHospitalPolicy';
+import {ExpandHospitalBedsPolicy} from '../policies/ExpandHospitalBedsPolicy';
 
 import {GameAction, GameActionEntity, generatePolicyActions} from './GameAction';
-import {FakeNewsMessageAction, FakeNewsMessageEntity} from './actions/FakeNewsMessageAction';
-import {HygieneHandWashAdviceAction, HygieneHandWashAdviceEntity} from './actions/HygieneHandWashAdviceAction';
-import {MouthguardAdvideAction, MouthguardAdvideEntity} from './actions/MouthguardAdvideAction';
-import {KeepDistanceAdviceAction, KeepDistanceAdviceEntity} from './actions/KeepDistanceAdviceAction';
-import {LowDeathMessageAction, LowDeathMessageEntity} from './actions/LowDeathMessageAction';
-import {InformAboutPoliticanDeathAction, InformAboutPoliticanDeathEntity} from './actions/InformAboutPoliticanDeathAction';
+import {FakeNewsMessageAction, FakeNewsMessageEntity} from '../actions/FakeNewsMessageAction';
+import {HygieneHandWashAdviceAction, HygieneHandWashAdviceEntity} from '../actions/HygieneHandWashAdviceAction';
+import {MouthguardAdviceAction, MouthguardAdviceEntity} from '../actions/MouthguardAdviceAction';
+import {KeepDistanceAdviceAction, KeepDistanceAdviceEntity} from '../actions/KeepDistanceAdviceAction';
+import {LowDeathMessageAction, LowDeathMessageEntity} from '../actions/LowDeathMessageAction';
+import {InformAboutPoliticanDeathAction, InformAboutPoliticanDeathEntity} from '../actions/InformAboutPoliticanDeathAction';
 
 import {GameEvent, GameEventEntity} from './GameEvent';
-import {CoronaPartyEntity, CoronaPartyEvent} from './events/CoronaPartyEvent';
-import {IllegalBorderCrossingEntity, IllegalBorderCrossingEvent} from './events/IllegalBorderCrossingEvent';
-import {ScientistsDieEntity, ScientistsDieEvent} from './events/ScientistsDieEvent';
-import {StockMarketCrashEntity, StockMarketCrashEvent} from './events/StockMarketCrashEvent';
-import {StockMarketCrashHardEntity, StockMarketCrashHardEvent} from './events/StockMarketCrashHardEvent';
-import {StockMarketRecoveryEntity, StockMarketRecoveryEvent} from './events/StockMarketRecoveryEvent';
-import {WirVsVirusHackthonEntity, WirVsVirusHackthonEvent} from './events/WirVsVirusHackthonEvent';
-import {ChinaSackOfRiseEntity, ChinaSackOfRiseHarmlessEvent} from './events/ChinaSackOfRiseHarmlessEvent';
+import {CoronaPartyEntity, CoronaPartyEvent} from '../events/CoronaPartyEvent';
+import {IllegalBorderCrossingEntity, IllegalBorderCrossingEvent} from '../events/IllegalBorderCrossingEvent';
+import {ScientistsDieEntity, ScientistsDieEvent} from '../events/ScientistsDieEvent';
+import {StockMarketCrashEntity, StockMarketCrashEvent} from '../events/StockMarketCrashEvent';
+import {StockMarketCrashHardEntity, StockMarketCrashHardEvent} from '../events/StockMarketCrashHardEvent';
+import {StockMarketRecoveryEntity, StockMarketRecoveryEvent} from '../events/StockMarketRecoveryEvent';
+import {WirVsVirusHackathonEntity, WirVsVirusHackathonEvent} from '../events/WirVsVirusHackathonEvent';
+import {ChinaSackOfRiseEntity, ChinaSackOfRiseHarmlessEvent} from '../events/ChinaSackOfRiseHarmlessEvent';
 
 import {CountryEntity, CountryState} from './CountryState';
 import {GameState} from './GameState';
@@ -68,7 +68,7 @@ export class GameCreator {
     const actions: ActionList = {
       [FakeNewsMessageEntity]: new FakeNewsMessageAction(),
       [HygieneHandWashAdviceEntity]: new HygieneHandWashAdviceAction(),
-      [MouthguardAdvideEntity]: new MouthguardAdvideAction(),
+      [MouthguardAdviceEntity]: new MouthguardAdviceAction(),
       [KeepDistanceAdviceEntity]: new KeepDistanceAdviceAction(),
       [LowDeathMessageEntity]: new LowDeathMessageAction(),
       [InformAboutPoliticanDeathEntity]: new InformAboutPoliticanDeathAction()
@@ -84,7 +84,7 @@ export class GameCreator {
     // Events
     const events: EventList = {
       //  game relevant
-      [WirVsVirusHackthonEntity]: new WirVsVirusHackthonEvent(),
+      [WirVsVirusHackathonEntity]: new WirVsVirusHackathonEvent(),
       [CoronaPartyEntity]: new CoronaPartyEvent(),
       [IllegalBorderCrossingEntity]: new IllegalBorderCrossingEvent(),
       [ScientistsDieEntity]: new ScientistsDieEvent(),
@@ -103,18 +103,18 @@ export class GameCreator {
     playerCountry.hospitalCapacityStartValue = 100000;
     playerCountry.hospitalCapacity = playerCountry.hospitalCapacityStartValue;
     playerCountry.happiness.value = 100;                                // 0 - 100        Start: 100
-    playerCountry.happiness.absoluteRateOfChange = -0.2;                // 
+    playerCountry.happiness.absoluteRateOfChange = -0.2;                //
     playerCountry.numberOfInfected.value = 100;                           // 0 - 83.000.000 Start: 1
     playerCountry.numberOfInfected.relativeRateOfChange = 0.00000002;  // bitte behutsam ändern
     playerCountry.money.value = 5000000000;                             // 0 - 5.000.000.000
     playerCountry.deathProbability.value = 0.03;                      // 0 - TODO
     playerCountry.recoverProbability.value = 0.005;                     // 0 - TODO
     playerCountry.acceptance.value = 0;                                 // 0 - 100        Start: 0
-    playerCountry.acceptance.absoluteRateOfChange = 0.5;                // 
+    playerCountry.acceptance.absoluteRateOfChange = 0.5;                //
 
     const chinaEntity: CountryEntity = 'China';
     const china = new CountryState();
-    china.numberOfInfected.relativeRateOfChange = 0.00000002
+    china.numberOfInfected.relativeRateOfChange = 0.00000002;
     china.numberOfInfected.value = 1;
     const Countries: Map<CountryEntity, CountryState> = new Map([[playerEntity, playerCountry], [chinaEntity, china]]);
 

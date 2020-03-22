@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {interval, Observable, Subject, Subscription} from 'rxjs';
 
-import {GameState} from '../../gamelogic/GameState';
-import {GameRunner} from '../../gamelogic/GameRunner';
-import {GameCreator} from '../../gamelogic/GameCreator';
-import {GameActionEntity} from '../../gamelogic/GameAction';
-import { EventSystem } from 'src/gamelogic/systems/EventSystem';
-import { EvolutionSystem } from 'src/gamelogic/systems/EvolutionSystem';
+import {GameState} from '../../gamelogic/framework/GameState';
+import {GameRunner} from '../../gamelogic/framework/GameRunner';
+import {GameCreator} from '../../gamelogic/framework/GameCreator';
+import {GameActionEntity} from '../../gamelogic/framework/GameAction';
+import {EventSystem} from 'src/gamelogic/systems/EventSystem';
+import {EvolutionSystem} from 'src/gamelogic/systems/EvolutionSystem';
 
 @Injectable()
 export class GameLogicService {

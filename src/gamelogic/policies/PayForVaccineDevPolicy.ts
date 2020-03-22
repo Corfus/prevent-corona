@@ -1,16 +1,16 @@
-import {GameState} from '../GameState';
-import {CountryEntity} from '../CountryState';
-import {GamePolicy} from '../GamePolicy';
+import {GameState} from '../framework/GameState';
+import {CountryEntity} from '../framework/CountryState';
+import {GamePolicy} from '../framework/GamePolicy';
 
 
 export class PayForVaccineDevPolicy extends GamePolicy {
-  private VaccineChangeRate: number = 0.05;
-  private MoneyChangeRate: number = -0.01;
-  private InfectedChangeRate: number = -0.03;
+  private VaccineChangeRate = 0.05;
+  private MoneyChangeRate = -0.01;
+  private InfectedChangeRate = -0.03;
 
   isEnactable(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
-    return country.vaccines.value < 100 && country.acceptance.value > 10;;
+    return country.vaccines.value < 100 && country.acceptance.value > 10;
   }
 
   isRevokable(state: GameState, countryEntity: CountryEntity): boolean {
@@ -36,7 +36,7 @@ export class PayForVaccineDevPolicy extends GamePolicy {
   applyEffects(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
     if (country.vaccines.value >= 100) {
-      state.revokePolicy(countryEntity,'PayForVaccineDev');
+      state.revokePolicy(countryEntity, 'PayForVaccineDev');
       country.numberOfInfected.relativeRateOfChange += this.InfectedChangeRate;
     }
     return true;

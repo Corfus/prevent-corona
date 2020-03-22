@@ -7,7 +7,7 @@ import {CoronaPartyEntity, CoronaPartyEvent} from './Events/CoronaParty';
 import {CountryEntity, CountryState} from './CountryState';
 import {GameState} from './GameState';
 import {GameRunner} from './GameRunner';
-import {EventSystem} from './systems/EventSystem';
+import {EventSystem} from '../systems/EventSystem';
 import {InfectionSystem} from './systems/InfectionSystem';
 
 /**

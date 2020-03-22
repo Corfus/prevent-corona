@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {GameActionEntity} from '../../gamelogic/GameAction';
-import {GameState} from '../../gamelogic/GameState';
+import {GameActionEntity} from '../../gamelogic/framework/GameAction';
+import {GameState} from '../../gamelogic/framework/GameState';
 import {GameLogicService} from '../services/game-logic.service';
 import {map} from 'rxjs/operators';
-import {CountryState} from '../../gamelogic/CountryState';
+import {CountryState} from '../../gamelogic/framework/CountryState';
 
 @Component({
   selector: 'app-dev-view',
