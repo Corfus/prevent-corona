@@ -9,7 +9,7 @@ export class HygieneHandWashAdviceAction extends GameAction {
 
   // Balancing
   private MoneyChangeAbsolute: number = -1000000000;
-  private NumberOfInfectedChangeRelative: number = -0.000000016;
+  private NumberOfInfectedChangeRelative: number = -5E-11;
 
     isActionable(state: GameState, country: CountryEntity): boolean {
       return true;
