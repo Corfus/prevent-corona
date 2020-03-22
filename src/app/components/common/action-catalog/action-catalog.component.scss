@@ -1,8 +1,17 @@
 .catalog-action-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex: 0 1 35%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 0 1 35%;
+}
+
+.catalog-action-group-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: center;
 }
 
 .catalog-action-text{
@@ -10,14 +19,6 @@
   align-items: center;
 }
 
-:host {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: space-around;
-  align-items: center;
-}
 
 
 
