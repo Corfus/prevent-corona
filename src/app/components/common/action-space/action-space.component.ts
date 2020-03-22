@@ -21,22 +21,22 @@ const ACTION_ID_TO_CATEGORY: {[key: string]: EActionCategory} = {
   KeepDistanceAdvice: EActionCategory.Decisions,
   LowDeathMessage: EActionCategory.Propaganda,
   InformAboutPoliticanDeath: EActionCategory.Propaganda,
-  [generateEnactPolicyName('BuildEmergencyHospitalPolicy')]: EActionCategory.Decisions,
-  [generateRevokePolicyName('BuildEmergencyHospitalPolicy')]: EActionCategory.Decisions,
-  [generateEnactPolicyName('ClosedBorderPolicy')]: EActionCategory.Decisions,
-  [generateRevokePolicyName('ClosedBorderPolicy')]: EActionCategory.Decisions,
-  [generateEnactPolicyName('ClosedCompaniesPolicy')]: EActionCategory.Decisions,
-  [generateRevokePolicyName('ClosedCompaniesPolicy')]: EActionCategory.Decisions,
-  [generateEnactPolicyName('ClosedSchoolPolicy')]: EActionCategory.Decisions,
-  [generateRevokePolicyName('ClosedSchoolPolicy')]: EActionCategory.Decisions,
-  [generateEnactPolicyName('CurfewPolicy')]: EActionCategory.Decisions,
-  [generateRevokePolicyName('CurfewPolicy')]: EActionCategory.Decisions,
-  [generateEnactPolicyName('ExpandHospitlaBedsPolicy')]: EActionCategory.Decisions,
-  [generateRevokePolicyName('ExpandHospitlaBedsPolicy')]: EActionCategory.Decisions,
-  [generateEnactPolicyName('PayForMedicineDevPolicy')]: EActionCategory.Decisions,
-  [generateRevokePolicyName('PayForMedicineDevPolicy')]: EActionCategory.Decisions,
-  [generateEnactPolicyName('PayForVaccineDevPolicy')]: EActionCategory.Decisions,
-  [generateRevokePolicyName('PayForVaccineDevPolicy')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('EmergencyHospital')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('EmergencyHospital')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ClosedBorder')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ClosedBorder')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ClosedCompanies')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ClosedCompanies')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ClosedSchool')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ClosedSchool')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('Curfew')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('Curfew')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ExpandHospital')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ExpandHospital')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('PayForMedicineDev')]: EActionCategory.Research,
+  [generateRevokePolicyName('PayForMedicineDev')]: EActionCategory.Research,
+  [generateEnactPolicyName('PayForVaccineDev')]: EActionCategory.Research,
+  [generateRevokePolicyName('PayForVaccineDev')]: EActionCategory.Research,
 };
 
 
@@ -60,6 +60,7 @@ export class ActionSpaceComponent {
   }
 
   getActionList(): Array<any> {
+  console.log(this.actions);
     return this.actions.filter(action => ACTION_ID_TO_CATEGORY[action] === this.selectedCategory);
   }
 
