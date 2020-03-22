@@ -3,3 +3,7 @@
 </div>
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 <app-line-chart [newVal]="country$ | async" title="Bevölkerung"></app-line-chart>
+
+<div class="actionBackground">
+  <app-action-space (actionSelected)="onActionSelected($event)" [actions]="possibleActions$ | async"></app-action-space>
+</div>
