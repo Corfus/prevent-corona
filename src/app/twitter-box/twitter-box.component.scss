@@ -1,0 +1,121 @@
+@import "../../scss/config.scss";
+
+
+
+.twitterBox{
+    position: absolute;
+    background-color: $twitterBox-background-color;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    bottom:0px;
+    vertical-align: bottom;
+}
+
+#bell{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 40px;
+    visibility: hidden;
+    animation-name: fadeOut;
+    animation-duration: 3s;
+}
+
+@keyframes fadeOut {
+    from {opacity: 100%;
+    visibility: visible;}
+    to {opacity: 0%;
+        visibility: hidden;}
+  }
+
+.mainContent{
+    padding-right: 40px;
+    padding-left: 40px;
+    padding-bottom: 5%;
+    padding-top: 60px;
+    .text{
+        color: $twitterBox-mainText-color;
+        font-size: 18px;
+        padding-left: 20px;
+        display: block;
+    }
+    .timeStamp{
+        margin-top: 15px;
+        color: $twitterBox-timeDate-color;
+        font-size: 12px;
+        padding-left: 20px;
+        display: block;
+    }
+
+    .border{
+        border-left: 2px solid $value-color;
+        padding-left: 10px;
+
+        .retweets{
+            border-top: 1px solid $twitterBox-timeDate-color;
+            border-bottom: 1px solid $twitterBox-timeDate-color;
+            width: 80%;
+            margin-left: 20px;
+            margin-top: 10px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            font-size: 15px;
+            .text{
+                color: $twitterBox-timeDate-color;
+                display: inline;
+                margin-left: -10px;
+                margin-right: 10px;
+            }
+            .number{
+                display: inline;
+                color: $twitterBox-mainText-color;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+
+
+.user{
+    position: absolute;
+    margin-left: 70px;
+    top: 10px;
+    width: auto;
+
+    .row{
+        width: 100%;
+        height: 50%;
+        display: inline-block;
+    }
+    .dot{
+        background-color: grey;
+        position: absolute;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        display: block;
+        left: -40px;
+        top:5px;
+    }
+
+    #userName{
+        font-weight: bold;
+        color: $twitterBox-mainText-color;
+        font-size: 20px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    
+    #userTag{
+        color: $twitterBox-userTag-color;
+        font-size: 14px;
+        text-transform: lowercase;
+    }
+}
+
+
+
+
+

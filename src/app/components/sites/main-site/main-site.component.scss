@@ -7,21 +7,25 @@
 .startWindow{
   position: absolute;
   left: 10%;
-  top: 20%;
+  max-width: 40%;
+  top: 15%;
   width: auto;
 }
 
 #startImg{
   position: absolute;
-  height: 70%;
-  bottom: 0;
-  right: 0;
+  height: 60%;
+  top: auto;
+  bottom: 0px;
+  right: 0px;
+  max-width: 50%;
+  vertical-align: bottom;
 }
 
 #mainTitle{
   margin: auto;
   color: $text-color;
-  font-size: 50px;
+  font-size: 500%;
   font-weight: bold;
   font-family: 'Montserrat', serif;
 }
