@@ -49,6 +49,7 @@ export class GameCreator {
   public static createGameState(): GameState {
     const playerEntity: CountryEntity = 'Germany';
 
+
     // Policies
     const policies: PolicyList = {
       ClosedBorder: new ClosedBorderPolicy(),
@@ -57,7 +58,7 @@ export class GameCreator {
       Curfew: new CurfewPolicy(),
       PayForMedicineDev: new PayForMedicineDevPolicy(),
       PayForVaccineDev: new PayForVaccineDevPolicy(),
-      EmergencyHospital: new BuildEmergencyHospitalPolicy(),
+      EmergencyHospital: new BuildEmergencyHospitalPolicy('ExpandHospital'),
       ExpandHospital: new ExpandHospitalBedsPolicy()
     };
 

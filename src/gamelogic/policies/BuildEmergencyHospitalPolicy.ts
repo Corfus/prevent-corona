@@ -8,6 +8,13 @@ export class BuildEmergencyHospitalPolicy extends GamePolicy {
   private HospitalCapacityChange : number = 10000;
   private MoneyChangeRate  : number = -0.07;
 
+  private expandHospitalBedsPolicyEntity: string;
+
+  constructor(expandHospitalBedsPolicyEntity: string) {
+    super();
+    this.expandHospitalBedsPolicyEntity = expandHospitalBedsPolicyEntity;
+  }
+
     isEnactable(state: GameState, countryEntity: CountryEntity): boolean
     {
       const country = state.getCountry(countryEntity);
@@ -37,6 +44,8 @@ export class BuildEmergencyHospitalPolicy extends GamePolicy {
       const country = state.getCountry(countryEntity);
       country.hospitalCapacity -= this.HospitalCapacityChange;
       country.money.relativeRateOfChange -= this.MoneyChangeRate;
+      state.revokePolicy(countryEntity, this.expandHospitalBedsPolicyEntity
+    )
       this.isEnacted = false;
       return true;
     }
