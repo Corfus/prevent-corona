@@ -24,6 +24,7 @@ import { PolicyToIconPipe } from './pipes/policy-to-icon.pipe';
 import { ResponsibilitesComponent } from './components/common/responsibilites/responsibilites.component';
 import { ResearchStateComponent } from './components/common/research-state/research-state.component';
 import { ImageComponent } from './components/common/image/image.component';
+import { ActionToImagePipe } from './pipes/action-to-image.pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ImageComponent } from './components/common/image/image.component';
     PolicyToIconPipe,
     ResponsibilitesComponent,
     ResearchStateComponent,
-    ImageComponent
+    ImageComponent,
+    ActionToImagePipe
   ],
   imports: [
     BrowserModule,
