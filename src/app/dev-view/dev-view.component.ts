@@ -4,6 +4,7 @@ import {GameActionEntity} from '../../gamelogic/GameAction';
 import {GameState} from '../../gamelogic/GameState';
 import {GameLogicService} from '../services/game-logic.service';
 import {map} from 'rxjs/operators';
+import {CountryState} from '../../gamelogic/CountryState';
 
 @Component({
   selector: 'app-dev-view',
@@ -16,9 +17,8 @@ export class DevViewComponent implements OnInit {
   gameState$: Observable<GameState>;
   possibleActions$: Observable<Array<string>>;
 
-  popSelector(state: GameState) {
-    return state.getCountry(state.playerCountry).numberOfInfected.value;
-  }
+  countrySubject$: Subject<CountryState> = new Subject<CountryState>();
+  country$: Observable<CountryState>;
 
   constructor(private gameLogic: GameLogicService) {
   }
@@ -26,8 +26,13 @@ export class DevViewComponent implements OnInit {
   ngOnInit(): void {
     this.gameLogic.startGame(this.actionSubject.asObservable());
     this.gameState$ = this.gameLogic.gameState$;
-    this.gameState$.subscribe(() => {
-      console.log('Müp');
+    this.country$ = this.countrySubject$.asObservable();
+    /*this.country$.subscribe((val) => {
+      console.log(val);
+    });*/
+    this.gameState$.subscribe((state) => {
+      const country = state.getCountry(state.playerCountry);
+      this.countrySubject$.next({...country}); // neues Objekt! wichtig!!! sonst kein update
     });
     this.possibleActions$ = this.gameState$.pipe(map(gs => gs.getActionableActions(gs.playerCountry)));
   }
