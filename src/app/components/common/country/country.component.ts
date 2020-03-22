@@ -7,4 +7,6 @@ import {Component, Input} from '@angular/core';
 })
 export class CountryComponent {
   @Input() country: string;
+  @Input() ticks = 0;
+  @Input() policies: Array<string> = [];
 }

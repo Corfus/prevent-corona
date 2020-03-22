@@ -1,3 +1,9 @@
-<h2 (pointerdown)="unselectCategory()">Aktionen</h2>
+<div (pointerdown)="unselectCategory()" class="headline">
+  <h2 *ngIf="selectedCategory < 0">Aktionen</h2>
+  <ng-container *ngIf="selectedCategory >= 0">
+    <img [src]="'arrow' | imagePath" alt="arrow">
+    <h2 class="spaceLeft">{{getCategoryName(selectedCategory)}}</h2>
+  </ng-container>
+</div>
 <app-action-bar *ngIf="selectedCategory < 0" (categorySelected)="setCategory($event)"></app-action-bar>
 <app-action-catalog *ngIf="selectedCategory >= 0" [actionList]="getActionList()" (actionSelected)="onActionSelected($event)"></app-action-catalog>
