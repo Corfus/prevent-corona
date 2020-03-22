@@ -1,5 +1,4 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {GameActionEntity, generateEnactPolicyName, generateRevokePolicyName} from '../../gamelogic/GameAction';
 
 
 const ACTION_ID_TO_TEXT: { [key: string]: string } = {
