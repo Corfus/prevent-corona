@@ -60,8 +60,16 @@ export interface PolicyActionPair {
 export function generatePolicyActions(policyEntity: GamePolicyEntity): PolicyActionPair {
   return {
     enact: new EnactPolicyAction(policyEntity),
-    enactEntity: `enact${policyEntity}`,
+    enactEntity: generateEnactPolicyName(policyEntity),
     revoke: new RevokePolicyAction(policyEntity),
-    revokeEntity: `revoke${policyEntity}`,
+    revokeEntity: generateRevokePolicyName(policyEntity),
   };
+}
+
+export function generateEnactPolicyName(policyEntity: GamePolicyEntity): GameActionEntity {
+  return `enact${policyEntity}`;
+}
+
+export function generateRevokePolicyName(policyEntity: GamePolicyEntity): GameActionEntity {
+  return `enact${policyEntity}`;
 }

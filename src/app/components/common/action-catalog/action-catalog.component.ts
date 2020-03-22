@@ -17,7 +17,6 @@ export class ActionCatalogComponent implements OnInit  {
   }
 
   ngOnInit(): void {
-    console.log("init" + this.actionList)
     this.groupedActionList = this.groupActionList(this.actionList, 4);
   }
 
@@ -27,9 +26,7 @@ export class ActionCatalogComponent implements OnInit  {
     let out = []
     while (i < len) {
         out.push(actionList.slice(i, i += splitSize));
-        console.log("i" + i)
     }
-    console.log("out" + out)
     return out;
   }
 }
