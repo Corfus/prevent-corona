@@ -1,7 +1,7 @@
 <div class="twitterBox">
-    <img id="bell" [class.bellAnimation]="showBell" [src]="'event_notification' | imagePath"/>
+    <img *ngIf="showBell" id="bell" [class.bellAnimation]="showBell" [src]="'event_notification' | imagePath" alt="bell"/>
     <div class="user">
-        <span class="dot"></span>
+        <span class="dot"><img [src]="'Profile_Twitter' | imagePath" alt="profile image"></span>
         <div class="row">
             <label id="userName">{{userName}}</label>
         </div>
