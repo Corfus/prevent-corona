@@ -4,7 +4,8 @@ app-population-bar, app-responsibilites, app-research-state, app-twitter-box {
 }
 
 .flexRow.twitter {
-  width: 100%;
-  align-items: center;
+  margin: 1%;
+  width: 99%;
   justify-content: space-around;
+  align-items: flex-end;
 }
