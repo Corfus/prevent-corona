@@ -28,6 +28,8 @@ import { ResponsibilitesComponent } from './components/common/responsibilites/re
 import { ResearchStateComponent } from './components/common/research-state/research-state.component';
 import { ImageComponent } from './components/common/image/image.component';
 import { ActionToImagePipe } from './pipes/action-to-image.pipe';
+import { ActionToDescriptionPipe } from './pipes/action-to-description.pipe';
+import { ReadablePipe } from './pipes/readable.pipe';
 
 @NgModule({
   declarations: [
