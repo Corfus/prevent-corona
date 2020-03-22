@@ -21,6 +21,10 @@ import { PolicyListComponent } from './components/common/policy-list/policy-list
 import { TimeComponent } from './components/common/time/time.component';
 import { PopulationBarComponent } from './components/common/population-bar/population-bar.component';
 import { PolicyToIconPipe } from './pipes/policy-to-icon.pipe';
+import { ResponsibilitesComponent } from './components/common/responsibilites/responsibilites.component';
+import { ResearchStateComponent } from './components/common/research-state/research-state.component';
+import { ImageComponent } from './components/common/image/image.component';
+import { ActionToImagePipe } from './pipes/action-to-image.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { PolicyToIconPipe } from './pipes/policy-to-icon.pipe';
     DatePipe,
     TimeComponent,
     PopulationBarComponent,
-    PolicyToIconPipe
+    PolicyToIconPipe,
+    ResponsibilitesComponent,
+    ResearchStateComponent,
+    ImageComponent,
+    ActionToImagePipe
   ],
   imports: [
     BrowserModule,
