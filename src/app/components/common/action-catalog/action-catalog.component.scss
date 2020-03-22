@@ -1,0 +1,23 @@
+.catalog-action-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 0 1 35%;
+}
+
+.catalog-action-text{
+  display: flex;
+  align-items: center;
+}
+
+:host {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  align-items: center;
+}
+
+
+
