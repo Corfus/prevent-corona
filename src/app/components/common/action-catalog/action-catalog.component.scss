@@ -12,6 +12,7 @@
     justify-content: space-around;
     align-content: space-around;
     align-items: center;
+    display: none;
 }
 
 .catalog-action-text{
@@ -19,6 +20,13 @@
   align-items: center;
 }
 
+.actionGroup-container-0{
+  display: flex;
+}
+
+.catalog-bottom-navigation {
+  text-align:center;
+}
 
 
 

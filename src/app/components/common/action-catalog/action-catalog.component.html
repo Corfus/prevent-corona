@@ -1,6 +1,11 @@
-<div class="catalog-action-group-container" *ngFor="let actionGroup of groupedActionList" >
+<div class="catalog-action-group-container actionGroup-container-{{i}}" *ngFor="let actionGroup of groupedActionList; let i = index" >
   <div class="catalog-action-container" *ngFor="let action of actionGroup" >
     <app-image-button (pointerdown)="onPointerDown(action)" image="{{action | actionToImage}}"></app-image-button>
-    <div class="catalog-action-text">{{action}}</div>
+    <div class="catalog-action-text">{{action | actionDetails}}</div>
   </div>
+</div>
+<div  class="catalog-bottom-navigation">
+  <span *ngFor="let actionGroup of groupedActionList; let i = index"  >
+   {{i+1}}
+  </span>
 </div>
