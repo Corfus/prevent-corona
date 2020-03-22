@@ -1,6 +1,4 @@
 <ng-container *ngIf="extractData(gameState) as data">
-  <p>{{data.tick}}</p>
-  <app-status-value name="Infizierte" [value]="data.infected" icon="infections"></app-status-value>
-  <app-status-value name="Zufriedenheit" [value]="data.happiness" icon="happiness"></app-status-value>
-  <app-status-value name="Tote" [value]="data.deaths" icon="death"></app-status-value>
+  <app-population-bar [infected]="data.infected" [deaths]="data.deaths" [healed]="4" [population]="45"></app-population-bar>
+  <p>{{data.tick | date}}</p>
 </ng-container>

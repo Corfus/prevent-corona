@@ -1,0 +1,21 @@
+<div class="bar">
+  <div class="infected" [style.width.%]="calcPercentage(infected)"></div>
+  <div class="death" [style.width.%]="calcPercentage(deaths)"></div>
+  <div class="healed" [style.width.%]="calcPercentage(healed)"></div>
+  <div class="health" [style.width.%]="calcPercentage(population - infected - deaths -healed)"></div>
+</div>
+<div class="flexSpaceBetween">
+  <app-status-value name="Infizierte" [value]="infected" icon="infections"></app-status-value>
+  <app-status-value name="Tote" [value]="deaths" icon="death"></app-status-value>
+  <app-status-value name="Geheilt" [value]="healed" icon="healed"></app-status-value>
+  <app-status-value name="Gesunde" [value]="population - infected - deaths -healed" icon="person"></app-status-value>
+</div>
+<div class="flexSpaceBetween capacityList">
+  <div>
+    <app-status-value name="Staatskapital" [value]="infected" icon="State_Capital"></app-status-value>
+  </div>
+  <div>
+    <app-status-value name="Zufriedenheit" [value]="infected" icon="happiness"></app-status-value>
+  </div>
+  <div></div>
+</div>
