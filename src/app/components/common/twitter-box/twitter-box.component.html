@@ -1,0 +1,24 @@
+<div class="twitterBox">
+    <img id="bell" [class.bellAnimation]="showBell" [src]="'event_notification' | imagePath"/>
+    <div class="user">
+        <span class="dot"></span>
+        <div class="row">
+            <label id="userName">{{userName}}</label>
+        </div>
+        <div class="row">
+            <label id="userTag"> @{{userName}}</label>
+        </div>
+    </div>
+    <div class="mainContent">
+        <div class="border">
+            <label class="text">{{eventId | actionDetails}}</label>
+            <label class="timeStamp">{{dateTime}}</label>
+            <div class="retweets">
+                <label class="number">{{retweets}}</label>
+                <label class="text">Retweets</label>
+                <label class="number">{{likes}}</label>
+                <label class="text">Likes</label>
+            </div>
+        </div>
+    </div>
+</div>

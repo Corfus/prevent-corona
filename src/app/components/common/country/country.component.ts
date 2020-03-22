@@ -10,7 +10,9 @@ export class CountryComponent {
   @Input() gameState: GameState;
 
   getEnactedPolicies(): Array<string> {
-    console.log(Array.from(this.gameState.getCountryEnactedPolicies(this.gameState.playerCountry)));
-    return Array.from(this.gameState.getCountryEnactedPolicies(this.gameState.playerCountry));
+    if (this.gameState) {
+      return Array.from(this.gameState.getCountryEnactedPolicies(this.gameState.playerCountry));
+    }
+    return [];
   }
 }
