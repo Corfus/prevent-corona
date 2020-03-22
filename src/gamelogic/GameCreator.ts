@@ -141,7 +141,10 @@ export class GameCreator {
     playerCountry.hospitalCapacity = 100000;
     playerCountry.happiness.value = 100;
     playerCountry.numberOfInfected.value = 1;
-
+    playerCountry.numberOfInfected.relativeRateOfChange = 0.000000002;
+    playerCountry.money.value = 5000000000;
+    playerCountry.deathProbability.value = 0.0005;
+    playerCountry.recoverProbability.value = 0.005;
 
     const chinaEntity: CountryEntity = 'China';
     const china = new CountryState();

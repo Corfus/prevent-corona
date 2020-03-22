@@ -50,14 +50,17 @@ export class EvolutionSystem extends System {
 
       //infizierte 
       //Begrenztes logistisches Wachstum: https://de.wikipedia.org/wiki/Logistische_Funktion
-      var k = 0.000000002// countryData.numberOfInfected.relativeRateOfChange;
+      var k = countryData.numberOfInfected.relativeRateOfChange;
       var infected = countryData.numberOfInfected.value;
       var total = countryData.totalPopulation.value;
-      countryData.numberOfInfected.value = (total) / (1+Math.exp(-k*total*state.tickCount)*(total/100-1));
+      //countryData.numberOfInfected.value = (total) / (1+Math.exp(-k*total*state.tickCount)*(total/100-1));
+      countryData.numberOfInfected.value = (total * infected) / (infected + (total - infected) * Math.exp(-k*total) );
+      //countryData.numberOfInfected.relativeRateOfChange *= 1;
+
       //geheilte
       var newRecovered = countryData.recoverProbability.value * countryData.numberOfInfected.value;
-      countryData.numberOfRecovered.value += newRecovered;
-      countryData.numberOfInfected.value -= newRecovered;
+      //countryData.numberOfRecovered.value += newRecovered;
+      //countryData.numberOfInfected.value -= newRecovered;
 
       //Impfstoff
       countryData.vaccines.value += countryData.vaccines.absoluteRateOfChange;
@@ -72,8 +75,8 @@ export class EvolutionSystem extends System {
       }
 
       newDeaths +=  countryData.deathProbability.value * countryData.numberOfInfected.value;
-      countryData.deaths += newDeaths;
-      countryData.numberOfInfected.value -= newDeaths;
+      //countryData.deaths += newDeaths;
+      //countryData.numberOfInfected.value -= newDeaths;
 
 
 
