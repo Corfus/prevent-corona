@@ -13,7 +13,7 @@ build:
 build_docker:
   stage: deploy
   script:
-    - npm install && npm run build --prod
+    - npm install && npm run build
     - cd server && npm i && cd ..
     - ./scripts/deploy.sh
   cache:
@@ -29,7 +29,7 @@ build_docker:
 build_docker_prod:
   stage: deploy
   script:
-    - npm install && npm run build --prod
+    - npm install && npm run build
     - cd server && npm i && cd ..
     - ./scripts/deploy.sh --prod
   cache:
