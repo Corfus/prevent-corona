@@ -10,16 +10,7 @@ $border-radius: 5px;
   width: 100%;
   height: 40px;
   border-radius: 5px;
-}
-
-.bar .start {
-  border-top-left-radius: $border-radius;
-  border-bottom-left-radius: $border-radius;
-}
-
-.bar .end {
-  border-top-right-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
+  overflow: hidden;
 }
 
 .infected {
