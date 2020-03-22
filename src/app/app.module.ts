@@ -14,7 +14,7 @@ import {ActionBarComponent} from './components/common/action-bar/action-bar.comp
 import {ActionSpaceComponent} from './components/common/action-space/action-space.component';
 import {ImageButtonComponent} from './components/common/image-button/image-button.component';
 import {ActionCatalogComponent} from './components/common/action-catalog/action-catalog.component';
-import { TwitterBoxComponent } from './twitter-box/twitter-box.component'
+import { TwitterBoxComponent } from './components/common/twitter-box/twitter-box.component'
 import {StatusValueComponent} from './components/common/status-value/status-value.component';
 import {ValueTableComponent} from './components/common/value-table/value-table.component';
 import { DatePipe } from './pipes/date.pipe';
