@@ -93,13 +93,16 @@ export class EvolutionSystem extends System {
       //happinessRateOfChange += countryData.happiness.absoluteRateOfChange;
       //countryData.happiness.value += happinessRateOfChange;
       countryData.happiness.value += countryData.happiness.absoluteRateOfChange;
+      countryData.happiness.value = Math.min(100, countryData.happiness.value);
+      countryData.happiness.value = Math.max(0, countryData.happiness.value);
 
       //Akzeptanz
       //var acceptanceRateOfChange = infectedThisTick * this.acceptanceInfectedFactor;
       //acceptanceRateOfChange += diedThisTick * this.acceptanceDeathsFactor;
       //countryData.acceptance.value += acceptanceRateOfChange;
       countryData.acceptance.value += countryData.acceptance.absoluteRateOfChange;
-
+      countryData.acceptance.value = Math.min(100, countryData.acceptance.value);
+      countryData.acceptance.value = Math.max(0, countryData.acceptance.value);
 
       //Impfstoff
       countryData.vaccines.value += countryData.vaccines.absoluteRateOfChange;

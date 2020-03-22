@@ -106,7 +106,7 @@ export class GameCreator {
     playerCountry.happiness.absoluteRateOfChange = -0.5;                // 
     playerCountry.numberOfInfected.value = 100;                           // 0 - 83.000.000 Start: 1
     playerCountry.numberOfInfected.relativeRateOfChange = 0.00000002;  // bitte behutsam ändern
-    playerCountry.money.value = 5000000000;                             // 0 - 50.000.000.000.000
+    playerCountry.money.value = 5000000000;                             // 0 - 5.000.000.000
     playerCountry.deathProbability.value = 0.03;                      // 0 - TODO
     playerCountry.recoverProbability.value = 0.005;                     // 0 - TODO
     playerCountry.acceptance.value = 0;                                 // 0 - 100        Start: 0
