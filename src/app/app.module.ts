@@ -26,7 +26,6 @@ import { ResponsibilitesComponent } from './components/common/responsibilites/re
 import { ResearchStateComponent } from './components/common/research-state/research-state.component';
 import { ImageComponent } from './components/common/image/image.component';
 import { ActionToImagePipe } from './pipes/action-to-image.pipe';
-import { ActionToDescriptionPipe } from './pipes/action-to-description.pipe';
 
 @NgModule({
   declarations: [
@@ -55,7 +54,8 @@ import { ActionToDescriptionPipe } from './pipes/action-to-description.pipe';
     ResearchStateComponent,
     ImageComponent,
     ActionToImagePipe,
-    ActionToDescriptionPipe
+    ActionToDescriptionPipe,
+    ReadablePipe
   ],
   imports: [
     BrowserModule,

@@ -6,9 +6,9 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./responsibilites.component.scss']
 })
 export class ResponsibilitesComponent implements OnInit {
-  @Input() stateCapital = '';
-  @Input() acceptance = '';
-  @Input() happiness = '';
+  @Input() stateCapital = 0;
+  @Input() acceptance = 0;
+  @Input() happiness = 0;
 
   constructor() {
   }
