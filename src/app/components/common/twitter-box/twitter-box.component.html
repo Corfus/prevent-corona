@@ -1,8 +1,8 @@
 <div class="twitterBox">
-    <img id="bell" src="../../assets/Event_notification.svg"/>
+    <img id="bell" [class.bellAnimation]="showBell" [src]="'event_notification' | imagePath"/>
     <div class="user">
         <span class="dot"></span>
-        <div class="row"> 
+        <div class="row">
             <label id="userName">{{userName}}</label>
         </div>
         <div class="row">
@@ -11,7 +11,7 @@
     </div>
     <div class="mainContent">
         <div class="border">
-            <label class="text">{{eventText}}</label>
+            <label class="text">{{eventId | actionDetails}}</label>
             <label class="timeStamp">{{dateTime}}</label>
             <div class="retweets">
                 <label class="number">{{retweets}}</label>

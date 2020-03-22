@@ -1,7 +1,6 @@
 <div>
   <div *ngFor="let p of policies">
-<!--    <img [src]="p | policyToIcon | imagePath" [alt]="p">-->
-    <app-image [name]="p" [inverted]="true"></app-image>
+    <img [src]="p | policyToIcon | imagePath: 'green'" [alt]="p">
   </div>
 </div>
 {{policies}}

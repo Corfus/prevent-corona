@@ -1,13 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {GameActionEntity, generateEnactPolicyName, generateRevokePolicyName} from '../../gamelogic/GameAction';
 
 
 const ACTION_ID_TO_TEXT: {[key: string]: string} = {
-  tweet1: 'Fake-News werden verbreitet – Warnung! Im Netz gehen Fake News umher!',
-  tweet2: 'Hände waschen – Appell an alle Bürger: Bitte Hände oft und gründlich waschen.',
-  tweet3: 'Mundschutz tragen – Wer sich draußen aufhält, sollte bitte einen Mundschutz tragen, um sich und andere zu schützen!',
-  tweet4: 'Abstand halten – Wichtig! Haltet mindestens 1,5m Abstand zu anderen Personen! Noch besser: Nicht rausgehen :)',
-  tweet5: 'Geringe Todeszahlen – Deutschland hat immer noch niedrige Todeszahlen! Danke an alle, die sich an die Regelungen halten!',
-  tweet6: 'Politiker gestorben – Immer mehr Menschen sterben aufgrund des Viruses… So heute auch leider unser Bürgermeister aus Ferlensgart.',
+  FakeNewsMessage: 'Fake-News werden verbreitet – Warnung! Im Netz gehen Fake News umher!',
+  HygieneHandWashAdvice: 'Hände waschen – Appell an alle Bürger: Bitte Hände oft und gründlich waschen.',
+  MouthguardAdvide: 'Mundschutz tragen – Wer sich draußen aufhält, sollte bitte einen Mundschutz tragen, um sich und andere zu schützen!',
+  KeepDistanceAdvice: 'Abstand halten – Wichtig! Haltet mindestens 1,5m Abstand zu anderen Personen! Noch besser: Nicht rausgehen :)',
+  LowDeathMessage: 'Geringe Todeszahlen – Deutschland hat immer noch niedrige Todeszahlen! Danke an alle, die sich an die Regelungen halten!',
+  InformAboutPoliticanDeath: 'Politiker gestorben – Immer mehr Menschen sterben aufgrund des Viruses… So heute auch leider unser Bürgermeister aus Ferlensgart.',
   tweet7: 'WirVsCorona Hackathon findet statt – Der WirvsVirus-Hackathon findet statt. 43000 nehmen teil und bleiben zuhause.',
   tweet8: 'Corona Party – Eilmeldung! Eine Corona-Party hat stattgefunden und nun gibt es viele Neuinfizierte! ',
   tweet9: 'Illegale Grenzüberschreitungen – Achtung! Illegale Grenzübergänge sind passiert! Bitte alle zuhause bleiben!',

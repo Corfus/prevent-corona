@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component, Input} from '@angular/core';
 import {GameState} from '../../../../gamelogic/GameState';
+import {map} from 'rxjs/operators';
 
 interface IGameValueCollection {
   tick: number;
@@ -8,11 +9,12 @@ interface IGameValueCollection {
   healed: number;
   deathrate: number;
   population: number;
-  state_capital: string;
-  acceptance: string;
-  happiness: string;
+  state_capital: number;
+  acceptance: number;
+  happiness: number;
   vaccines: number;
-  medicine: number
+  medicine: number;
+  eventId: string;
 }
 
 @Component({
@@ -28,6 +30,9 @@ export class ValueTableComponent {
       return;
     }
     const countryState = gs.getCountry(gs.playerCountry);
+
+    const messages = gs.getEventMessageHistory();
+    const eventId = (messages[messages.length - 1] || {}).eventEntity;
     return {
       tick: gs.tickCount,
       deaths: Math.round(countryState.deaths),
@@ -35,11 +40,12 @@ export class ValueTableComponent {
       deathrate: Math.round(countryState.deathProbability.value),
       healed: Math.round(countryState.numberOfRecovered.value),
       population: Math.round(countryState.totalPopulation.value),
-      happiness: `${(countryState.happiness.value).toFixed(1)} %`,
-      state_capital: `${countryState.money.value} €`,
-      acceptance: `${(countryState.acceptance.value).toFixed(1)} %`,
+      happiness: Number(countryState.happiness.value.toFixed(1)),
+      state_capital: Number(countryState.money.value),
+      acceptance: Number(countryState.acceptance.value.toFixed(1)),
       vaccines: Number(countryState.vaccines.value.toFixed(1)),
-      medicine: Number(countryState.medicine.value.toFixed(1))
+      medicine: Number(countryState.medicine.value.toFixed(1)),
+      eventId
     };
   }
 }
