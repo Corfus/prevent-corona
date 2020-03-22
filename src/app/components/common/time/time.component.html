@@ -1,4 +1,5 @@
 <div class="flexRow">
-  <img [src]="'time' | imagePath" alt="time">
+<!--  <img [src]="'time' | imagePath" alt="time">-->
+  <app-image name="time" [inverted]="true"></app-image>
   <label>{{ticks | date}}</label>
 </div>

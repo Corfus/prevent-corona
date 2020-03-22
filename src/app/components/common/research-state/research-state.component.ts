@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-research-state',
@@ -6,4 +6,6 @@ import {Component} from '@angular/core';
   styleUrls: ['./research-state.component.scss']
 })
 export class ResearchStateComponent {
+  @Input() vaccines = 0;
+  @Input() medicine = 0;
 }

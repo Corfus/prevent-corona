@@ -6,6 +6,7 @@
 
 .container {
   border-radius: 5px;
+  padding: 4px;
   background-color: white;
   display: flex;
   justify-content: space-around;
@@ -21,4 +22,8 @@
   align-items: center;
   height: 40px;
   justify-content: center;
+}
+
+app-image {
+  margin-right: 4px;
 }

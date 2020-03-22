@@ -11,6 +11,8 @@ interface IGameValueCollection {
   state_capital: string;
   acceptance: string;
   happiness: string;
+  vaccines: number;
+  medicine: number
 }
 
 @Component({
@@ -35,7 +37,9 @@ export class ValueTableComponent {
       population: Math.round(countryState.totalPopulation.value),
       happiness: `${(countryState.happiness.value).toFixed(1)} %`,
       state_capital: `${countryState.money.value} €`,
-      acceptance: `${(countryState.acceptance.value).toFixed(1)} %`
+      acceptance: `${(countryState.acceptance.value).toFixed(1)} %`,
+      vaccines: Number(countryState.vaccines.value.toFixed(1)),
+      medicine: Number(countryState.medicine.value.toFixed(1))
     };
   }
 }
