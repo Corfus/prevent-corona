@@ -8,9 +8,17 @@
 
 img {
   height: 90%;
+  min-width: 20px;
 }
 
 app-time, app-policy-list {
   align-self: start;
+}
+
+app-time {
+  width: 20%;
+}
+
+app-policy-list {
   width: 10%;
 }
