@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~9.0.1",
     "@angular/platform-browser-dynamic": "~9.0.1",
     "@angular/router": "~9.0.1",
+    "@types/canvasjs": "^1.9.5",
+    "canvasjs": "^1.8.3",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "typescript-logging": "^0.6.4",
