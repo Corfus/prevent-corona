@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.capacityList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.capacityList div {
+  border-radius: 5px;
+  background-color: white;
+}
