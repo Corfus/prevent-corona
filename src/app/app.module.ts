@@ -22,6 +22,9 @@ import {TimeComponent} from './components/common/time/time.component';
 import {PopulationBarComponent} from './components/common/population-bar/population-bar.component';
 import {PolicyToIconPipe} from './pipes/policy-to-icon.pipe';
 import {DevViewComponent} from './dev-view/dev-view.component';
+import {ChartsModule} from 'ng2-charts';
+import {LineChartComponent} from './components/common/dev/linechart/linechart.component';
+
 
 @NgModule({
   declarations: [
@@ -45,11 +48,13 @@ import {DevViewComponent} from './dev-view/dev-view.component';
     TimeComponent,
     PopulationBarComponent,
     PolicyToIconPipe,
-    DevViewComponent
+    DevViewComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

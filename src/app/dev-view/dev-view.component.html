@@ -2,3 +2,4 @@
   <app-value-table [gameState]="gameState$ | async"></app-value-table>
 </div>
 <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<app-line-chart [gameState]="gameState$ | async" [selecti]="popSelector" title="Bevölkerung"></app-line-chart>

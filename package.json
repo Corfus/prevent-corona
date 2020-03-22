@@ -21,6 +21,8 @@
     "@angular/router": "~9.0.1",
     "@types/canvasjs": "^1.9.5",
     "canvasjs": "^1.8.3",
+    "chart.js": "^2.9.3",
+    "ng2-charts": "^2.3.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "typescript-logging": "^0.6.4",
