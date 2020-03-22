@@ -22,6 +22,8 @@ import { TimeComponent } from './components/common/time/time.component';
 import { PopulationBarComponent } from './components/common/population-bar/population-bar.component';
 import { PolicyToIconPipe } from './pipes/policy-to-icon.pipe';
 import { ResponsibilitesComponent } from './components/common/responsibilites/responsibilites.component';
+import { ResearchStateComponent } from './components/common/research-state/research-state.component';
+import { ImageComponent } from './components/common/image/image.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ResponsibilitesComponent } from './components/common/responsibilites/re
     TimeComponent,
     PopulationBarComponent,
     PolicyToIconPipe,
-    ResponsibilitesComponent
+    ResponsibilitesComponent,
+    ResearchStateComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule,
