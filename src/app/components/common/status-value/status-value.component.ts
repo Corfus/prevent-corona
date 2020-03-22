@@ -6,7 +6,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./status-value.component.scss']
 })
 export class StatusValueComponent {
-  @Input() value: number;
+  @Input() value: number | string;
   @Input() name: string;
   @Input() icon: string;
   @Input() inverted = false;
