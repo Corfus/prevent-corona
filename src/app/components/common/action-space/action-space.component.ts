@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {GameActionEntity} from '../../../../gamelogic/GameAction';
+import {GameActionEntity, generateEnactPolicyName, generateRevokePolicyName} from '../../../../gamelogic/GameAction';
 
 export enum EActionCategory {
   Unselected = -1,
@@ -21,12 +21,22 @@ const ACTION_ID_TO_CATEGORY: {[key: string]: EActionCategory} = {
   KeepDistanceAdvice: EActionCategory.Decisions,
   LowDeathMessage: EActionCategory.Propaganda,
   InformAboutPoliticanDeath: EActionCategory.Propaganda,
-  EnactClosedBorder: EActionCategory.Decisions,
-  EnactClosedCompanies: EActionCategory.Decisions,
-  EnactClosedSchools: EActionCategory.Decisions,
-  EnactCurfew: EActionCategory.Decisions,
-  EnactPayForMedicineDev: EActionCategory.Research,
-  EnactPayForVaccineDev: EActionCategory.Research,
+  [generateEnactPolicyName('BuildEmergencyHospitalPolicy')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('BuildEmergencyHospitalPolicy')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ClosedBorderPolicy')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ClosedBorderPolicy')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ClosedCompaniesPolicy')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ClosedCompaniesPolicy')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ClosedSchoolPolicy')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ClosedSchoolPolicy')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('CurfewPolicy')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('CurfewPolicy')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('ExpandHospitlaBedsPolicy')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('ExpandHospitlaBedsPolicy')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('PayForMedicineDevPolicy')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('PayForMedicineDevPolicy')]: EActionCategory.Decisions,
+  [generateEnactPolicyName('PayForVaccineDevPolicy')]: EActionCategory.Decisions,
+  [generateRevokePolicyName('PayForVaccineDevPolicy')]: EActionCategory.Decisions,
 };
 
 
