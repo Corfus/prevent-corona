@@ -1,0 +1,68 @@
+@import "../../../../scss/config";
+
+.flexCenter{
+  background-color: $value-color;
+}
+
+.column{
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.stats{
+    margin-top: 20px;
+}
+
+.startWindow{
+  position: absolute;
+  left: 10%;
+  max-width: 40%;
+  top: 15%;
+  width: 40%;
+
+  #mainTitle{
+    margin: auto;
+    color: $text-color;
+    font-size: 250%;
+    font-weight: bold;
+    font-family: 'Montserrat', serif;
+  }
+  .actionList {
+    margin-top: 35px;
+    width: auto;
+    border: none;
+    background-color: $text-color;
+    border-radius: 5px;
+  
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: white;
+  
+      label {
+        color: $value-color;
+        font-size: 20px;
+        padding: 5px;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+      }
+    }
+  }
+}
+
+#startImg{
+  position: absolute;
+  height: 60%;
+  top: auto;
+  bottom: 0px;
+  right: 0px;
+  max-width: 50%;
+  vertical-align: bottom;
+}
+
+
+
+
