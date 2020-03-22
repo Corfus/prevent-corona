@@ -10,7 +10,7 @@ export class PayForVaccineDevPolicy extends GamePolicy {
 
   isEnactable(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
-    return country.vaccines.value !== 100;
+    return country.vaccines.value < 100;
   }
 
   isRevokable(state: GameState, countryEntity: CountryEntity): boolean {
@@ -35,8 +35,8 @@ export class PayForVaccineDevPolicy extends GamePolicy {
 
   applyEffects(state: GameState, countryEntity: CountryEntity): boolean {
     const country = state.getCountry(countryEntity);
-    if (country.vaccines.value == 100) {
-      this.onRevoke(state, countryEntity);
+    if (country.vaccines.value >= 100) {
+      state.revokePolicy(countryEntity,'PayForVaccineDev');
       country.numberOfInfected.relativeRateOfChange += this.InfectedChangeRate;
     }
     return true;

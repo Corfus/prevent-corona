@@ -32,6 +32,7 @@ export class CountryState {
   public vaccines: RateAttribute;           // 0 - 100
   public medicine: RateAttribute;           // 0 - 100
   public hospitalCapacity: number;
+  public hospitalCapacityStartValue: number;
 
   constructor() {
     this.happiness = new RateAttribute();

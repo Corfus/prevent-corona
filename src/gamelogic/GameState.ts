@@ -48,6 +48,10 @@ export class GameState {
     return Array.from(this.countries.keys());
   }
 
+  public getAllPolicies() : Map<GamePolicyEntity, GamePolicy> {
+    return this.allPolicies;
+  }
+
   public getAllEvents(): Map<GameEventEntity, GameEvent> {
     return this.allEvents;
   }
@@ -72,22 +76,58 @@ export class GameState {
     return this.enactedPolicies.get(country) as Set<GamePolicyEntity>; // TODO see above;
   }
 
-  public enactPolicy(country: CountryEntity, policyEntity: GamePolicyEntity): boolean {
+  public policyIsEnactable(country: CountryEntity, policyEntity: GamePolicyEntity): boolean {
     if (!this.allPolicies.has(policyEntity)) {
       throw new Error(`tried to enact unknown policy ${policyEntity}`);
     }
+
     const policy = this.allPolicies.get(policyEntity);
     if (policy === undefined) { // TODO
       return false;
     }
-    if (!policy.isEnactable(this, country)) {
-      return false;
-    }
-    const policySet = this.enactedPolicies.get(country);
 
-    if (policySet === undefined) { // TODO
+    const policySet = this.enactedPolicies.get(country);
+    if (policySet === undefined) { // TODO error
       return false;
     }
+    const alreadyActive = policySet.has(policyEntity);
+    return !alreadyActive && policy.isEnactable(this, country);
+  }
+
+  public policyIsRevokable(country: CountryEntity, policyEntity: GamePolicyEntity): boolean {
+    if (!this.allPolicies.has(policyEntity)) {
+      throw new Error(`tried to revoke unknown policy ${policyEntity}`);
+    }
+
+    const policy = this.allPolicies.get(policyEntity);
+    if (policy === undefined) { // TODO
+      return false;
+    }
+
+    const policySet = this.enactedPolicies.get(country);
+    if (policySet === undefined) { // TODO error
+      return false;
+    }
+    const alreadyActive = policySet.has(policyEntity);
+    return alreadyActive && policy.isRevokable(this, country);
+  }
+
+  public enactPolicy(country: CountryEntity, policyEntity: GamePolicyEntity): boolean {
+
+    if (!this.policyIsEnactable(country, policyEntity)) {
+      return false;
+    }
+
+    const policy = this.allPolicies.get(policyEntity);
+    if (policy === undefined) { // TODO
+      return false;
+    }
+
+    const policySet = this.enactedPolicies.get(country);
+    if (policySet === undefined) { // TODO error
+      return false;
+    }
+
     policySet.add(policyEntity);
 
     policy.onEnact(this, country);
@@ -150,7 +190,7 @@ export class GameState {
     return true;
   }
 
-  public addEventMessage(event: GameEventEntity, location: CountryEntity,) {
+  public addEventMessage(event: GameEventEntity, location: CountryEntity) {
     const message = new EventMessage(event, location, this.tickCount);
     this.eventMessageHistory.push(message);
   }

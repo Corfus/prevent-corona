@@ -9,7 +9,7 @@ export class ExpandHospitalBedsPolicy extends GamePolicy {
     isEnactable(state: GameState, countryEntity: CountryEntity): boolean
     {
       const country = state.getCountry(countryEntity);
-      if (country.hospitalCapacity > 10000) // Use the hospital capacity start value here
+      if (country.hospitalCapacity >  country.hospitalCapacityStartValue)
       {
           return true;
       }
