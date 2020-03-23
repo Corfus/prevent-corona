@@ -13,7 +13,7 @@ export class EndSiteComponent implements OnInit {
   infections: string = '33.394';
   healed: string = '10.046';
   stateCapital: string = '1.384.945€';
-  research: string = '382.293';
+  research: string = '31.4%';
   happiness: string = '71%';
   acceptance: string = '42.6%';
 
