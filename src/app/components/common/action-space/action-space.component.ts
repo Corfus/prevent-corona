@@ -60,7 +60,6 @@ export class ActionSpaceComponent {
   }
 
   getActionList(): Array<any> {
-    console.log(this.actions);
     return this.actions.filter(action => ACTION_ID_TO_CATEGORY[action] === this.selectedCategory);
   }
 

@@ -8,7 +8,9 @@ import {GameActionEntity} from '../../gamelogic/framework/GameAction';
 import {EventSystem} from 'src/gamelogic/systems/EventSystem';
 import {EvolutionSystem} from 'src/gamelogic/systems/EvolutionSystem';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class GameLogicService {
   readonly gameState$: Observable<GameState>;
 
@@ -32,7 +34,6 @@ export class GameLogicService {
     this.timerSubscription = this.timer$.subscribe(() => {
       this.gameRunner.Tick();
       this.gameStateSubject.next(this.gameState);
-      console.log(this.gameState);
     });
     action$.subscribe((actionEntity) => {
       this.gameRunner.runAction(actionEntity);
