@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {interval, Observable, Subject, Subscription} from 'rxjs';
+import {interval, Observable, ReplaySubject, Subscription} from 'rxjs';
 
 import {GameState} from '../../gamelogic/framework/GameState';
 import {GameRunner} from '../../gamelogic/framework/GameRunner';
@@ -16,7 +16,7 @@ export class GameLogicService {
 
   private gameRunner: GameRunner;
   private gameState: GameState;
-  private gameStateSubject: Subject<any> = new Subject<any>();
+  private gameStateSubject: ReplaySubject<any> = new ReplaySubject<any>(1);
   private timer$: Observable<number>;
   private timerSubscription: Subscription;
 
