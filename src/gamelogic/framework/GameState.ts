@@ -175,7 +175,6 @@ export class GameState {
    * @param actionEntity Aktion
    */
   public runAction(country: CountryEntity, actionEntity: GameActionEntity): boolean {
-    console.log(this.allActions);
     if (!this.allActions.has(actionEntity)) {
       throw new Error(`tried to run unknown Action ${actionEntity}`);
     }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {interval, Observable, Subject, Subscription} from 'rxjs';
+import {interval, Observable, ReplaySubject, Subscription} from 'rxjs';
 
 import {GameState} from '../../gamelogic/framework/GameState';
 import {GameRunner} from '../../gamelogic/framework/GameRunner';
@@ -8,13 +8,15 @@ import {GameActionEntity} from '../../gamelogic/framework/GameAction';
 import {EventSystem} from 'src/gamelogic/systems/EventSystem';
 import {EvolutionSystem} from 'src/gamelogic/systems/EvolutionSystem';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class GameLogicService {
   readonly gameState$: Observable<GameState>;
 
   private gameRunner: GameRunner;
   private gameState: GameState;
-  private gameStateSubject: Subject<any> = new Subject<any>();
+  private gameStateSubject: ReplaySubject<any> = new ReplaySubject<any>(1);
   private timer$: Observable<number>;
   private timerSubscription: Subscription;
 
@@ -32,7 +34,6 @@ export class GameLogicService {
     this.timerSubscription = this.timer$.subscribe(() => {
       this.gameRunner.Tick();
       this.gameStateSubject.next(this.gameState);
-      console.log(this.gameState);
     });
     action$.subscribe((actionEntity) => {
       this.gameRunner.runAction(actionEntity);

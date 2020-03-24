@@ -12,7 +12,7 @@ const routes: Routes = [{
 }, {
   path: 'game',
   component: GameSiteComponent,
-},{
+}, {
   path: 'end',
   component: EndSiteComponent,
 }, {

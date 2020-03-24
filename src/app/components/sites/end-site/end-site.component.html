@@ -4,15 +4,15 @@
       <label id="mainTitle">Dein Score: {{score}}</label>
       <div class="stats">
         <div class="column">
-            <app-end-site-value imageSrc="../../../../assets/Death.svg" score="{{deaths}}"></app-end-site-value>
-            <app-end-site-value imageSrc="../../../../assets/Infections.svg" score="{{infections}}"></app-end-site-value>
-            <app-end-site-value imageSrc="../../../../assets/Healed.svg" score="{{healed}}"></app-end-site-value>
-            <app-end-site-value imageSrc="../../../../assets/State_Capital.svg" score="{{stateCapital}}"></app-end-site-value>
+            <app-end-site-value [image]="'death'" score="{{deaths}}"></app-end-site-value>
+            <app-end-site-value [image]="'infections'" score="{{infections}}"></app-end-site-value>
+            <app-end-site-value [image]="'healed'" score="{{healed}}"></app-end-site-value>
+            <app-end-site-value [image]="'State_Capital'" score="{{stateCapital}}" [postfix]="'€'"></app-end-site-value>
           </div>
           <div class="column">
-            <app-end-site-value imageSrc="../../../../assets/Research.svg" score="{{research}}"></app-end-site-value>
-            <app-end-site-value imageSrc="../../../../assets/Happiness.svg" score="{{happiness}}"></app-end-site-value>
-            <app-end-site-value imageSrc="../../../../assets/Acceptance.svg" score="{{acceptance}}"></app-end-site-value>
+            <app-end-site-value [image]="'research'" score="{{research}}" [postfix]="'%'"></app-end-site-value>
+            <app-end-site-value [image]="'happiness'" score="{{happiness}}" [postfix]="'%'"></app-end-site-value>
+            <app-end-site-value [image]="'acceptance'" score="{{acceptance}}" [postfix]="'%'"></app-end-site-value>
           </div>
           <div class="actionList">
             <a routerLink="/game"><label>Wiederholen</label></a>
@@ -20,4 +20,3 @@
       </div>
     </div>
   </div>
-  
