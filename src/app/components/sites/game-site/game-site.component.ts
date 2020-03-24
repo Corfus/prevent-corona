@@ -27,7 +27,10 @@ export class GameSiteComponent implements OnDestroy, OnInit {
       map(gs => gs.gameOver),
       filter(gameOver => gameOver),
       take(1)
-    ).toPromise().then(() => this.router.navigate(['/end']));
+    ).toPromise().then(() => {
+      this.gameLogic.finishGame();
+      this.router.navigate(['/end']);
+    });
   }
 
   ngOnDestroy(): void {
