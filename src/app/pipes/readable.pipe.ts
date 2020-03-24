@@ -6,17 +6,18 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class ReadablePipe implements PipeTransform {
 
   transform(value: number): string {
-    if (value > 1000000000) {
-      const mio = Math.floor(value / 1000000000);
-      return `${mio} Mrd`;
-    } else if (value > 1000000) {
+    value = Number(value) || 0;
+    if (Math.abs(value) > 1000000000) {
+      const mrd = Math.floor(value / 1000000000);
+      return `${Number(mrd.toFixed(1))} Mrd`;
+    } else if (Math.abs(value) > 1000000) {
       const mio = Math.floor(value / 1000000);
-      return `${mio} Mio`;
-    } else if (value > 1000) {
+      return `${Number(mio.toFixed(1))} Mio`;
+    } else if (Math.abs(value) > 1000) {
       const tsd = Math.floor(value / 1000);
-      return `${tsd} Tsd`;
+      return `${Number(tsd.toFixed(1))} Tsd`;
     }
-    return `${value}`;
+    return `${Number(value.toFixed(1))}`;
   }
 
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {GameLogicService} from '../../../services/game-logic.service';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-end-site',
@@ -7,18 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EndSiteComponent implements OnInit {
 
-  score: string = "25.2930";
-  deaths: string = "4.843";
-  infections: string = "33.394";
-  healed : string = "10.046";
-  stateCapital: string = "1.384.945€";
-  research: string = "382.293";
-  happiness:string = "71%";
-  acceptance: string = "42.6%";
-  
-  constructor() { }
+  score: number;
+  deaths: number;
+  infections: number;
+  healed: number;
+  stateCapital: number;
+  research: number;
+  happiness: number;
+  acceptance: number;
 
-  ngOnInit(): void {
+  constructor(private cdRef: ChangeDetectorRef, private gameLogicService: GameLogicService) {
+  }
+
+  async ngOnInit(): Promise<void> {
+    const gamestate = await this.gameLogicService.gameState$.pipe(take(1)).toPromise();
+    const countryState = gamestate.getCountry(gamestate.playerCountry);
+
+    this.deaths = countryState.deaths;
+    this.infections = countryState.currentlyInfected;
+    this.healed = countryState.numberOfRecovered.value;
+    this.stateCapital = countryState.money.value;
+    this.research = countryState.medicine.value;
+    this.happiness = countryState.acceptance.value;
+    this.acceptance = countryState.acceptance.value;
+    this.cdRef.detectChanges();
   }
 
 }

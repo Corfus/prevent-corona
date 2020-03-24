@@ -1,6 +1,5 @@
-import {ChangeDetectorRef, Component, Input} from '@angular/core';
-import {GameState} from '../../../../gamelogic/GameState';
-import {map} from 'rxjs/operators';
+import {Component, Input} from '@angular/core';
+import {GameState} from '../../../../gamelogic/framework/GameState';
 
 interface IGameValueCollection {
   tick: number;

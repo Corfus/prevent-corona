@@ -1,8 +1,8 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import {GameActionEntity, generateEnactPolicyName, generateRevokePolicyName} from '../../gamelogic/GameAction';
+import {Pipe, PipeTransform} from '@angular/core';
+import {generateEnactPolicyName, generateRevokePolicyName} from '../../gamelogic/framework/GameAction';
 
 
-const ACTION_ID_TO_IMAGE: {[key: string]: string} = {
+const ACTION_ID_TO_IMAGE: { [key: string]: string } = {
   FakeNewsMessage: 'FakeNews_fromUs',
   HygieneHandWashAdvice: 'Wash_Hands',
   InformAboutPoliticanDeath: 'PoliticianDeath',
@@ -41,7 +41,7 @@ const ACTION_ID_TO_IMAGE: {[key: string]: string} = {
 export class ActionToImagePipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): unknown {
-    return  `${ACTION_ID_TO_IMAGE[value]}`;;
+    return `${ACTION_ID_TO_IMAGE[value]}`;
   }
 
 }

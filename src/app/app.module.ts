@@ -31,6 +31,9 @@ import { ActionToImagePipe } from './pipes/action-to-image.pipe';
 import { ActionToDescriptionPipe } from './pipes/action-to-description.pipe';
 import { ReadablePipe } from './pipes/readable.pipe';
 
+import {DevViewComponent} from './dev-view/dev-view.component';
+import {ChartsModule} from 'ng2-charts';
+import {LineChartComponent} from './components/common/dev/linechart/linechart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,11 +64,14 @@ import { ReadablePipe } from './pipes/readable.pipe';
     ActionToDescriptionPipe,
     ReadablePipe,
     EndSiteComponent,
-    EndSiteValueComponent
+    EndSiteValueComponent,
+    DevViewComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,11 @@
-import {GameState} from '../GameState';
-import {CountryEntity} from '../CountryState';
-import {GamePolicy} from '../GamePolicy';
+import {GameState} from '../framework/GameState';
+import {CountryEntity} from '../framework/CountryState';
+import {GamePolicy} from '../framework/GamePolicy';
 
 export class ClosedBorderPolicy extends GamePolicy {
-  private HappinessChangeRate: number = -10;
-  private MoneyChangeRate: number = -0.01;
-  private InfectedChangeRate: number = -0.03;
+  private HappinessChangeRate: number = -1;
+  private MoneyChangeRate: number = 50000;
+  private InfectedChangeRate: number = 25E-11;
 
 
   isEnactable(state: GameState, countryEntity: CountryEntity): boolean {

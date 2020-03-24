@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {GameActionEntity, generateEnactPolicyName, generateRevokePolicyName} from '../../../../gamelogic/GameAction';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {GameActionEntity, generateEnactPolicyName, generateRevokePolicyName} from '../../../../gamelogic/framework/GameAction';
 
 export enum EActionCategory {
   Unselected = -1,
@@ -14,7 +14,7 @@ const categoryToName = {
   [EActionCategory.Research]: 'Forschung',
 };
 
-const ACTION_ID_TO_CATEGORY: {[key: string]: EActionCategory} = {
+const ACTION_ID_TO_CATEGORY: { [key: string]: EActionCategory } = {
   FakeNewsMessage: EActionCategory.Propaganda,
   HygieneHandWashAdvice: EActionCategory.Propaganda,
   MouthguardAdvide: EActionCategory.Decisions,
@@ -60,7 +60,6 @@ export class ActionSpaceComponent {
   }
 
   getActionList(): Array<any> {
-  console.log(this.actions);
     return this.actions.filter(action => ACTION_ID_TO_CATEGORY[action] === this.selectedCategory);
   }
 

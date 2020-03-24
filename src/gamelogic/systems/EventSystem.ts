@@ -1,16 +1,14 @@
-import {System} from '../System';
-import {GameState} from '../GameState';
-import { GameEvent } from '../GameEvent';
+import {System} from '../framework/System';
+import {GameState} from '../framework/GameState';
 
 export class EventSystem extends System {
 
   private rng: any; // TODO typing
   private nextTick: number;
 
-  //balancing
+  // balancing
   private meanEventDistance = 10;
   private randomEventDistance = 6;
-
 
 
   // Dependency injection für den RNG um testbar zu machen (brauchen wir das?)
@@ -25,32 +23,28 @@ export class EventSystem extends System {
 
   public applyTick(state: GameState): void {
     const countries = state.getAllCountryEntities();
-    countries.forEach((countryEntity) => 
-    {
-      state.getCountryEnactedPolicies(countryEntity).forEach((gameEnactedPolicy) => 
-      {
-        state.getAllPolicies().forEach((gamePolicy, policyname) => {   
-          if(policyname == gameEnactedPolicy)
-          {
-            gamePolicy.applyEffects(state,countryEntity);
-          }   
+    countries.forEach((countryEntity) => {
+      state.getCountryEnactedPolicies(countryEntity).forEach((gameEnactedPolicy) => {
+        state.getAllPolicies().forEach((gamePolicy, policyName) => {
+          if (policyName === gameEnactedPolicy) {
+            gamePolicy.applyEffects(state, countryEntity);
+          }
         });
       });
     });
-    if(state.tickCount < this.nextTick)
-    {
+    if (state.tickCount < this.nextTick) {
       return;
     }
 
-    //next event in 7-13 Ticks (with mean = 10 and random = 6)
-    this.nextTick = state.tickCount + this.meanEventDistance - (this.randomEventDistance/2) + this.randomEventDistance*Math.random();
+    // next event in 7-13 Ticks (with mean = 10 and random = 6)
+    this.nextTick = state.tickCount + this.meanEventDistance - (this.randomEventDistance / 2) + this.randomEventDistance * Math.random();
 
     state.getAllEvents().forEach((gameEvent, _) => {
-      const probability = gameEvent.getOccurenceProbability(state);
+      const probability = gameEvent.getOccurrenceProbability(state);
       if (Math.random() < probability) {
         gameEvent.occur(state);
 
-        //only one event per Eventcycle
+        // only one event per event cycle
         return;
       }
     });

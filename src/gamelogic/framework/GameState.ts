@@ -13,7 +13,7 @@ export class GameState {
   private countries: Map<CountryEntity, CountryState>;
   public playerCountry: CountryEntity;
 
-  private eventMessageHistory: EventMessage[];
+  private readonly eventMessageHistory: EventMessage[];
 
   private readonly allPolicies: Map<GamePolicyEntity, GamePolicy>;
   private readonly allActions: Map<GameActionEntity, GameAction>;
@@ -48,7 +48,7 @@ export class GameState {
     return Array.from(this.countries.keys());
   }
 
-  public getAllPolicies() : Map<GamePolicyEntity, GamePolicy> {
+  public getAllPolicies(): Map<GamePolicyEntity, GamePolicy> {
     return this.allPolicies;
   }
 
@@ -175,7 +175,6 @@ export class GameState {
    * @param actionEntity Aktion
    */
   public runAction(country: CountryEntity, actionEntity: GameActionEntity): boolean {
-    console.log(this.allActions);
     if (!this.allActions.has(actionEntity)) {
       throw new Error(`tried to run unknown Action ${actionEntity}`);
     }

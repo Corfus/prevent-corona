@@ -1,16 +1,16 @@
-import {GameState} from '../GameState';
-import {CountryEntity} from '../CountryState';
-import {GameAction} from '../GameAction';
-import {GameEventEntity} from '../GameEvent';
+import {GameState} from '../framework/GameState';
+import {CountryEntity} from '../framework/CountryState';
+import {GameAction} from '../framework/GameAction';
+import {GameEventEntity} from '../framework/GameEvent';
 
 export const InformAboutPoliticanDeathEntity: GameEventEntity = 'InformAboutPoliticanDeath';
 
 export class InformAboutPoliticanDeathAction extends GameAction {
 
   // Balancing
-  private MoneyChangeAbsolute: number = -500000000;
-  private HappinessChangeAbsolute: number = -10;
-  private AcceptanceChangeAbsolute: number = 10;
+  private MoneyChangeAbsolute = -500000000;
+  private HappinessChangeAbsolute = -10;
+  private AcceptanceChangeAbsolute = 10;
 
   isActionable(state: GameState, country: CountryEntity): boolean {
     return true;
