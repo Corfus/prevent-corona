@@ -21,15 +21,17 @@ export class GameLogicService {
   private timerSubscription: Subscription;
 
   constructor() {
-    this.gameState = GameCreator.createGameState();
-    this.gameStateSubject.next(this.gameState);
     this.gameState$ = this.gameStateSubject.asObservable();
-    this.gameRunner = new GameRunner(this.gameState);
-    this.gameRunner.AddSystem(new EventSystem());
-    this.gameRunner.AddSystem(new EvolutionSystem(0.03));
   }
 
   startGame(action$: Observable<GameActionEntity>): void {
+    this.gameState = GameCreator.createGameState();
+    this.gameStateSubject.next(this.gameState);
+
+    this.gameRunner = new GameRunner(this.gameState);
+    this.gameRunner.AddSystem(new EventSystem());
+    this.gameRunner.AddSystem(new EvolutionSystem(0.03));
+
     this.timer$ = interval(1000);
     this.timerSubscription = this.timer$.subscribe(() => {
       this.gameRunner.Tick();
@@ -44,8 +46,5 @@ export class GameLogicService {
     if (this.timerSubscription) {
       this.timerSubscription.unsubscribe();
     }
-  }
-
-  dispatchAction(): void {
   }
 }
