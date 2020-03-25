@@ -1,7 +1,7 @@
 :host {
   flex: 1 1 auto;
   padding: 10px;
-  height: calc(100% - 20px);
+  //height: calc(100% - 20px);
 }
 
 .container {
@@ -19,4 +19,5 @@ h3 {
   height: 10%;
   text-align: center;
   margin: 0;
+  font-size: 2vw;
 }

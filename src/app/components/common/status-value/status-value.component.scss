@@ -8,6 +8,7 @@
 
 label {
   color: $text-color;
+  font-size: 1.5vw;
 }
 
 .inverted label {
@@ -31,8 +32,8 @@ label {
 .propertyIcon img {
   height: auto;
   width: $font-size;
-  margin-left: 10px;
-  margin-right: 15px;
+  //margin-left: 10px;
+  //margin-right: 15px;
 }
 
 .propertyValue {

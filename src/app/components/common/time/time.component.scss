@@ -1,6 +1,9 @@
 @import "../../../../scss/config";
 
 .flexRow {
+  position: fixed;
+  left: 50vw;
+  top: 0px;
   display: flex;
   flex-direction: row;
   justify-content: center;
