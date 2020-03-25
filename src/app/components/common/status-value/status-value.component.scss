@@ -12,9 +12,6 @@
 
 label {
   color: $text-color;
-<<<<<<< Updated upstream
-  font-size: 1.5vw;
-=======
   text-align: center;
   font-size: 3vh;
   margin: 1%;
@@ -25,7 +22,6 @@ img {
   width: 100%;
   height: 100%;
   object-fit: contain;
->>>>>>> Stashed changes
 }
 
 .inverted label {
@@ -35,39 +31,3 @@ img {
   font-size: 1.5vw;
   color: $value-color;
 }
-<<<<<<< Updated upstream
-
-.propertyValue label {
-  margin-left: 10px;
-  margin-right: 10px;
-  display: block;
-  width: auto;
-}
-
-.propertyName label {
-  margin-left: 10px;
-  margin-right: 10px;
-  display: block;
-  width: auto;
-}
-
-.propertyIcon img {
-  height: auto;
-  width: $font-size;
-  //margin-left: 10px;
-  //margin-right: 15px;
-}
-
-.propertyValue {
-  display: inline-block;
-}
-
-.propertyName {
-  display: inline-block;
-}
-
-.propertyIcon {
-  display: inline-block;
-}
-=======
->>>>>>> Stashed changes
