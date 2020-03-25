@@ -1,26 +1,30 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  margin: 1%;
-}
-
-h2 {
-  margin: 0;
+.container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 15% 85%;
 }
 
 .headline {
-  display: flex;
-  flex-direction: row;
-  height: 20%;
+  height: 98%;
+  width: 98%;
+  margin: 1%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 100%;
+  h2{
+    width: auto;
+    height: 98%;
+    font-size: 3vw;
+    margin: 1%;
+  }
   img {
-    height: 30px;
+    height: 100%;
+    width: auto;
+    object-fit: contain;
   }
 }
-
-app-action-bar, app-action-catalog {
-  height: 80%;
-}
-
-.spaceLeft {
-  margin-left: 10px;
+.menu{
+  height: 100%;
+  width: 100%;
 }

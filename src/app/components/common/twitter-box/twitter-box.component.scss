@@ -1,8 +1,5 @@
 @import "../../../../scss/config";
 
-:host {
-  display: block;
-}
 
 .twitterBox {
   position: relative;
@@ -48,7 +45,6 @@
     color: $twitterBox-mainText-color;
     font-size: 18px;
     padding-left: 20px;
-    display: block;
   }
 
   .timeStamp {
@@ -56,7 +52,6 @@
     color: $twitterBox-timeDate-color;
     font-size: 12px;
     padding-left: 20px;
-    display: block;
   }
 
   .border {
@@ -108,7 +103,6 @@
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    display: block;
     left: -40px;
     top: 5px;
   }

@@ -1,11 +1,41 @@
-app-population-bar, app-responsibilites, app-research-state, app-twitter-box {
-  margin: 1%;
-  width: 98%;
+.grid-container {
+  display: grid;
+  height: 100%;
+  max-width: 100%;
+  grid-template-rows: 20% 15% 15% auto ;
 }
-
-.flexRow.twitter {
+app-population-bar
+{
+  margin-bottom: 2%;
+  width: 100%;
+  max-height: 98%;
+}
+app-responsibilities
+{
+  margin-top: 1%;
+  margin-bottom: 2%;
+  width: 100%;
+  max-height: 97%;
+}
+app-research-state
+{
+  margin-top: 5%;
+  margin-bottom: 2%;
+  width: 100%;
+  max-height: 93%;
+}
+.twitter {
+  display: grid;
+  width: 90%;
+  margin: 5%;
+  height: 90%;
+  grid-template-columns: 10% 90% ;
+  vertical-align: bottom;
+}
+app-image {
+  width: 98%;
+  height: auto;
   margin: 1%;
-  width: 99%;
-  justify-content: space-around;
-  align-items: flex-end;
+  object-fit: contain;
+  vertical-align: bottom;
 }

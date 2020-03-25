@@ -1,12 +1,14 @@
-<div class="bar">
-  <div class="infected" [style.width.%]="calcPercentage(infected)"></div>
-  <div class="death" [style.width.%]="calcPercentage(deaths)"></div>
-  <div class="healed" [style.width.%]="calcPercentage(healed)"></div>
-  <div class="health" [style.width.%]="calcPercentage(population - infected - deaths -healed)"></div>
-</div>
-<div class="flexSpaceBetween">
-  <app-status-value name="Infizierte" [value]="infected" icon="infections_red"></app-status-value>
-  <app-status-value name="Tote" [value]="deaths" icon="death_orange"></app-status-value>
-  <app-status-value name="Geheilt" [value]="healed" icon="healed_red"></app-status-value>
-  <app-status-value name="Gesunde" [value]="population - infected - deaths -healed" icon="person"></app-status-value>
+<div class="container">
+  <div class="bar">
+    <div class="infected" [style.width.%]="calcPercentage(infected)"></div>
+    <div class="death" [style.width.%]="calcPercentage(deaths)"></div>
+    <div class="healed" [style.width.%]="calcPercentage(healed)"></div>
+    <div class="health" [style.width.%]="calcPercentage(population - infected - deaths -healed)"></div>
+  </div>
+  <div class="container2">
+    <app-status-value name="Infizierte" [value]="infected" icon="infections_red"></app-status-value>
+    <app-status-value name="Tote" [value]="deaths" icon="death_orange"></app-status-value>
+    <app-status-value name="Geheilt" [value]="healed" icon="healed_red"></app-status-value>
+    <app-status-value name="Gesunde" [value]="population - infected - deaths -healed" icon="person"></app-status-value>
+  </div>
 </div>

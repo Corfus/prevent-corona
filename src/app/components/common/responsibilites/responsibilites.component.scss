@@ -1,31 +1,18 @@
-:host {
-  display: block;
-}
-
-.capacityList {
-  display: flex;
-  justify-content: stretch;
-}
-
-.capacityList div {
-  display: flex;
-  flex-direction: row;
-  justify-content: stretch;
-
+.container
+{
+  display: grid;
+  width: 99%;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  margin-left: 1%;
+  height: 97%;
+  grid-template-columns: 33% 33% 33% ;
 }
 
 app-status-value {
-  flex: 1 1 auto;
   border-radius: 5px;
   background-color: white;
-  padding: 4px 0;
-  margin: 4px;
-}
-
-app-status-value:first-of-type {
-  margin-left: 0;
-}
-
-app-status-value:last-of-type {
-  margin-right: 0;
+  margin: 1%;
+  width: 98%;
+  height: 98%;
 }

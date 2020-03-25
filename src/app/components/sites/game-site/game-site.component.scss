@@ -1,9 +1,14 @@
-.flexRow div {
-  width: 50%;
-  height: 100%;
-}
+.valueBackground { grid-area: value; }
+.countryBackground { grid-area: country; }
+.actionBackground { grid-area: actions; }
 
-.flexColumn div {
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'value country'
+    'value actions';
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
   width: 100%;
-  height: 50%;
+  height: 100%;
 }

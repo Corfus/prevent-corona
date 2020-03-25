@@ -1,11 +1,5 @@
-<div class="flexColumn" [class.inverted]="inverted">
-    <div class="propertyIcon">
-        <img [src]="icon | imagePath: inverted ? 'green' : ''">
-    </div>
-    <div class="propertyName">
-        <label>{{name}}</label>
-    </div>
-    <div class="propertyValue">
-        <label>{{value | readable}}{{postfix}}</label>
-    </div>
+<div class="container" [class.inverted]="inverted">
+    <img [src]="icon | imagePath: inverted ? 'green' : ''">
+    <label>{{name}}</label>
+    <label>{{value | readable}}{{postfix}}</label>
 </div>

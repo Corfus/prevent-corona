@@ -1,22 +1,29 @@
+<<<<<<< Updated upstream
 :host {
   flex: 1 1 auto;
   padding: 10px;
   //height: calc(100% - 20px);
 }
 
+=======
+>>>>>>> Stashed changes
 .container {
   height: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  width: 100%;
 }
 
 img {
-  height: 80%;
+  height: auto;
+  max-height: 60%;
+  width: 100%;
+  object-fit: contain;
 }
 
 h3 {
-  height: 10%;
+  height: auto;
+  max-height: 40%;
+  width: 100%;
+  color: white;
   text-align: center;
   margin: 0;
   font-size: 2vw;

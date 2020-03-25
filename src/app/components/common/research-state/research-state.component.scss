@@ -1,29 +1,25 @@
 @import "../../../../scss/config";
 
-:host {
-  display: block;
-}
-
 .container {
+  margin: 1%;
+  width: 98%;
+  height:98%;
   border-radius: 5px;
-  padding: 4px;
   background-color: white;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  align-items: center;
   color: $value-color;
+  display: grid;
+  grid-template-columns: 33% 16% 16% 16% 16%;
+  align-content: center;
+  label {
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    font-size: 2vw;
+  }
+  app-image {
+    height: 100%;
+    width: 100%;
+  }
 }
 
-.container div {
-  display: flex;
-  flex-direction: row;
-  flex: 1 1 auto;
-  align-items: center;
-  height: 40px;
-  justify-content: center;
-}
-
-app-image {
-  margin-right: 4px;
-}

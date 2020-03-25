@@ -1,13 +1,11 @@
-<div class="fullSpace flexRow">
-  <div class="valueBackground">
-    <app-value-table [gameState]="gameState$ | async"></app-value-table>
+<div class="grid-container">
+  <div class="valueBackground" style="max-width: 100%; height: 100%;">
+    <app-value-table style="max-width: 100%; height: 100%;" [gameState]="gameState$ | async"></app-value-table>
   </div>
-  <div class="flexColumn">
-    <div>
-      <app-country country="germany" [gameState]="gameState$ | async"></app-country>
-    </div>
-    <div class="actionBackground">
-      <app-action-space (actionSelected)="onActionSelected($event)" [actions]="possibleActions$ | async"></app-action-space>
-    </div>
+  <div class="countryBackground">
+    <app-country country="germany" [gameState]="gameState$ | async"></app-country>
+  </div>
+  <div class="actionBackground">
+    <app-action-space (actionSelected)="onActionSelected($event)" [actions]="possibleActions$ | async"></app-action-space>
   </div>
 </div>

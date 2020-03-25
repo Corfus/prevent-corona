@@ -6,8 +6,8 @@ const POLICY_TO_ICON = {
   ['ClosedCompanies']: 'Home_Office',
   ['ClosedSchool']: 'Grenzschließung',
   ['Curfew']: 'Grenzschließung',
-  ['PayForMedicineDev']: 'Grenzschließung',
-  ['PayForVaccineDev']: 'Grenzschließung',
+  ['PayForMedicineDev']: 'Medicine',
+  ['PayForVaccineDev']: 'Medicine',
 };
 
 

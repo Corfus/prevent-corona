@@ -1,30 +1,53 @@
-$border-radius: 5px;
 
-:host {
-  display: block;
-}
-
-.bar {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 40px;
+.bar { 
+  grid-area: bar;
+  width: 98%;
+  max-height: 97%;
+  margin: 1%;
+  margin-bottom: 2%;
   border-radius: 5px;
   overflow: hidden;
+}
+.container2 
+{ 
+  grid-area: container2; 
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  max-width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+    'bar'
+    'container2';
+  grid-template-rows: 30% 70%;
+
 }
 
 .infected {
   background-color: #521210;
+  height: 100%;
+  display: inline-flex; 
 }
 
 .death {
   background-color: #dc8957;
+  height: 100%;
+  display: inline-flex; 
 }
 
 .healed {
   background-color: #c84e43;
+  height: 100%;
+  display: inline-flex; 
 }
 
 .health {
   background-color: white;
+  height: 100%;
+  display: inline-flex; 
 }

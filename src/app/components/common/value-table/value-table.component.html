@@ -1,10 +1,8 @@
-<ng-container *ngIf="extractData(gameState) as data">
-  <app-population-bar [infected]="data.infected" [deaths]="data.deaths" [healed]="data.healed"
-                      [population]="data.population"></app-population-bar>
-  <app-responsibilites [acceptance]="data.acceptance" [stateCapital]="data.state_capital" [happiness]="data.happiness"></app-responsibilites>
-  <app-research-state [medicine]="data.medicine" [vaccines]="data.vaccines"></app-research-state>
-  <div class="flexRow twitter">
-    <app-image [name]="'twitter'"></app-image>
-    <app-twitter-box userName="Deutschland" [eventId]="data.eventId"></app-twitter-box>
-  </div>
-</ng-container>
+<div class="grid-container" *ngIf="extractData(gameState) as data">
+    <app-population-bar [infected]="data.infected" [deaths]="data.deaths" [healed]="data.healed"
+                        [population]="data.population"></app-population-bar>
+    <app-responsibilites [acceptance]="data.acceptance" [stateCapital]="data.state_capital" [happiness]="data.happiness"></app-responsibilites>
+    <app-research-state [medicine]="data.medicine" [vaccines]="data.vaccines"></app-research-state>
+
+</div>
+

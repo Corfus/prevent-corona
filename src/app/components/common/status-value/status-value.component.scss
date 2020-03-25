@@ -1,19 +1,41 @@
 @import "../../../../scss/config";
 
-.flexColumn div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.container {
+  width: 98%;
+  height: 98%;
+  margin: 1%;
+  display: grid;
+  grid-template-rows: 60% 20% 20% ;
+  align-content: center;
+  vertical-align: middle;
 }
 
 label {
   color: $text-color;
+<<<<<<< Updated upstream
   font-size: 1.5vw;
+=======
+  text-align: center;
+  font-size: 3vh;
+  margin: 1%;
+  width: 98%;
+  height: 98%;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+>>>>>>> Stashed changes
 }
 
 .inverted label {
+  margin: 1%;
+  width: 98%;
+  height: 98%;
+  font-size: 1.5vw;
   color: $value-color;
 }
+<<<<<<< Updated upstream
 
 .propertyValue label {
   margin-left: 10px;
@@ -47,3 +69,5 @@ label {
 .propertyIcon {
   display: inline-block;
 }
+=======
+>>>>>>> Stashed changes

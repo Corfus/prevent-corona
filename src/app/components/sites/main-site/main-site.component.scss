@@ -46,8 +46,12 @@
 
     label {
       color: $value-color;
+      margin: 1%;
+      width: 98%;
+      height: 98%;
       font-size: 20px;
       padding: 5px;
+      font-size: 2vw;
       cursor: pointer;
       font-family: 'Montserrat', sans-serif;
     }
